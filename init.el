@@ -2,45 +2,13 @@
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 (global-set-key (kbd "M-=") 'indent-region)
+(global-set-key (kbd "C-c C-c") 'comment-region)
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/el-get")
-(require 'el-get)
-(setq el-get-sources
-      '((:name ruby-mode
-               :type elpa
-               :load "ruby-mode.el"
-               :after (lambda () (ruby-mode-hook)))
-        (:name inf-ruby  :type elpa)
-        (:name ruby-compilation :type elpa)
-        (:name css-mode
-               :type elpa
-               :after (lambda () (css-mode-hook)))
-        (:name textmate
-               :type git
-               :url "git://github.com/defunkt/textmate.el"
-               :load "textmate.el")
-        (:name rvm
-               :type git
-               :url "http://github.com/djwhitt/rvm.el.git"
-               :load "rvm.el"
-               :compile ("rvm.el")
-               :after (lambda() (rvm-use-default)))
-        (:name rhtml
-               :type git
-               :url "https://github.com/eschulte/rhtml.git"
-               :features rhtml-mode
-               :after (lambda () (rhtml-mode-hook)))
-        (:name yaml-mode
-               :type git
-               :url "http://github.com/yoshiki/yaml-mode.git"
-               :features yaml-mode
-               :after (lambda () (yaml-mode-hook)))))
-(el-get 'sync)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -95,7 +63,7 @@
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
 
-(custom-set-variables '(grep-program "ack -H -a --nogroup"))
+(setq ack-executable (executable-find "ack-grep"))
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 ;; You really don't need these; trust me.
@@ -157,3 +125,53 @@
                               (setq css-indent-offset 2))))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Fix tmp files
+
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message file)
+      (delete-file file))))
+
+(add-to-list 'load-path "~/.emacs.d/el-get")
+(require 'el-get)
+(setq el-get-sources
+      '((:name ruby-mode
+               :type elpa
+               :load "ruby-mode.el"
+               :after (lambda () (ruby-mode-hook)))
+        (:name inf-ruby  :type elpa)
+        (:name ruby-compilation :type elpa)
+        (:name css-mode
+               :type elpa
+               :after (lambda () (css-mode-hook)))
+        (:name textmate
+               :type git
+               :url "git://github.com/defunkt/textmate.el"
+               :load "textmate.el")
+        (:name rvm
+               :type git
+               :url "http://github.com/djwhitt/rvm.el.git"
+               :load "rvm.el"
+               :compile ("rvm.el")
+               :after (lambda() (rvm-use-default)))
+        (:name rhtml
+               :type git
+               :url "https://github.com/eschulte/rhtml.git"
+               :features rhtml-mode
+               :after (lambda () (rhtml-mode-hook)))
+        (:name yaml-mode
+               :type git
+               :url "http://github.com/yoshiki/yaml-mode.git"
+               :features yaml-mode
+               :after (lambda () (yaml-mode-hook)))))
+(el-get 'sync)
