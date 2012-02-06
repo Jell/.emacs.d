@@ -5,12 +5,47 @@
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (package-initialize)
+
+(add-to-list 'load-path "~/.emacs.d/el-get")
+(require 'el-get)
+(setq el-get-sources
+      '((:name ruby-mode
+               :type elpa
+               :load "ruby-mode.el"
+               :after (lambda () (ruby-mode-hook)))
+        (:name inf-ruby  :type elpa)
+        (:name ruby-compilation :type elpa)
+        (:name css-mode
+               :type elpa
+               :after (lambda () (css-mode-hook)))
+        (:name textmate
+               :type git
+               :url "git://github.com/defunkt/textmate.el"
+               :load "textmate.el")
+        (:name rvm
+               :type git
+               :url "http://github.com/djwhitt/rvm.el.git"
+               :load "rvm.el"
+               :compile ("rvm.el")
+               :after (lambda() (rvm-use-default)))
+        (:name rhtml
+               :type git
+               :url "https://github.com/eschulte/rhtml.git"
+               :features rhtml-mode
+               :after (lambda () (rhtml-mode-hook)))
+        (:name yaml-mode
+               :type git
+               :url "http://github.com/yoshiki/yaml-mode.git"
+               :features yaml-mode
+               :after (lambda () (yaml-mode-hook)))))
+(el-get 'sync)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -42,3 +77,83 @@
 
 (speedbar 1)
 (global-auto-revert-mode t)
+
+(add-hook 'ruby-mode-hook
+  (lambda () (rvm-activate-corresponding-ruby)))
+
+;; Ruby end
+(require 'ruby-end)
+(ruby-end-mode t)
+
+;; Ruby Block Mode
+(require 'ruby-block)
+(ruby-block-mode t)
+;; do overlay
+(setq ruby-block-highlight-toggle 'overlay)
+;; display to minibuffer
+(setq ruby-block-highlight-toggle 'minibuffer)
+;; display to minibuffer and do overlay
+(setq ruby-block-highlight-toggle t)
+
+(custom-set-variables '(grep-program "ack -H -a --nogroup"))
+
+;; Turn off mouse interface early in startup to avoid momentary display
+;; You really don't need these; trust me.
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; Load path etc.
+
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
+;; These should be loaded on startup rather than autoloaded on demand
+;; since they are likely to be used in every session
+
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
+
+;; Load up starter kit customizations
+
+(require 'starter-kit-defuns)
+(require 'starter-kit-misc)
+(require 'starter-kit-ruby)
+
+(defun ruby-mode-hook ()
+  (autoload 'ruby-mode "ruby-mode" nil t)
+  (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+  (add-hook 'ruby-mode-hook '(lambda ()
+                               (setq ruby-deep-arglist t)
+                               (setq ruby-deep-indent-paren nil)
+                               (setq c-tab-always-indent nil)
+                               (require 'inf-ruby)
+                               (require 'ruby-compilation))))
+(defun rhtml-mode-hook ()
+  (autoload 'rhtml-mode "rhtml-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
+  (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
+  (add-hook 'rhtml-mode '(lambda ()
+                           (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
+
+(defun yaml-mode-hook ()
+  (autoload 'yaml-mode "yaml-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
+
+(defun css-mode-hook ()
+  (autoload 'css-mode "css-mode" nil t)
+  (add-hook 'css-mode-hook '(lambda ()
+                              (setq css-indent-level 2)
+                              (setq css-indent-offset 2))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)

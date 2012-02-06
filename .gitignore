@@ -2,6 +2,8 @@
 /backups
 /swank
 /auto-save-list
+/el-get
+/url
 #.*#
 /places
 /.smex-items
