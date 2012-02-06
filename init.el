@@ -151,6 +151,7 @@
                :after (lambda () (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
+        (:name vimpulse :type elpa)
         (:name css-mode
                :type elpa
                :after (lambda () (css-mode-hook)))
@@ -175,3 +176,5 @@
                :features yaml-mode
                :after (lambda () (yaml-mode-hook)))))
 (el-get 'sync)
+(el-get)
+(require 'vimpulse)
