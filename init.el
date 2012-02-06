@@ -1,10 +1,10 @@
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
+(global-set-key (kbd "M-=") 'indent-region)
 
 (require 'package)
-(add-to-list 'package-archives
-                          '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -41,3 +41,4 @@
  )
 
 (speedbar 1)
+(global-auto-revert-mode t)
