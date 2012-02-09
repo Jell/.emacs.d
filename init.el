@@ -1,3 +1,9 @@
+;; Turn off mouse interface early in startup to avoid momentary display
+;; You really don't need these; trust me.
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
@@ -13,7 +19,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -65,14 +71,7 @@
 
 (setq ack-executable (executable-find "ack-grep"))
 
-;; Turn off mouse interface early in startup to avoid momentary display
-;; You really don't need these; trust me.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
 ;; Load path etc.
-
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -127,7 +126,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Fix tmp files
-
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -151,7 +149,8 @@
                :after (lambda () (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
-        (:name vimpulse :type elpa)
+        (:name vimpulse
+               :type elpa)
         (:name css-mode
                :type elpa
                :after (lambda () (css-mode-hook)))
@@ -177,4 +176,21 @@
                :after (lambda () (yaml-mode-hook)))))
 (el-get 'sync)
 (el-get)
+
+;; CoffeeScript
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.decaf$" . js-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+          '(lambda() (coffee-custom)))
+
+(setq viper-mode t)
+(setq viper-custom-file-name "~/.emacs.d/viper")
+(setq viper-ex-style-editing nil)
 (require 'vimpulse)
