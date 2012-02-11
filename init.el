@@ -194,5 +194,7 @@
 (require 'vimpulse)
 (setq term-setup-hook 'viper-mode)
 
-(speedbar 1)
+(when window-system
+  (speedbar 1))
+
 (global-auto-revert-mode t)
