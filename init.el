@@ -49,8 +49,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-(speedbar 1)
-(global-auto-revert-mode t)
 
 (add-hook 'ruby-mode-hook
   (lambda () (rvm-activate-corresponding-ruby)))
@@ -194,3 +192,7 @@
 (setq viper-custom-file-name "~/.emacs.d/viper")
 (setq viper-ex-style-editing nil)
 (require 'vimpulse)
+(setq term-setup-hook 'viper-mode)
+
+(speedbar 1)
+(global-auto-revert-mode t)
