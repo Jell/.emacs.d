@@ -185,6 +185,14 @@
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2))
 
+;; Always save even when buffer is not modified
+(defun save-buffer-always ()
+  "Save the buffer even if it is not modified."
+  (interactive)
+  (set-buffer-modified-p t)
+  (save-buffer))
+(global-set-key (kbd "C-x C-s") 'save-buffer-always)
+
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
 
