@@ -197,8 +197,10 @@
 (setq viper-ex-style-editing nil)
 (require 'vimpulse)
 
+;; Speedbar
 (when window-system
-  (speedbar 1))
+  (speedbar 1)
+  (previous-multiframe-window))
 
 (global-auto-revert-mode t)
 
