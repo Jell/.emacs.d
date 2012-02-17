@@ -53,10 +53,6 @@
 (add-hook 'ruby-mode-hook
   (lambda () (rvm-activate-corresponding-ruby)))
 
-;; Ruby end
-(require 'ruby-end)
-(ruby-end-mode t)
-
 ;; Ruby Block Mode
 (require 'ruby-block)
 (ruby-block-mode t)
@@ -200,7 +196,6 @@
 (setq viper-custom-file-name "~/.emacs.d/viper")
 (setq viper-ex-style-editing nil)
 (require 'vimpulse)
-(setq term-setup-hook 'viper-mode)
 
 (when window-system
   (speedbar 1))
