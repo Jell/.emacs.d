@@ -19,7 +19,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -180,6 +180,10 @@
 (defun coffee-custom ()
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2))
+
+;; YAML
+
+(require 'yaml-mode)
 
 ;; Always save even when buffer is not modified
 (defun save-buffer-always ()
