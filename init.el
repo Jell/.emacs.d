@@ -219,7 +219,7 @@
                :after (lambda () (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
-        (:name vimpulse
+        (:name evil
                :type elpa)
         (:name css-mode
                :type elpa
@@ -275,7 +275,8 @@
 (setq viper-mode t)
 (setq viper-custom-file-name "~/.emacs.d/viper")
 (setq viper-ex-style-editing nil)
-(require 'vimpulse)
+(require 'evil)
+(evil-mode 1)
 
 ;; Speedbar
 (when window-system
