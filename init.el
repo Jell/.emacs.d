@@ -48,7 +48,7 @@
     (switch-to-buffer-other-window buffer)
     (goto-char (point-max))
     (insert input)
-    (comint-send-input))))
+    (comint-send-input)))
 
 (defun defun-at-point ()
   "Return the text of the defun at point."
@@ -86,7 +86,7 @@
              (define-key clojure-mode-map (kbd "C-c x") 'shell-eval-defun)))
 
 (defun start-clj-cljs-repls (path)
-  (interactive (list (read-directory-name "Path to root directory: "))))
+  (interactive (list (read-directory-name "Path to root directory: ")))
   ;; Start server REPL
   (shell)
   (switch-to-prev-buffer)
