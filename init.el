@@ -86,6 +86,7 @@
              (define-key clojure-mode-map (kbd "C-c x") 'shell-eval-defun)))
 
 (defun start-clj-cljs-repls (path)
+  "Starts a Clojure and a ClojureScript REPL"
   (interactive (list (read-directory-name "Path to root directory: ")))
   ;; Start server REPL
   (shell)
@@ -99,6 +100,7 @@
   (switch-to-prev-buffer))
 
 (defun launch-cljs-one-server ()
+  "Start a ClojureScript One interactive REPL"
   (interactive)
   (shell-send-input "(use 'one.sample.dev-server)(run-server)")
   (send-input-to-buffer "*inferior-lisp*" "(use 'one.sample.dev-server)(cljs-repl)"))
