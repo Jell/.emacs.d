@@ -19,15 +19,94 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(solarized-theme starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode yaml-mode)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; Clojure
+(defun turn-on-paredit () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Allow input to be sent to somewhere other than inferior-lisp
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; This is a total hack: we're hardcoding the name of the shell buffer
+(defun shell-send-input (input)
+  "Send INPUT into the *shell* buffer and leave it visible."
+  (send-input-to-buffer "*shell*" input))
+
+(defun send-input-to-buffer (buffer input)
+  "Send INPUT to the given BUFFER"
+  (save-selected-window
+    (switch-to-buffer-other-window buffer)
+    (goto-char (point-max))
+    (insert input)
+    (comint-send-input)))
+
+(defun defun-at-point ()
+  "Return the text of the defun at point."
+  (apply #'buffer-substring-no-properties
+         (region-for-defun-at-point)))
+
+(defun region-for-defun-at-point ()
+  "Return the start and end position of defun at point."
+  (save-excursion
+    (save-match-data
+      (end-of-defun)
+      (let ((end (point)))
+        (beginning-of-defun)
+        (list (point) end)))))
+
+(defun expression-preceding-point ()
+  "Return the expression preceding point as a string."
+  (buffer-substring-no-properties
+   (save-excursion (backward-sexp) (point))
+   (point)))
+
+(defun shell-eval-last-expression ()
+  "Send the expression preceding point to the *shell* buffer."
+  (interactive)
+  (shell-send-input (expression-preceding-point)))
+
+(defun shell-eval-defun ()
+  "Send the current toplevel expression to the *shell* buffer."
+  (interactive)
+  (shell-send-input (defun-at-point)))
+
+(add-hook 'clojure-mode-hook
+          '(lambda ()
+             (define-key clojure-mode-map (kbd "C-c e") 'shell-eval-last-expression)
+             (define-key clojure-mode-map (kbd "C-c x") 'shell-eval-defun)))
+
+(defun start-clj-cljs-repls (path)
+  "Starts a Clojure and a ClojureScript REPL"
+  (interactive (list (read-directory-name "Path to root directory: ")))
+  ;; Start server REPL
+  (shell)
+  (switch-to-prev-buffer)
+  (sleep-for 1)
+  (shell-send-input (format "cd %s" path))
+  (sleep-for 1)
+  (shell-send-input "script/repl")
+  ;; Start cljs REPL
+  (inferior-lisp (format "%s/script/repl" path))
+  (switch-to-prev-buffer))
+
+(defun launch-cljs-one-server ()
+  "Start a ClojureScript One interactive REPL"
+  (interactive)
+  (shell-send-input "(use 'one.sample.dev-server)(run-server)")
+  (send-input-to-buffer "*inferior-lisp*" "(use 'one.sample.dev-server)(cljs-repl)"))
 
 ;; Custom variables
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,6 +128,25 @@
  )
 
 
+(add-hook 'ruby-mode-hook
+  (lambda () (rvm-activate-corresponding-ruby)))
+
+;; Ruby Block Mode
+(require 'ruby-block)
+(ruby-block-mode t)
+;; do overlay
+(setq ruby-block-highlight-toggle 'overlay)
+;; display to minibuffer
+(setq ruby-block-highlight-toggle 'minibuffer)
+;; display to minibuffer and do overlay
+(setq ruby-block-highlight-toggle t)
+
+(setq ack-executable (executable-find "ack-grep"))
+
+;; Load path etc.
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
 
@@ -65,8 +163,54 @@
 (require 'starter-kit-misc)
 (require 'starter-kit-ruby)
 
-;; Custom snippets
-(load "~/.emacs.d/snippets/railscustom")
+(defun ruby-mode-hook ()
+  (autoload 'ruby-mode "ruby-mode" nil t)
+  (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+  (add-hook 'ruby-mode-hook '(lambda ()
+                               (setq ruby-deep-arglist t)
+                               (setq ruby-deep-indent-paren nil)
+                               (setq c-tab-always-indent nil)
+                               (require 'inf-ruby)
+                               (require 'ruby-compilation))))
+(defun rhtml-mode-hook ()
+  (autoload 'rhtml-mode "rhtml-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
+  (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
+  (add-hook 'rhtml-mode '(lambda ()
+                           (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
+
+(defun yaml-mode-hook ()
+  (autoload 'yaml-mode "yaml-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
+
+(defun css-mode-hook ()
+  (autoload 'css-mode "css-mode" nil t)
+  (add-hook 'css-mode-hook '(lambda ()
+                              (setq css-indent-level 2)
+                              (setq css-indent-offset 2))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Fix tmp files
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message file)
+      (delete-file file))))
 
 (add-to-list 'load-path "~/.emacs.d/el-get")
 (require 'el-get)
@@ -105,17 +249,36 @@
 (el-get 'sync)
 (el-get)
 
+;; CoffeeScript
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.decaf$" . js-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 2))
+
 ;; YAML
 
 (require 'yaml-mode)
 
-;; Custom snippers
-(load "~/.emacs.d/snippets/alwayssave")
-(load "~/.emacs.d/snippets/clojurescript")
-(load "~/.emacs.d/snippets/coffeescript")
+;; Always save even when buffer is not modified
+(defun save-buffer-always ()
+  "Save the buffer even if it is not modified."
+  (interactive)
+  (set-buffer-modified-p t)
+  (save-buffer))
+(global-set-key (kbd "C-x C-s") 'save-buffer-always)
 
-(load "~/.emacs.d/snippets/evilcustom")
-(load "~/.emacs.d/snippets/tmpfiles")
+(add-hook 'coffee-mode-hook
+          '(lambda() (coffee-custom)))
+
+(setq viper-mode t)
+(setq viper-custom-file-name "~/.emacs.d/viper")
+(setq viper-ex-style-editing nil)
+(require 'evil)
+(evil-mode 1)
 
 ;; Speedbar
 (when window-system
