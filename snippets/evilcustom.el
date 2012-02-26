@@ -1,0 +1,5 @@
+(setq viper-mode t)
+(setq viper-custom-file-name "~/.emacs.d/viper")
+(setq viper-ex-style-editing nil)
+(require 'evil)
+(evil-mode 1)
