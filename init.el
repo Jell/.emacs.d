@@ -277,6 +277,7 @@
 (setq viper-mode t)
 (setq viper-custom-file-name "~/.emacs.d/viper")
 (setq viper-ex-style-editing nil)
+(setq evil-want-fine-undo t)
 (require 'evil)
 (evil-mode 1)
 
