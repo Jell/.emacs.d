@@ -131,16 +131,6 @@
 (add-hook 'ruby-mode-hook
   (lambda () (rvm-activate-corresponding-ruby)))
 
-;; Ruby Block Mode
-(require 'ruby-block)
-(ruby-block-mode t)
-;; do overlay
-(setq ruby-block-highlight-toggle 'overlay)
-;; display to minibuffer
-(setq ruby-block-highlight-toggle 'minibuffer)
-;; display to minibuffer and do overlay
-(setq ruby-block-highlight-toggle t)
-
 (setq ack-executable (executable-find "ack-grep"))
 
 ;; Load path etc.
