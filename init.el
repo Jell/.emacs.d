@@ -10,6 +10,9 @@
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
+;; Extra bin folders
+(add-to-list 'exec-path "/usr/local/bin")
+
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
