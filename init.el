@@ -12,6 +12,7 @@
 
 ;; Extra bin folders
 (add-to-list 'exec-path "/usr/local/bin")
+(setq-default ispell-program-name "/usr/local/bin/aspell")
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -238,7 +239,11 @@
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :after (lambda () (yaml-mode-hook)))))
+               :after (lambda () (yaml-mode-hook)))
+        (:name pig-mode
+               :type git
+               :url "https://github.com/motus/pig-mode.git"
+               :features pig-mode)))
 (el-get 'sync)
 (el-get)
 
@@ -253,8 +258,10 @@
   (set (make-local-variable 'tab-width) 2))
 
 ;; YAML
-
 (require 'yaml-mode)
+
+;; Pig
+(require 'pig-mode)
 
 ;; Always save even when buffer is not modified
 (defun save-buffer-always ()
