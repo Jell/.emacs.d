@@ -192,6 +192,16 @@
 (defun pig-mode-hook ()
   (autoload 'pig-mode "pig-mode" nil t))
 
+(defun evil-hook ()
+  (setq viper-mode t)
+  (setq viper-custom-file-name "~/.emacs.d/viper")
+  (setq viper-ex-style-editing nil)
+  (setq evil-want-fine-undo t)
+  (require 'evil)
+  (evil-mode 1))
+
+
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Fix tmp files
@@ -222,7 +232,8 @@
         (:name evil
                :type git
                :url "git://gitorious.org/evil/evil.git"
-               :load "evil.el")
+               :load "evil.el"
+               :after (progn (evil-hook)))
         (:name css-mode
                :type elpa
                :after (progn (css-mode-hook)))
@@ -295,13 +306,6 @@
 
 (add-hook 'coffee-mode-hook
           '(progn (coffee-custom)))
-
-(setq viper-mode t)
-(setq viper-custom-file-name "~/.emacs.d/viper")
-(setq viper-ex-style-editing nil)
-(setq evil-want-fine-undo t)
-(require 'evil)
-(evil-mode 1)
 
 ;; Speedbar
 (when window-system
