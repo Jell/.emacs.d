@@ -226,8 +226,9 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (setq el-get-sources
-      '((:name ruby-mode
-               :type elpa
+      '((:name Enhanced-Ruby-Mode
+               :type git
+               :url "git://github.com/jacott/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
                :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
