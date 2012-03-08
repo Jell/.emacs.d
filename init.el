@@ -23,7 +23,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm ruby-mode inf-ruby ruby-compilation css-mode coffee-mode yaml-mode full-ack)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm inf-ruby ruby-compilation css-mode coffee-mode yaml-mode full-ack)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
