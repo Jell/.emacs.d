@@ -23,7 +23,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm inf-ruby ruby-compilation css-mode coffee-mode yaml-mode full-ack)
+(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm inf-ruby ruby-compilation css-mode coffee-mode yaml-mode full-ack color-theme-solarized)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -85,7 +85,7 @@
   (shell-send-input (defun-at-point)))
 
 (add-hook 'clojure-mode-hook
-          '(lambda ()
+          '(progn
              (define-key clojure-mode-map (kbd "C-c e") 'shell-eval-last-expression)
              (define-key clojure-mode-map (kbd "C-c x") 'shell-eval-defun)))
 
@@ -118,7 +118,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-safe-themes (quote ("baed08a10ff9393ce578c3ea3e8fd4f8c86e595463a882c55f3bd617df7e5a45" "374e79a81930979e673b8e0869e135fb2450b18c6474ca145f104e0c6f003267" "54d1bcf3fcf758af4812f98eb53b5d767f897442753e1aa468cfeb221f8734f9" default)))
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "baed08a10ff9393ce578c3ea3e8fd4f8c86e595463a882c55f3bd617df7e5a45" "374e79a81930979e673b8e0869e135fb2450b18c6474ca145f104e0c6f003267" "54d1bcf3fcf758af4812f98eb53b5d767f897442753e1aa468cfeb221f8734f9" default)))
  '(speedbar-default-position (quote left))
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
  '(speedbar-frame-plist (quote (minibuffer nil width 30 border-width 0 internal-border-width 0 unsplittable t default-toolbar-visible-p t has-modeline-p t menubar-visible-p t default-gutter-visible-p nil)))
@@ -133,7 +133,7 @@
 
 
 (add-hook 'ruby-mode-hook
-  (lambda () (rvm-activate-corresponding-ruby)))
+  (progn (rvm-activate-corresponding-ruby)))
 
 (setq ack-executable (executable-find "ack-grep"))
 
@@ -165,7 +165,7 @@
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-  (add-hook 'ruby-mode-hook '(lambda ()
+  (add-hook 'ruby-mode-hook '(progn
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil)
@@ -175,7 +175,7 @@
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
   (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
-  (add-hook 'rhtml-mode '(lambda ()
+  (add-hook 'rhtml-mode '(progn
                            (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
 
 (defun yaml-mode-hook ()
@@ -185,7 +185,7 @@
 
 (defun css-mode-hook ()
   (autoload 'css-mode "css-mode" nil t)
-  (add-hook 'css-mode-hook '(lambda ()
+  (add-hook 'css-mode-hook '(progn
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
@@ -209,20 +209,23 @@
       (message file)
       (delete-file file))))
 
-(add-to-list 'load-path "~/.emacs.d/el-get")
-(require 'el-get)
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
 (setq el-get-sources
       '((:name ruby-mode
                :type elpa
                :load "ruby-mode.el"
-               :after (lambda () (ruby-mode-hook)))
+               :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
         (:name evil
-               :type elpa)
+               :type git
+               :url "git://gitorious.org/evil/evil.git"
+               :load "evil.el")
         (:name css-mode
                :type elpa
-               :after (lambda () (css-mode-hook)))
+               :after (progn (css-mode-hook)))
         (:name textmate
                :type git
                :url "git://github.com/defunkt/textmate.el"
@@ -232,25 +235,42 @@
                :url "http://github.com/djwhitt/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :after (lambda() (rvm-use-default)))
+               :after (progn (rvm-use-default)))
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
-               :after (lambda () (rhtml-mode-hook)))
+               :after (progn (rhtml-mode-hook)))
         (:name yaml-mode
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :after (lambda () (yaml-mode-hook)))
+               :after (progn (yaml-mode-hook)))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
-               :features pig-mode)
-               :after (lambda () (pig-mode-hook))))
+               :features pig-mode
+               :after (progn (pig-mode-hook)))))
 
-(el-get 'sync)
-(el-get)
+(defun sync-packages ()
+  "Synchronize packages"
+  (interactive)
+  (el-get 'sync '(el-get package))
+  (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (setq my-packages (mapcar 'el-get-source-name el-get-sources))
+  (el-get 'sync my-packages))
+
+(if (require 'el-get nil t)
+  (sync-packages)
+  (url-retrieve
+    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+    (lambda (s)
+      (let (el-get-master-branch)
+        (end-of-buffer)
+        (eval-print-last-sexp)
+        (setq el-get-verbose t)
+        (sync-packages)))))
 
 ;; CoffeeScript
 (require 'coffee-mode)
@@ -274,7 +294,7 @@
 (global-set-key (kbd "C-x C-s") 'save-buffer-always)
 
 (add-hook 'coffee-mode-hook
-          '(lambda() (coffee-custom)))
+          '(progn (coffee-custom)))
 
 (setq viper-mode t)
 (setq viper-custom-file-name "~/.emacs.d/viper")
