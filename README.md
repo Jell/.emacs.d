@@ -4,5 +4,5 @@ To install, run:
 
       cd ~
       git clone git://github.com/Jell/.emacs.d.git
-      cd .emacs.d
-      git submodule update
+
+Next time you open emacs, all the dependencies will install themselves! Magic!
