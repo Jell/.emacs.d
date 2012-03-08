@@ -189,6 +189,9 @@
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
+(defun pig-mode-hook ()
+  (autoload 'pig-mode "pig-mode" nil t))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Fix tmp files
@@ -243,7 +246,9 @@
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
-               :features pig-mode)))
+               :features pig-mode)
+               :after (lambda () (pig-mode-hook))))
+
 (el-get 'sync)
 (el-get)
 
@@ -259,9 +264,6 @@
 
 ;; YAML
 (require 'yaml-mode)
-
-;; Pig
-(require 'pig-mode)
 
 ;; Always save even when buffer is not modified
 (defun save-buffer-always ()
