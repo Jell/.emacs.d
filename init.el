@@ -45,7 +45,8 @@
                       slime
                       starter-kit
                       starter-kit-js
-                      starter-kit-ruby )
+                      starter-kit-ruby
+                      undo-tree )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -63,6 +64,7 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
+(require 'undo-tree)
 
 (require 'starter-kit-defuns)
 (require 'starter-kit-misc)
