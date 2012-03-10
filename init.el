@@ -47,6 +47,20 @@
 
 ;; Package defs ----------------------------------------------------------------
 
+;; Startup Kits
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
+
+(require 'starter-kit-defuns)
+(require 'starter-kit-misc)
+
 ;; RVM
 (add-hook 'ruby-mode-hook
   (progn (rvm-activate-corresponding-ruby)))
@@ -73,26 +87,6 @@
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
-;; Startup Kits
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
-;; These should be loaded on startup rather than autoloaded on demand
-;; since they are likely to be used in every session
-
-(require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
-
-;; Load up starter kit customizations
-
-(require 'starter-kit-defuns)
-(require 'starter-kit-misc)
-(require 'starter-kit-ruby)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -116,6 +110,7 @@
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil)
+                               (require 'starter-kit-ruby)
                                (require 'inf-ruby)
                                (require 'ruby-compilation))))
 (defun rhtml-mode-hook ()
