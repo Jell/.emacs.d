@@ -38,7 +38,14 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-js clojure-mode slime rvm inf-ruby ruby-compilation css-mode coffee-mode yaml-mode full-ack color-theme-solarized)
+(defvar my-packages '(clojure-mode
+                      coffee-mode
+                      color-theme-solarized
+                      full-ack
+                      slime
+                      starter-kit
+                      starter-kit-js
+                      starter-kit-ruby )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -47,7 +54,6 @@
 
 ;; Package defs ----------------------------------------------------------------
 
-;; Startup Kits
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -61,29 +67,21 @@
 (require 'starter-kit-defuns)
 (require 'starter-kit-misc)
 
-;; RVM
-(add-hook 'ruby-mode-hook
-  (progn (rvm-activate-corresponding-ruby)))
-
-
 ;; CoffeeScript
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.decaf$" . js-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
-(defun coffee-custom ()
-  "coffee-mode-hook"
+(defun coffee-mode-hook ()
   (set (make-local-variable 'tab-width) 2))
-(add-hook 'coffee-mode-hook 'coffee-custom)
-
+(add-hook 'coffee-mode-hook 'coffee-mode-hook)
 
 ;; Clojure
-(defun turn-on-paredit () (paredit-mode 1))
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
-
-(defun load-extra-clj () (load "clj.el"))
-(add-hook 'clojure-mode-hook 'load-extra-clj)
+(defun clojure-mode-hook ()
+  (paredit-mode 1)
+  (load "clj.el"))
+(add-hook 'clojure-mode-hook 'clojure-mode-hook)
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
@@ -131,6 +129,11 @@
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
+(defun rvm-hook ()
+  (rvm-use-default)
+  (add-hook 'ruby-mode-hook
+            (progn (rvm-activate-corresponding-ruby))))
+
 (defun pig-mode-hook ()
   (autoload 'pig-mode "pig-mode" nil t))
 
@@ -161,16 +164,12 @@
         (:name css-mode
                :type elpa
                :after (progn (css-mode-hook)))
-        (:name textmate
-               :type git
-               :url "git://github.com/defunkt/textmate.el"
-               :load "textmate.el")
         (:name rvm
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :after (progn (rvm-use-default)))
+               :after (progn (rvm-hook)))
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
@@ -193,8 +192,6 @@
   "Synchronize packages"
   (interactive)
   (el-get 'sync '(el-get package))
-  (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
   (setq my-packages (mapcar 'el-get-source-name el-get-sources))
   (el-get 'sync my-packages))
 
