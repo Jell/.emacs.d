@@ -1,9 +1,7 @@
-
 ;; Turn off mouse interface early in startup to avoid momentary display
 ;; You really don't need these; trust me.
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
 
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
@@ -11,40 +9,21 @@
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
-;; Do not *ding* on scroll and other stuff.
-(defun my-bell-function ()
-  (unless (memq this-command
-    	'(isearch-abort abort-recursive-edit exit-minibuffer
-              keyboard-quit mwheel-scroll down up next-line previous-line
-              backward-char forward-char))
-    (ding)))
-(setq ring-bell-function 'my-bell-function)
-
 ;; Extra bin folders
 (add-to-list 'exec-path "/usr/local/bin")
-(setq-default ispell-program-name "/usr/local/bin/aspell")
 
 ;; Extra load paths
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
 
-;; Remove trailing whitespaces
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Always save even when buffer is not modified
-(defun save-buffer-always ()
-  "Save the buffer even if it is not modified."
-  (interactive)
-  (set-buffer-modified-p t)
-  (save-buffer))
-(global-set-key (kbd "C-x C-s") 'save-buffer-always)
+;; Path to binary files
+(setq-default ispell-program-name "/usr/local/bin/aspell")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; ELPA packages
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;; Package List ----------------------------------------------------------------
 
@@ -65,8 +44,6 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
-;; Custom variables
 
 ;; Package defs ----------------------------------------------------------------
 
@@ -95,6 +72,26 @@
 (add-hook 'clojure-mode-hook 'load-extra-clj)
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+
+;; Startup Kits
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
+;; These should be loaded on startup rather than autoloaded on demand
+;; since they are likely to be used in every session
+
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
+
+;; Load up starter kit customizations
+
+(require 'starter-kit-defuns)
+(require 'starter-kit-misc)
+(require 'starter-kit-ruby)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -151,25 +148,6 @@
   (evil-mode 1))
 
 
-
-
-;; Fix tmp files
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
-(let ((week (* 60 60 24 7))
-      (current (float-time (current-time))))
-  (dolist (file (directory-files temporary-file-directory t))
-    (when (and (backup-file-name-p file)
-               (> (- current (float-time (fifth (file-attributes file))))
-                  week))
-      (message file)
-      (delete-file file))))
-
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 ;; Package list ----------------------------------------------------------------
 
 (setq el-get-sources
@@ -214,6 +192,8 @@
                :features pig-mode
                :after (progn (pig-mode-hook)))))
 
+;; Trigger synchronization of el-get packages
+
 (defun sync-packages ()
   "Synchronize packages"
   (interactive)
@@ -234,6 +214,46 @@
         (setq el-get-verbose t)
         (sync-packages)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Stuff to trigger last
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Do not *ding* on scroll and other stuff.
+(defun my-bell-function ()
+  (unless (memq this-command
+    	'(isearch-abort abort-recursive-edit exit-minibuffer
+              keyboard-quit mwheel-scroll down up next-line previous-line
+              backward-char forward-char))
+    (ding)))
+(setq ring-bell-function 'my-bell-function)
+
+;; Remove trailing whitespaces
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Always save even when buffer is not modified
+(defun save-buffer-always ()
+  "Save the buffer even if it is not modified."
+  (interactive)
+  (set-buffer-modified-p t)
+  (save-buffer))
+(global-set-key (kbd "C-x C-s") 'save-buffer-always)
+
+;; Fix tmp files
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message file)
+      (delete-file file))))
 
 ;; Speedbar
 (when window-system
