@@ -9,12 +9,12 @@
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
-;; Extra bin folders
-(add-to-list 'exec-path "/usr/local/bin")
-
 ;; Extra load paths
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
+
+;; Extra bin folders
+(add-to-list 'exec-path "/usr/local/bin")
 
 ;; Path to binary files
 (setq-default ispell-program-name "/usr/local/bin/aspell")
