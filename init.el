@@ -23,6 +23,28 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Always save even when buffer is not modified
+(defun save-buffer-always ()
+  "Save the buffer even if it is not modified."
+  (interactive)
+  (set-buffer-modified-p t)
+  (save-buffer))
+(global-set-key (kbd "C-x C-s") 'save-buffer-always)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; ELPA packages
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; Package List --------------------------------------------------------------------
+
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
@@ -38,6 +60,25 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;; Package defs --------------------------------------------------------------------
+
+;; RVM
+(add-hook 'ruby-mode-hook
+  (progn (rvm-activate-corresponding-ruby)))
+
+
+;; CoffeeScript
+(autoload 'coffee-mode "coffee-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.decaf$" . js-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 2))
+(add-hook 'coffee-mode-hook 'coffee-custom)
+
 
 ;; Clojure
 (defun turn-on-paredit () (paredit-mode 1))
@@ -144,31 +185,6 @@
  )
 
 
-(add-hook 'ruby-mode-hook
-  (progn (rvm-activate-corresponding-ruby)))
-
-(setq ack-executable (executable-find "ack-grep"))
-
-;; Load path etc.
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
-;; These should be loaded on startup rather than autoloaded on demand
-;; since they are likely to be used in every session
-
-(require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
-
-;; Load up starter kit customizations
-
-(require 'starter-kit-defuns)
-(require 'starter-kit-misc)
-(require 'starter-kit-ruby)
-
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -214,7 +230,6 @@
 
 
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Fix tmp files
 (setq backup-directory-alist
@@ -296,29 +311,6 @@
         (setq el-get-verbose t)
         (sync-packages)))))
 
-;; CoffeeScript
-(require 'coffee-mode)
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("\\.decaf$" . js-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-
-(defun coffee-custom ()
-  "coffee-mode-hook"
-  (set (make-local-variable 'tab-width) 2))
-
-;; YAML
-(require 'yaml-mode)
-
-;; Always save even when buffer is not modified
-(defun save-buffer-always ()
-  "Save the buffer even if it is not modified."
-  (interactive)
-  (set-buffer-modified-p t)
-  (save-buffer))
-(global-set-key (kbd "C-x C-s") 'save-buffer-always)
-
-(add-hook 'coffee-mode-hook
-          '(progn (coffee-custom)))
 
 ;; Speedbar
 (when window-system
