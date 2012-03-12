@@ -8,6 +8,7 @@
 (setq mac-command-modifier 'meta)
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Extra load paths
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -106,7 +107,7 @@
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-  (add-hook 'ruby-mode-hook '(progn
+  (add-hook 'ruby-mode-hook '(lambda ()
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil)
@@ -117,7 +118,7 @@
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
   (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
-  (add-hook 'rhtml-mode '(progn
+  (add-hook 'rhtml-mode '(lambda ()
                            (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
 
 (defun yaml-mode-hook ()
@@ -127,14 +128,14 @@
 
 (defun css-mode-hook ()
   (autoload 'css-mode "css-mode" nil t)
-  (add-hook 'css-mode-hook '(progn
+  (add-hook 'css-mode-hook '(lambda ()
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
 (defun rvm-hook ()
   (rvm-use-default)
   (add-hook 'ruby-mode-hook
-            (progn (rvm-activate-corresponding-ruby))))
+            (lambda () (rvm-activate-corresponding-ruby))))
 
 (defun pig-mode-hook ()
   (autoload 'pig-mode "pig-mode" nil t))
