@@ -125,6 +125,10 @@
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil))))
+
+(defun rinari-hook ()
+  (require 'rinari))
+
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
@@ -178,7 +182,8 @@
                :compile ("\\.el$" "util")
                :build ("rake doc:install_info")
                :info "doc"
-               :features rinari)
+               :features rinari
+               :after (progn (rinari-hook)))
         (:name evil
                :type git
                :url "git://gitorious.org/evil/evil.git"
