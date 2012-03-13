@@ -100,7 +100,10 @@
 ;; can install them asynchronously. Pretty cool stuff.
 
 (defun ruby-mode-hook ()
-  (autoload 'ruby-mode "ruby-mode" nil t)
+  (require 'ruby-mode)
+  (require 'starter-kit-ruby)
+  (require 'inf-ruby)
+  (require 'ruby-compilation)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
@@ -110,10 +113,7 @@
   (add-hook 'ruby-mode-hook '(lambda ()
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
-                               (setq c-tab-always-indent nil)
-                               (require 'starter-kit-ruby)
-                               (require 'inf-ruby)
-                               (require 'ruby-compilation))))
+                               (setq c-tab-always-indent nil))))
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
@@ -159,6 +159,15 @@
                :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
+        (:name rinari
+               :description "Rinari Is Not A Rails IDE"
+               :type github
+               :pkgname "eschulte/rinari"
+               :load-path ("." "util" "util/jump")
+               :compile ("\\.el$" "util")
+               :build ("rake doc:install_info")
+               :info "doc"
+               :features rinari)
         (:name evil
                :type git
                :url "git://gitorious.org/evil/evil.git"
