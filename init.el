@@ -20,6 +20,17 @@
 ;; Path to binary files
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
+;; Fix rhtml colors
+(defface erb-face
+  `((t (:background "grey18")))
+  "Default inherited face for ERB tag body"
+  :group 'rhtml-faces)
+
+(defface erb-delim-face
+  `((t (:background "grey15")))
+  "Default inherited face for ERB tag delimeters"
+  :group 'rhtml-faces)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; ELPA packages
