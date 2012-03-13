@@ -154,7 +154,7 @@
 (setq el-get-sources
       '((:name Enhanced-Ruby-Mode
                :type git
-               :url "git://github.com/jacott/Enhanced-Ruby-Mode.git"
+               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
                :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
