@@ -56,8 +56,6 @@
                       full-ack
                       slime
                       starter-kit
-                      starter-kit-js
-                      starter-kit-ruby
                       undo-tree )
   "A list of packages to ensure are installed at launch.")
 
@@ -112,7 +110,6 @@
 
 (defun ruby-mode-hook ()
   (require 'ruby-mode)
-  (require 'starter-kit-ruby)
   (require 'inf-ruby)
   (require 'ruby-compilation)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -122,8 +119,12 @@
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda ()
+                               (rvm-activate-corresponding-ruby)
+                               (rinari-launch)
+                               (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.2-p290/bin/ruby")
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
+                               (setq ruby-hanging-indent-level 2)
                                (setq c-tab-always-indent nil))))
 
 (defun rinari-hook ()
@@ -148,9 +149,7 @@
                               (setq css-indent-offset 2))))
 
 (defun rvm-hook ()
-  (rvm-use-default)
-  (add-hook 'ruby-mode-hook
-            (lambda () (rvm-activate-corresponding-ruby))))
+  (rvm-use-default))
 
 (defun pig-mode-hook ()
   (autoload 'pig-mode "pig-mode" nil t))
@@ -167,7 +166,13 @@
 ;; Package list ----------------------------------------------------------------
 
 (setq el-get-sources
-      '((:name Enhanced-Ruby-Mode
+      '((:name rvm
+               :type git
+               :url "http://github.com/djwhitt/rvm.el.git"
+               :load "rvm.el"
+               :compile ("rvm.el")
+               :after (progn (rvm-hook)))
+        (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
@@ -192,12 +197,6 @@
         (:name css-mode
                :type elpa
                :after (progn (css-mode-hook)))
-        (:name rvm
-               :type git
-               :url "http://github.com/djwhitt/rvm.el.git"
-               :load "rvm.el"
-               :compile ("rvm.el")
-               :after (progn (rvm-hook)))
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
