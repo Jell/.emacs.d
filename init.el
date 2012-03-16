@@ -166,17 +166,17 @@
 ;; Package list ----------------------------------------------------------------
 
 (setq el-get-sources
-      '((:name rvm
+      '((:name evil
+               :type git
+               :url "git://gitorious.org/evil/evil.git"
+               :load "evil.el"
+               :after (progn (evil-hook)))
+        (:name rvm
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
                :after (progn (rvm-hook)))
-        (:name Enhanced-Ruby-Mode
-               :type git
-               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
-               :load "ruby-mode.el"
-               :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
         (:name rinari
@@ -189,11 +189,6 @@
                :info "doc"
                :features rinari
                :after (progn (rinari-hook)))
-        (:name evil
-               :type git
-               :url "git://gitorious.org/evil/evil.git"
-               :load "evil.el"
-               :after (progn (evil-hook)))
         (:name css-mode
                :type elpa
                :after (progn (css-mode-hook)))
@@ -207,6 +202,11 @@
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
                :after (progn (yaml-mode-hook)))
+        (:name Enhanced-Ruby-Mode
+               :type git
+               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
+               :load "ruby-mode.el"
+               :after (progn (ruby-mode-hook)))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
