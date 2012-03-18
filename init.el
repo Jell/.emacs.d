@@ -281,4 +281,5 @@
 
 (global-auto-revert-mode t)
 
-(menu-bar-mode)
+(when window-system
+  (menu-bar-mode))
