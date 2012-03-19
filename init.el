@@ -10,6 +10,35 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
+(defun indent-or-expand (arg)
+  "Either indent according to mode, or expand the word preceding point."
+  (interactive "*P")
+  (if (and
+       (or (bobp) (= ?w (char-syntax (char-before))))
+       (or (eobp) (not (= ?w (char-syntax (char-after))))))
+      (hippie-expand arg)
+    (indent-according-to-mode)))
+
+(defun tab-indent-or-expand ()
+  (local-set-key [tab] 'indent-or-expand))
+
+(setq hippie-expand-try-functions-list
+      '(
+        yas/hippie-try-expand
+        try-expand-dabbrev
+        try-expand-dabbrev-visible
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name
+        try-complete-file-name-partially
+        try-complete-lisp-symbol
+        try-complete-lisp-symbol-partially
+        try-expand-line
+        try-expand-line-all-buffers
+        try-expand-list
+        try-expand-list-all-buffers
+        try-expand-whole-kill))
+
 ;; Extra load paths
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
@@ -76,8 +105,8 @@
 (require 'recentf)
 (require 'undo-tree)
 
-(require 'starter-kit-defuns)
-(require 'starter-kit-misc)
+;(require 'starter-kit-defuns)
+;(require 'starter-kit-misc)
 
 ;; CoffeeScript
 (autoload 'coffee-mode "coffee-mode" nil t)
@@ -121,11 +150,13 @@
   (add-hook 'ruby-mode-hook '(lambda ()
                                (rvm-activate-corresponding-ruby)
                                (rinari-launch)
+                               (yas/global-mode 1)
+                               (tab-indent-or-expand)
+                               (electric-pair-mode 1)
                                (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.2-p290/bin/ruby")
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
-                               (setq ruby-hanging-indent-level 2)
-                               (setq c-tab-always-indent nil))))
+                               (setq ruby-hanging-indent-level 2))))
 
 (defun rinari-hook ()
   (require 'rinari))
@@ -162,6 +193,12 @@
   (require 'evil)
   (evil-mode 1))
 
+(defun yasnippet-hook ()
+  (require 'yasnippet)
+  (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
+  (setq yas/trigger-key "TAB")
+  (yas/global-mode 1))
+
 
 ;; Package list ----------------------------------------------------------------
 
@@ -177,7 +214,10 @@
                :load "rvm.el"
                :compile ("rvm.el")
                :after (progn (rvm-hook)))
-        (:name inf-ruby  :type elpa)
+        (:name inf-ruby
+               :type git
+               :url "git://github.com/nonsequitur/inf-ruby.git"
+               :features inf-ruby)
         (:name ruby-compilation :type elpa)
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
@@ -207,6 +247,29 @@
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
                :after (progn (ruby-mode-hook)))
+        (:name yasnippet
+               :website "https://github.com/capitaomorte/yasnippet.git"
+               :description "YASnippet is a template system for Emacs."
+               :type github
+               :pkgname "capitaomorte/yasnippet"
+               :features "yasnippet"
+               ;; Set up the default snippets directory
+               ;;
+               ;; Principle: don't override any user settings for
+               ;; yas/snippet-dirs, whether those were made with setq or
+               ;; customize. If the user doesn't want the default snippets,
+               ;; she shouldn't get them!
+               :pre-init (unless (or (boundp 'yas/snippet-dirs)
+                                     (get 'yas/snippet-dirs 'customized-value))
+                           (setq yas/snippet-dirs
+                                 (list (concat el-get-dir
+                                               (file-name-as-directory "yasnippet")
+                                               "snippets"))))
+               :post-init (yasnippet-hook)
+               ;; byte-compile load vc-svn and that fails
+               ;; see https://github.com/dimitri/el-get/issues/200
+               :compile nil
+               :submodule nil)
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
@@ -274,6 +337,7 @@
       (message file)
       (delete-file file))))
 
+(setq c-tab-always-indent nil)
 ;; Speedbar
 (when window-system
   (speedbar 1)
