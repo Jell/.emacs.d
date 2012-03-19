@@ -48,6 +48,18 @@
   "Default inherited face for ERB tag delimeters"
   :group 'rhtml-faces)
 
+;; Fix tab indent
+(defun indent-or-expand (arg)
+  "Either indent according to mode, or expand the word preceding point."
+  (interactive "*P")
+  (if (and
+       (or (bobp) (= ?w (char-syntax (char-before))))
+       (or (eobp) (not (= ?w (char-syntax (char-after))))))
+      (hippie-expand arg)
+    (indent-according-to-mode)))
+
+(defun tab-indent-or-expand ()
+  (local-set-key [tab] 'indent-or-expand))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; ELPA packages
