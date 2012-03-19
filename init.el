@@ -279,6 +279,11 @@
                                          (expand-file-name "dict"))
                             (require 'auto-complete-config)
                     (ac-config-default)))
+        (:name ruby-end
+               :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
+               :type http
+               :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
+               :features ruby-end)
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
