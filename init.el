@@ -10,18 +10,6 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(defun indent-or-expand (arg)
-  "Either indent according to mode, or expand the word preceding point."
-  (interactive "*P")
-  (if (and
-       (or (bobp) (= ?w (char-syntax (char-before))))
-       (or (eobp) (not (= ?w (char-syntax (char-after))))))
-      (hippie-expand arg)
-    (indent-according-to-mode)))
-
-(defun tab-indent-or-expand ()
-  (local-set-key [tab] 'indent-or-expand))
-
 (setq hippie-expand-try-functions-list
       '(
         yas/hippie-try-expand
@@ -151,8 +139,7 @@
                                (rvm-activate-corresponding-ruby)
                                (rinari-launch)
                                (yas/global-mode 1)
-                               (tab-indent-or-expand)
-                               (electric-pair-mode 1)
+                               (electric-pair-mode)
                                (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.2-p290/bin/ruby")
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
@@ -270,6 +257,16 @@
                ;; see https://github.com/dimitri/el-get/issues/200
                :compile nil
                :submodule nil)
+        (:name auto-complete
+               :description "The most intelligent auto-completion extension."
+               :type git
+               :url "git://github.com/m2ym/auto-complete.git"
+               :post-init (progn
+                            (require 'auto-complete)
+                            (add-to-list 'ac-dictionary-directories
+                                         (expand-file-name "dict"))
+                            (require 'auto-complete-config)
+                    (ac-config-default)))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
