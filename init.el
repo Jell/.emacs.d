@@ -284,6 +284,12 @@
                :type http
                :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
                :features ruby-end)
+        (:name markdown-mode
+               :description "Major mode to edit Markdown files in Emacs"
+               :type git
+               :url "git://jblevins.org/git/markdown-mode.git"
+               :post-init (add-to-list 'auto-mode-alist
+                                       '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode)))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
