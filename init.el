@@ -209,7 +209,7 @@
                :after (progn (evil-hook)))
         (:name rvm
                :type git
-               :url "http://github.com/djwhitt/rvm.el.git"
+               :url "git://github.com/senny/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
                :after (progn (rvm-hook)))
