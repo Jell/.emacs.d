@@ -155,7 +155,10 @@
                                (setq ruby-end-insert-newline nil)
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
-                               (setq ruby-hanging-indent-level 2))))
+                               (setq ruby-hanging-indent-level 2)
+                               (setq rspec-use-rake-flag nil)
+                               (setq rspec-use-opts-file-when-available nil)
+                               (setq rspec-use-rvm t))))
 
 (defun rinari-hook ()
   (require 'rinari))
@@ -290,6 +293,11 @@
                :url "git://jblevins.org/git/markdown-mode.git"
                :post-init (add-to-list 'auto-mode-alist
                                        '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode)))
+        (:name rspec-mode
+               :description "Enhance ruby-mode for RSpec"
+               :type github
+               :pkgname "pezra/rspec-mode"
+               :features rspec-mode)
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
