@@ -8,6 +8,15 @@
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "baed08a10ff9393ce578c3ea3e8fd4f8c86e595463a882c55f3bd617df7e5a45" "374e79a81930979e673b8e0869e135fb2450b18c6474ca145f104e0c6f003267" "54d1bcf3fcf758af4812f98eb53b5d767f897442753e1aa468cfeb221f8734f9" default)))
+ '(ecb-options-version "2.40")
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(mouse-yank-at-point t)
+ '(ruby-check-syntax (quote errors))
+ '(ruby-deep-arglist t)
+ '(ruby-deep-indent-paren nil)
+ '(ruby-deep-indent-paren-style (quote space))
+ '(ruby-end-insert-newline nil)
+ '(ruby-hanging-indent-level 2)
  '(solarized-broken-srgb t)
  '(solarized-diff-mode (quote high))
  '(solarized-termcolors 256)
@@ -21,4 +30,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#728a05"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#728a05")))))
