@@ -49,7 +49,7 @@
   (shell-send-input (defun-at-point)))
 
 (add-hook 'clojure-mode-hook
-          '(progn
+          '(lambda ()
              (define-key clojure-mode-map (kbd "C-c e") 'shell-eval-last-expression)
              (define-key clojure-mode-map (kbd "C-c x") 'shell-eval-defun)))
 
