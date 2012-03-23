@@ -80,6 +80,8 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
+                      rainbow-delimiters
+                      rainbow-mode
                       coffee-mode
                       color-theme-solarized
                       full-ack
@@ -126,7 +128,8 @@
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
-
+;; Enable rainbow delimiters
+(global-rainbow-delimiters-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; el-get packages
