@@ -60,6 +60,11 @@
 
 (defun tab-indent-or-expand ()
   (local-set-key [tab] 'indent-or-expand))
+
+;; Bug fix
+(setq stack-trace-on-error t)
+(setq imenu-auto-rescan t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; ELPA packages
@@ -301,6 +306,12 @@
                :type github
                :pkgname "pezra/rspec-mode"
                :features rspec-mode)
+        (:name ecb
+               :description "Emacs Code Browser"
+               :type cvs
+               :module "ecb"
+               :url ":pserver:anonymous@ecb.cvs.sourceforge.net:/cvsroot/ecb"
+               :build `(("make" "CEDET=" ,(concat "EMACS=" (shell-quote-argument el-get-emacs)))))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
