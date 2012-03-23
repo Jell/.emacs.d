@@ -11,10 +11,11 @@
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(mouse-yank-at-point t)
- '(ruby-check-syntax (quote errors))
+ '(ruby-check-syntax (quote errors-and-warnings))
  '(ruby-deep-arglist t)
  '(ruby-deep-indent-paren nil)
  '(ruby-deep-indent-paren-style (quote space))
+ '(ruby-end-check-statement-modifiers t)
  '(ruby-end-insert-newline nil)
  '(ruby-hanging-indent-level 2)
  '(solarized-broken-srgb t)
@@ -30,5 +31,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(erm-syn-warnline ((t (:underline "Orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#728a05"))))
  '(rainbow-delimiters-depth-5-face ((t (:foreground "#728a05")))))
