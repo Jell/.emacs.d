@@ -385,3 +385,4 @@
 
 (when window-system
   (menu-bar-mode))
+(put 'ido-exit-minibuffer 'disabled nil)
