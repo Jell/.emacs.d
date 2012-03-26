@@ -8,6 +8,7 @@
 (setq mac-command-modifier 'meta)
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (setq hippie-expand-try-functions-list
