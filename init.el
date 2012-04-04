@@ -100,6 +100,7 @@
                       full-ack
                       slime
                       starter-kit
+                      erlang
                       undo-tree )
   "A list of packages to ensure are installed at launch.")
 
@@ -122,6 +123,10 @@
 
 ;(require 'starter-kit-defuns)
 ;(require 'starter-kit-misc)
+
+;; Erlang
+(autoload 'erlang-mode "erlang-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 
 ;; CoffeeScript
 (autoload 'coffee-mode "coffee-mode" nil t)
