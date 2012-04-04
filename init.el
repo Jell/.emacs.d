@@ -389,12 +389,6 @@
       (delete-file file))))
 
 (setq c-tab-always-indent nil)
-;; Speedbar
-(when window-system
-  (speedbar 1)
-  (previous-multiframe-window))
-
-(global-auto-revert-mode t)
 
 (when window-system
   (menu-bar-mode))
