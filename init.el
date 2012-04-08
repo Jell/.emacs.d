@@ -215,7 +215,9 @@
 
 (defun yasnippet-hook ()
   (require 'yasnippet)
-  (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
+  (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"
+                           "~/.emacs.d/el-get/yasnippet/extras/imported"
+                           "~/.emacs.d/snippets"))
   (setq yas/trigger-key "TAB")
   (yas/global-mode 1))
 
