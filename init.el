@@ -101,6 +101,7 @@
                       slime
                       starter-kit
                       erlang
+                      sass-mode
                       undo-tree )
   "A list of packages to ensure are installed at launch.")
 
