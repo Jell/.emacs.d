@@ -34,4 +34,5 @@
  ;; If there is more than one, they won't work right.
  '(erm-syn-warnline ((t (:underline "Orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#728a05"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "#728a05")))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#728a05"))))
+ '(undo-tree-visualizer-active-branch-face ((t (:foreground "green4" :weight bold)))))
