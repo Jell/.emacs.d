@@ -33,6 +33,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(erm-syn-errline ((t (:underline "Red"))))
  '(erm-syn-warnline ((t (:underline "Orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#728a05"))))
  '(rainbow-delimiters-depth-5-face ((t (:foreground "#728a05"))))
