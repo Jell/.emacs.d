@@ -12,6 +12,9 @@
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(ffap-machine-p-known (quote reject))
+ '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
+ '(indicate-empty-lines t)
  '(mouse-yank-at-point t)
  '(ruby-check-syntax (quote errors-and-warnings))
  '(ruby-deep-arglist t)
@@ -20,6 +23,7 @@
  '(ruby-end-check-statement-modifiers t)
  '(ruby-end-insert-newline nil)
  '(ruby-hanging-indent-level 2)
+ '(show-paren-mode t)
  '(solarized-broken-srgb t)
  '(solarized-diff-mode (quote high))
  '(solarized-termcolors 256)
@@ -27,7 +31,10 @@
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
  '(speedbar-frame-plist (quote (minibuffer nil width 30 border-width 0 internal-border-width 0 unsplittable t default-toolbar-visible-p t has-modeline-p t menubar-visible-p t default-gutter-visible-p nil)))
  '(speedbar-show-unknown-files t)
- '(speedbar-supported-extension-expressions (quote (".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".clj"))))
+ '(speedbar-supported-extension-expressions (quote (".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".clj")))
+ '(tool-bar-mode nil)
+ '(transient-mark-mode (quote (only . t)))
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
