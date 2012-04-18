@@ -76,3 +76,14 @@
   (interactive)
   (shell-send-input "(use 'one.sample.dev-server)(run-server)")
   (send-input-to-buffer "*inferior-lisp*" "(use 'one.sample.dev-server)(cljs-repl)"))
+
+;; Indentation for compojure
+(define-clojure-indent
+  (defroutes 'defun)
+  (GET 2)
+  (POST 2)
+  (PUT 2)
+  (DELETE 2)
+  (HEAD 2)
+  (ANY 2)
+  (context 2))
