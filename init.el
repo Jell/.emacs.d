@@ -10,6 +10,7 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c C-f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-visual-line-mode)
 
 (setq hippie-expand-try-functions-list
       '(
@@ -149,6 +150,7 @@
 
 ;; Enable rainbow delimiters
 (global-rainbow-delimiters-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; el-get packages
