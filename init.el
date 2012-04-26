@@ -12,6 +12,9 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-visual-line-mode)
 
+;; Larger fonts
+(set-face-attribute 'default nil :height 150)
+
 (setq hippie-expand-try-functions-list
       '(
         yas/hippie-try-expand
