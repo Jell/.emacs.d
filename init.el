@@ -104,6 +104,7 @@
                       full-ack
                       slime
                       starter-kit
+                      haskell-mode
                       erlang
                       sass-mode
                       undo-tree )

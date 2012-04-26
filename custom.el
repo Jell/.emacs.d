@@ -13,6 +13,7 @@
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(ffap-machine-p-known (quote reject))
  '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(haskell-font-lock-symbols nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
  '(latex-run-command "xelatex")
