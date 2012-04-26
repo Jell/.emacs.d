@@ -23,6 +23,7 @@
  '(ruby-deep-indent-paren-style (quote space))
  '(ruby-end-check-statement-modifiers t)
  '(ruby-end-insert-newline nil)
+ '(ruby-extra-keywords (quote ("require" "private" "alias" "include" "extend")))
  '(ruby-hanging-indent-level 2)
  '(show-paren-mode t)
  '(solarized-broken-srgb t)
