@@ -15,6 +15,7 @@
  '(fringe-mode (quote (nil . 0)) nil (fringe))
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
+ '(latex-run-command "xelatex")
  '(mouse-yank-at-point t)
  '(ruby-check-syntax (quote errors-and-warnings))
  '(ruby-deep-arglist t)
