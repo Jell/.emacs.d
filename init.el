@@ -322,8 +322,8 @@
                                        '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode)))
         (:name rspec-mode
                :description "Enhance ruby-mode for RSpec"
-               :type github
-               :pkgname "pezra/rspec-mode"
+               :type git
+               :url "https://github.com/pezra/rspec-mode.git"
                :features rspec-mode)
         (:name ecb
                :description "Emacs Code Browser"
