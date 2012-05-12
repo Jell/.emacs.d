@@ -241,6 +241,10 @@
                :load "surround.el"
                :features surround
                :post-init (lambda () (global-surround-mode 1)))
+        (:name smooth-scroll
+               :description "Minor mode for smooth scrolling."
+               :type emacswiki
+               :features smooth-scroll)
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
