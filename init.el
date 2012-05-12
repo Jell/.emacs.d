@@ -233,6 +233,14 @@
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
                :after (progn (evil-hook)))
+        (:name evil-surround
+               :website "http://github.com/timcharper/evil-surround"
+               :type github
+               :pkgname "timcharper/evil-surround"
+               :features surround
+               :post-init (global-surround-mode 1)
+               :depends evil)
+
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
