@@ -253,9 +253,9 @@
                :type elpa
                :load "ruby-mode.el")
         (:name inf-ruby
-               :type git
-               :url "git://github.com/nonsequitur/inf-ruby.git"
-               :load "inf-ruby.el")
+               :type html
+               :url "http://melpa.milkbox.net/packages/inf-ruby-20120403.el"
+               :features inf-ruby)
         (:name ruby-compilation :type elpa)
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
