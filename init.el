@@ -249,9 +249,12 @@
                :load "rvm.el"
                :compile ("rvm.el")
                :post-init (lambda () (rvm-hook)))
-        (:name ruby-mode
-               :type elpa
-               :load "ruby-mode.el")
+        (:name Enhanced-Ruby-Mode
+               :type git
+               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
+               :load "ruby-mode.el"
+         ;      :post-init (lambda () (ruby-mode-hook))
+               )
         (:name inf-ruby
                :type html
                :url "http://melpa.milkbox.net/packages/inf-ruby-20120403.el"
@@ -268,11 +271,6 @@
                :features rinari
                :depends inf-ruby
                :post-init (lambda () (rinari-hook)))
-        (:name Enhanced-Ruby-Mode
-               :type git
-               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
-               :load "ruby-mode.el"
-               :post-init (lambda () (ruby-mode-hook)))
         (:name css-mode
                :type elpa
                :post-init (lambda () (css-mode-hook)))
