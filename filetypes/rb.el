@@ -1,3 +1,5 @@
+(require 'ruby-mode)
+(require 'ruby-compilation)
 (require 'rcodetools)
 (rvm-activate-corresponding-ruby)
 (rinari-launch)

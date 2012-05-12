@@ -168,9 +168,6 @@
 ;; can install them asynchronously. Pretty cool stuff.
 
 (defun ruby-mode-hook ()
-  (require 'ruby-mode)
-  (require 'inf-ruby)
-  (require 'ruby-compilation)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
@@ -253,12 +250,7 @@
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
-         ;      :post-init (lambda () (ruby-mode-hook))
-               )
-        (:name inf-ruby
-               :type html
-               :url "http://melpa.milkbox.net/packages/inf-ruby-20120403.el"
-               :features inf-ruby)
+               :post-init (lambda () (ruby-mode-hook)))
         (:name ruby-compilation :type elpa)
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
@@ -269,7 +261,6 @@
                :build ("rake doc:install_info")
                :info "doc"
                :features rinari
-               :depends inf-ruby
                :post-init (lambda () (rinari-hook)))
         (:name css-mode
                :type elpa
@@ -311,6 +302,7 @@
                :description "The most intelligent auto-completion extension."
                :type git
                :url "git://github.com/m2ym/auto-complete.git"
+               :depends popup
                :post-init (lambda ()
                             (require 'auto-complete)
                             (add-to-list 'ac-dictionary-directories
@@ -332,7 +324,7 @@
                :description "Enhance ruby-mode for RSpec"
                :type github
                :pkgname "pezra/rspec-mode"
-               :depends inf-ruby
+               :depends rinari
                :features rspec-mode)
         (:name ecb
                :description "Emacs Code Browser"
