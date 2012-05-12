@@ -115,6 +115,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(load custom-file)
 ;; Package defs ----------------------------------------------------------------
 
 (setq dotfiles-dir (file-name-directory
