@@ -1,3 +1,5 @@
+(paredit-mode 1)
+
 (add-hook 'slime-repl-mode-hook
           (defun clojure-mode-slime-font-lock ()
             (require 'clojure-mode)

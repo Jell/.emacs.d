@@ -35,6 +35,7 @@
 ;; Extra load paths
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
+(add-to-list 'load-path "~/.emacs.d/other")
 
 ;; Extra bin folders
 (add-to-list 'exec-path "/usr/local/bin")
@@ -142,11 +143,7 @@
 (add-hook 'coffee-mode-hook 'coffee-mode-hook)
 
 ;; Clojure
-(defun clojure-mode-hook ()
-  (paredit-mode 1)
-  (load "clj.el"))
-(add-hook 'clojure-mode-hook 'clojure-mode-hook)
-
+(add-hook 'clojure-mode-hook (lambda () (load "clj.el")))
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
 ;; Enable rainbow delimiters
@@ -180,14 +177,7 @@
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-  (add-hook 'ruby-mode-hook '(lambda ()
-                               (rvm-activate-corresponding-ruby)
-                               (rinari-launch)
-                               (electric-pair-mode)
-                               (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.2-p290/bin/ruby")
-                               (setq rspec-use-rake-flag nil)
-                               (setq rspec-use-opts-file-when-available nil)
-                               (setq rspec-use-rvm t))))
+  (add-hook 'ruby-mode-hook '(lambda () (load "rb.el"))))
 
 (defun rinari-hook ()
   (require 'rinari))
