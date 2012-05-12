@@ -324,7 +324,6 @@
                :description "Enhance ruby-mode for RSpec"
                :type github
                :pkgname "pezra/rspec-mode"
-               :depends rinari
                :features rspec-mode)
         (:name ecb
                :description "Emacs Code Browser"

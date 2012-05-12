@@ -1,5 +1,6 @@
 (require 'ruby-mode)
 (require 'ruby-compilation)
+(require 'rspec-mode)
 (require 'rcodetools)
 (rvm-activate-corresponding-ruby)
 (rinari-launch)
