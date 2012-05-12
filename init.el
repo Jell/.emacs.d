@@ -127,9 +127,6 @@
 (require 'recentf)
 (require 'undo-tree)
 
-;(require 'starter-kit-defuns)
-;(require 'starter-kit-misc)
-
 ;; Erlang
 (autoload 'erlang-mode "erlang-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
@@ -307,7 +304,7 @@
                             (add-to-list 'ac-dictionary-directories
                                          (expand-file-name "dict"))
                             (require 'auto-complete-config)
-                    (ac-config-default)))
+                            (ac-config-default)))
         (:name ruby-end
                :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
                :type http
@@ -346,15 +343,15 @@
   (el-get 'sync my-packages))
 
 (if (require 'el-get nil t)
-  (sync-packages)
+    (sync-packages)
   (url-retrieve
-    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-    (lambda (s)
-      (let (el-get-master-branch)
-        (end-of-buffer)
-        (eval-print-last-sexp)
-        (setq el-get-verbose t)
-        (sync-packages)))))
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (let (el-get-master-branch)
+       (end-of-buffer)
+       (eval-print-last-sexp)
+       (setq el-get-verbose t)
+       (sync-packages)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -365,9 +362,9 @@
 ;; Do not *ding* on scroll and other stuff.
 (defun my-bell-function ()
   (unless (memq this-command
-    '(isearch-abort abort-recursive-edit exit-minibuffer
-                    keyboard-quit mwheel-scroll down up next-line previous-line
-                    backward-char forward-char end-of-buffer))
+                '(isearch-abort abort-recursive-edit exit-minibuffer
+                                keyboard-quit mwheel-scroll down up next-line previous-line
+                                backward-char forward-char end-of-buffer))
     (ding)))
 (setq ring-bell-function 'my-bell-function)
 
