@@ -226,86 +226,94 @@
 ;; Package list ----------------------------------------------------------------
 
 (setq el-get-sources
-      '((:name evil
+      '((:name popup
+               :website "https://github.com/m2ym/popup-el"
+               :description "Visual Popup Interface Library for Emacs"
+               :type git
+               :url "https://github.com/m2ym/popup-el.git"
+               :features popup)
+        (:name evil
                :type git
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
-               :after (progn (evil-hook)))
+               :post-init (lambda () (evil-hook)))
         (:name evil-surround
-               :website "http://github.com/timcharper/evil-surround"
-               :type github
-               :pkgname "timcharper/evil-surround"
+               :url "git://github.com/timcharper/evil-surround.git"
+               :type git
+               :load "surround.el"
                :features surround
-               :post-init (global-surround-mode 1)
-               :depends evil)
-
+               :post-init (lambda () (global-surround-mode 1)))
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :after (progn (rvm-hook)))
+               :post-init (lambda () (rvm-hook)))
+        (:name ruby-mode
+               :type elpa
+               :load "ruby-mode.el")
         (:name inf-ruby
                :type git
                :url "git://github.com/nonsequitur/inf-ruby.git"
-               :features inf-ruby)
+               :load "inf-ruby.el")
         (:name ruby-compilation :type elpa)
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
-               :type github
-               :pkgname "eschulte/rinari"
+               :type git
+               :url "http://github.com/eschulte/rinari.git"
                :load-path ("." "util" "util/jump")
                :compile ("\\.el$" "util")
                :build ("rake doc:install_info")
                :info "doc"
                :features rinari
-               :after (progn (rinari-hook)))
-        (:name css-mode
-               :type elpa
-               :after (progn (css-mode-hook)))
-        (:name rhtml
-               :type git
-               :url "https://github.com/eschulte/rhtml.git"
-               :features rhtml-mode
-               :after (progn (rhtml-mode-hook)))
-        (:name yaml-mode
-               :type git
-               :url "http://github.com/yoshiki/yaml-mode.git"
-               :features yaml-mode
-               :after (progn (yaml-mode-hook)))
+               :depends inf-ruby
+               :post-init (lambda () (rinari-hook)))
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
-               :after (progn (ruby-mode-hook)))
-        (:name yasnippet
-               :website "https://github.com/capitaomorte/yasnippet.git"
-               :description "YASnippet is a template system for Emacs."
-               :type github
-               :pkgname "capitaomorte/yasnippet"
-               :features "yasnippet"
-               ;; Set up the default snippets directory
-               ;;
-               ;; Principle: don't override any user settings for
-               ;; yas/snippet-dirs, whether those were made with setq or
-               ;; customize. If the user doesn't want the default snippets,
-               ;; she shouldn't get them!
-               :pre-init (unless (or (boundp 'yas/snippet-dirs)
-                                     (get 'yas/snippet-dirs 'customized-value))
-                           (setq yas/snippet-dirs
-                                 (list (concat el-get-dir
-                                               (file-name-as-directory "yasnippet")
-                                               "snippets"))))
-               :post-init (yasnippet-hook)
-               ;; byte-compile load vc-svn and that fails
-               ;; see https://github.com/dimitri/el-get/issues/200
-               :compile nil
-               :submodule nil)
+               :post-init (lambda () (ruby-mode-hook)))
+        (:name css-mode
+               :type elpa
+               :post-init (lambda () (css-mode-hook)))
+        (:name rhtml
+               :type git
+               :url "https://github.com/eschulte/rhtml.git"
+               :features rhtml-mode
+               :post-init (lambda () (rhtml-mode-hook)))
+        (:name yaml-mode
+               :type git
+               :url "http://github.com/yoshiki/yaml-mode.git"
+               :features yaml-mode
+               :post-init (lambda () (yaml-mode-hook)))
+        ;(:name yasnippet
+        ;       :website "https://github.com/capitaomorte/yasnippet.git"
+        ;       :description "YASnippet is a template system for Emacs."
+        ;       :type github
+        ;       :pkgname "capitaomorte/yasnippet"
+        ;       :features "yasnippet"
+        ;       ;; Set up the default snippets directory
+        ;       ;;
+        ;       ;; Principle: don't override any user settings for
+        ;       ;; yas/snippet-dirs, whether those were made with setq or
+        ;       ;; customize. If the user doesn't want the default snippets,
+        ;       ;; she shouldn't get them!
+        ;       :pre-init (unless (or (boundp 'yas/snippet-dirs)
+        ;                             (get 'yas/snippet-dirs 'customized-value))
+        ;                   (setq yas/snippet-dirs
+        ;                         (list (concat el-get-dir
+        ;                                       (file-name-as-directory "yasnippet")
+        ;                                       "snippets"))))
+        ;       :post-init (yasnippet-hook)
+        ;       ;; byte-compile load vc-svn and that fails
+        ;       ;; see https://github.com/dimitri/el-get/issues/200
+        ;       :compile nil
+        ;       :submodule nil)
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
                :type git
                :url "git://github.com/m2ym/auto-complete.git"
-               :post-init (progn
+               :post-init (lambda ()
                             (require 'auto-complete)
                             (add-to-list 'ac-dictionary-directories
                                          (expand-file-name "dict"))
@@ -326,6 +334,7 @@
                :description "Enhance ruby-mode for RSpec"
                :type github
                :pkgname "pezra/rspec-mode"
+               :depends inf-ruby
                :features rspec-mode)
         (:name ecb
                :description "Emacs Code Browser"
@@ -337,7 +346,7 @@
                :type git
                :url "https://github.com/motus/pig-mode.git"
                :features pig-mode
-               :after (progn (pig-mode-hook)))))
+               :after (lambda () (pig-mode-hook)))))
 
 ;; Trigger synchronization of el-get packages
 
@@ -349,14 +358,14 @@
   (el-get 'sync my-packages))
 
 (if (require 'el-get nil t)
-    (sync-packages)
+  (sync-packages)
   (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp)
-     (setq el-get-verbose t)
-     (sync-packages))))
+    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+    (lambda (s)
+      (end-of-buffer)
+      (eval-print-last-sexp)
+      (setq el-get-verbose t)
+      (sync-packages))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
