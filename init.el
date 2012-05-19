@@ -342,6 +342,13 @@
                :type git
                :url "https://github.com/pezra/rspec-mode.git"
                :features rspec-mode)
+
+        (:name cucumber-mode
+               :description "Cucumber mode"
+               :type git
+               :url "https://github.com/michaelklishin/cucumber.el.git"
+               :features feature-mode)
+
         (:name ecb
                :description "Emacs Code Browser"
                :type cvs
