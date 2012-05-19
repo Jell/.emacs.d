@@ -6,11 +6,15 @@
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
+
+;; Soft word wrap
+(global-visual-line-mode)
+
+;; Extra keybindings
 (global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-c C-f") 'find-file-in-project)
+(global-set-key (kbd "C-c f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-visual-line-mode)
 
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)

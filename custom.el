@@ -15,6 +15,8 @@
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(ffap-machine-p-known (quote reject))
  '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(global-auto-complete-mode t)
+ '(global-auto-revert-mode t)
  '(haskell-font-lock-symbols nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
