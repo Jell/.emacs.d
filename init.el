@@ -8,7 +8,7 @@
 (setq mac-command-modifier 'meta)
 
 ;; Custom mode-line
-(setq mode-line-format
+(setq-default mode-line-format
       (list
        ;; the buffer name; the file name as a tool tip
        '(:eval (propertize " %b " 'face 'font-lock-keyword-face
@@ -18,7 +18,7 @@
        (propertize " L%01l " 'face 'font-lock-type-face
                    'help-echo (format-mode-line "Line: %01l, Column: %01c"))
 
-       '(:eval evil-mode-line-tag)
+       '(:eval (when evil-mode evil-mode-line-tag))
 
        ;; the current major mode for the buffer.
        '(:eval (propertize " %m " 'face 'font-lock-string-face
@@ -31,10 +31,11 @@
                  (propertize " RO "
                              'face 'font-lock-type-face
                              'help-echo "Buffer is read-only")))
-       " "
        '(:eval (when nyan-mode
-                 (propertize (format-mode-line (list (nyan-create)))
-                             'help-echo "nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan...")))
+                 (concat
+                  " "
+                  (propertize (format-mode-line (list (nyan-create)))
+                              'help-echo "nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan..."))))
 
        ;; add the time, with the date and the emacs uptime in the tooltip
        '(:eval (propertize (format-time-string " %H:%M ")
@@ -51,9 +52,7 @@
        '(:eval (when (buffer-modified-p)
                  (propertize " Mod "
                              'face 'font-lock-warning-face
-                             'help-echo "Buffer has been modified")))
-
-       ))
+                             'help-echo "Buffer has been modified")))))
 
 ;; Soft word wrap
 (global-visual-line-mode)
@@ -434,7 +433,8 @@
                :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!"
                :type git
                :url "https://github.com/TeMPOraL/nyan-mode.git"
-               :features nyan-mode)
+               :features nyan-mode
+               :after (lambda () (nyan-mode)))
 
         (:name pig-mode
                :type git
