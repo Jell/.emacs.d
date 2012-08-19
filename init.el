@@ -7,6 +7,8 @@
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 
+;; Custom mode-line
+
 ;; Soft word wrap
 (global-visual-line-mode)
 
@@ -106,6 +108,7 @@
                       rainbow-mode
                       coffee-mode
                       color-theme-solarized
+                      gist
                       full-ack
                       slime
                       starter-kit
@@ -179,6 +182,7 @@
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda () (load "rb.el"))))
 
 (defun rinari-hook ()
@@ -261,6 +265,10 @@
                :load "ruby-mode.el"
                :post-init (lambda () (ruby-mode-hook)))
         (:name ruby-compilation :type elpa)
+        (:name rdebug
+               :description "Ruby debugger user interface, startup file."
+               :type svn
+               :url "http://ruby-debug.rubyforge.org/svn/trunk/emacs/")
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
                :type git
@@ -274,11 +282,13 @@
         (:name css-mode
                :type elpa
                :post-init (lambda () (css-mode-hook)))
+
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
                :post-init (lambda () (rhtml-mode-hook)))
+
         (:name yaml-mode
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
@@ -352,6 +362,20 @@
                :type git
                :url "https://github.com/michaelklishin/cucumber.el.git"
                :features feature-mode)
+
+        (:name jekyll
+               :type git
+               :url "https://github.com/diasjorge/jekyll.el.git"
+               :features jekyll)
+
+        (:name zencoding-mode
+               :description "Unfold CSS-selector-like expressions to markup"
+               :type git
+               :url "https://github.com/rooney/zencoding.git"
+               :features zencoding-mode
+               :post-init (lambda ()
+                            (require 'zencoding-mode)
+                            (add-hook 'sgml-mode-hook 'zencoding-mode)))
 
         (:name ecb
                :description "Emacs Code Browser"
