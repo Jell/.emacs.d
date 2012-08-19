@@ -28,11 +28,6 @@
                                                       (format-mode-line minor-mode-alist)
                                                       " ]")))
 
-               ;; is this buffer read-only?
-               '(:eval (when buffer-read-only
-                         (propertize " RO "
-                                     'face 'font-lock-type-face
-                                     'help-echo "Buffer is read-only")))
                '(:eval (when nyan-mode
                          (concat
                           " "
@@ -48,7 +43,14 @@
                '(:eval (propertize (if overwrite-mode " Ovr " " Ins ")
                                    'face 'font-lock-preprocessor-face
                                    'help-echo (concat "Buffer is in "
-                                                      (if overwrite-mode "overwrite" "insert") " mode")))
+                                                      (if overwrite-mode "overwrite" "insert")
+                                                      " mode")))
+
+               ;; is this buffer read-only?
+               '(:eval (when buffer-read-only
+                         (propertize " RO "
+                                     'face 'font-lock-type-face
+                                     'help-echo "Buffer is read-only")))
 
                ;; was this buffer modified since the last save?
                '(:eval (when (buffer-modified-p)
