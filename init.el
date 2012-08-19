@@ -6,7 +6,6 @@
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
-
 ;; Custom mode-line
 (setq-default mode-line-format
       (list
@@ -16,12 +15,15 @@
 
        ;; line and column
        (propertize " L%01l " 'face 'font-lock-type-face
-                   'help-echo (format-mode-line "Line: %01l, Column: %01c"))
+                   'help-echo '(format-mode-line "Line: %01l, Column: %01c"))
 
        '(:eval (when evil-mode evil-mode-line-tag))
 
        ;; the current major mode for the buffer.
-       '(:eval (propertize " %m " 'face 'font-lock-string-face
+       '(:eval (propertize (concat " "
+                                   (format-mode-line mode-name)
+                                   " ")
+                           'face 'font-lock-string-face
                            'help-echo (concat "Minor modes: ["
                                               (format-mode-line minor-mode-alist)
                                               " ]")))
