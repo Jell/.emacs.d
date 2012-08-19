@@ -7,55 +7,53 @@
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 
-;; Custom faces
-(make-face 'mode-line-minor-mode-face)
-
 ;; Custom mode-line
 (setq mode-line-format
-  (list
-    ;; the buffer name; the file name as a tool tip
-    '(:eval (propertize " %b " 'face 'font-lock-keyword-face
-        'help-echo (buffer-file-name)))
+      (list
+       ;; the buffer name; the file name as a tool tip
+       '(:eval (propertize " %b " 'face 'font-lock-keyword-face
+                           'help-echo (buffer-file-name)))
 
-    ;; line and column
-    (propertize " L%01l " 'face 'font-lock-type-face)
+       ;; line and column
+       (propertize " L%01l " 'face 'font-lock-type-face
+                   'help-echo (format-mode-line "Line: %01l, Column: %01c"))
 
-    '(:eval evil-mode-line-tag)
+       '(:eval evil-mode-line-tag)
 
-    ;; the current major mode for the buffer.
-    '(:eval (propertize " %m " 'face 'font-lock-string-face
-              'help-echo buffer-file-coding-system))
+       ;; the current major mode for the buffer.
+       '(:eval (propertize " %m " 'face 'font-lock-string-face
+                           'help-echo (concat "Minor modes: ["
+                                              (format-mode-line minor-mode-alist)
+                                              " ]")))
 
-    ;; is this buffer read-only?
-    '(:eval (when buffer-read-only
-              (propertize " RO "
-                          'face 'font-lock-type-face
-                          'help-echo "Buffer is read-only")))
-    " "
-    '(:eval (when nyan-mode (list (nyan-create))))
+       ;; is this buffer read-only?
+       '(:eval (when buffer-read-only
+                 (propertize " RO "
+                             'face 'font-lock-type-face
+                             'help-echo "Buffer is read-only")))
+       " "
+       '(:eval (when nyan-mode
+                 (propertize (format-mode-line (list (nyan-create)))
+                             'help-echo "nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan...")))
 
-    ;; add the time, with the date and the emacs uptime in the tooltip
-    '(:eval (propertize (format-time-string " %H:%M ")
-                        'help-echo
-                        (concat (format-time-string "%c; ")
-                                (emacs-uptime "Uptime:%hh"))))
+       ;; add the time, with the date and the emacs uptime in the tooltip
+       '(:eval (propertize (format-time-string " %H:%M ")
+                           'help-echo
+                           (concat (format-time-string "%c; ")
+                                   (emacs-uptime "Uptime:%hh"))))
 
-    '(:eval (propertize (if overwrite-mode " Ovr " " Ins ")
-              'face 'font-lock-preprocessor-face
-              'help-echo (concat "Buffer is in "
-                           (if overwrite-mode "overwrite" "insert") " mode")))
+       '(:eval (propertize (if overwrite-mode " Ovr " " Ins ")
+                           'face 'font-lock-preprocessor-face
+                           'help-echo (concat "Buffer is in "
+                                              (if overwrite-mode "overwrite" "insert") " mode")))
 
-    ;; was this buffer modified since the last save?
-    '(:eval (when (buffer-modified-p)
-              (propertize " Mod "
-                          'face 'font-lock-warning-face
-                          'help-echo "Buffer has been modified")))
+       ;; was this buffer modified since the last save?
+       '(:eval (when (buffer-modified-p)
+                 (propertize " Mod "
+                             'face 'font-lock-warning-face
+                             'help-echo "Buffer has been modified")))
 
-
-    ;; i don't want to see minor-modes; but if you want, uncomment this:
-    '(:eval (propertize (format-mode-line minor-mode-alist)
-                        'face 'mode-line-minor-mode-face))
-    ))
+       ))
 
 ;; Soft word wrap
 (global-visual-line-mode)
