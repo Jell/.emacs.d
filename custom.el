@@ -21,6 +21,7 @@
  '(haskell-font-lock-symbols nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
+ '(js-indent-level 2)
  '(latex-run-command "xelatex")
  '(mouse-yank-at-point t)
  '(nyan-animate-nyancat nil)
