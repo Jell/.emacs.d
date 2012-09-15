@@ -68,11 +68,24 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 ;; Multi cursors
 (global-set-key (kbd "C-c C-d") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C--") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-+") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
+
+(defun control-meta-click (event)
+  (interactive "e")
+  (if (> (mc/num-cursors) 1)
+      (multiple-cursors-mode 1)
+    (multiple-cursors-mode 0))
+  (mc/create-fake-cursor-at-point)
+  (mouse-set-point event)
+  (message (string (mc/num-cursors))))
+
+(global-set-key (kbd "<C-M-mouse-1>") 'control-meta-click)
+
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
+
 ;; Fix scrolling
 (setq auto-window-vscroll nil)
 
