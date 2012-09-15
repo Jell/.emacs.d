@@ -3,7 +3,10 @@
 ;; It keeps track of your preferences for running commands with
 ;; multiple cursors.
 
-(setq mc/cmds-to-run-for-all '(mwheel-scroll
+(setq mc/cmds-to-run-for-all '(evil-delete
+                               evil-indent
+                               evil-visual-line
+                               mwheel-scroll
                                evil-append-line
                                evil-insert-line
                                evil-goto-line
@@ -11,7 +14,6 @@
                                evil-delete-char
                                evil-replace
                                evil-exit-emacs-state
-                               mouse-set-point
                                mouse-drag-region
                                evil-normal-state
                                evil-change
@@ -25,5 +27,10 @@
                                evil-next-line
                                evil-previous-line))
 
-(setq mc/cmds-to-run-once '(save-buffer-always
+(setq mc/cmds-to-run-once '(control-meta-click
+                            mouse-set-point
+                            save-buffer-always
                             widget-button-click))
+
+                            
+                               
