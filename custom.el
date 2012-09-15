@@ -59,6 +59,7 @@
  '(cursor ((t (:background "#708183" :foreground "#042028"))))
  '(erm-syn-errline ((t (:underline "Red"))))
  '(erm-syn-warnline ((t (:underline "Orange"))))
+ '(mc/cursor-face ((t (:background "red" :foreground "black"))))
  '(mumamo-background-chunk-major ((t (:background "#042028"))) t)
  '(mumamo-background-chunk-submode1 ((t (:background "#042028"))) t)
  '(mumamo-background-chunk-submode2 ((t (:background "#042028"))) t)

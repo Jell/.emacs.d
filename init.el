@@ -73,6 +73,8 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
+;; Fix scrolling
+(setq auto-window-vscroll nil)
 
 (setq hippie-expand-try-functions-list
       '(
@@ -291,37 +293,40 @@
                :type git
                :url "https://github.com/m2ym/popup-el.git"
                :features popup)
+
         (:name evil
                :type git
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
                :post-init (lambda () (evil-hook)))
+
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
                :type git
                :load "surround.el"
                :features surround
                :post-init (lambda () (global-surround-mode 1)))
-        (:name smooth-scroll
-               :description "Minor mode for smooth scrolling."
-               :type emacswiki
-               :features smooth-scroll)
+
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
                :post-init (lambda () (rvm-hook)))
+
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
                :post-init (lambda () (ruby-mode-hook)))
+
         (:name ruby-compilation :type elpa)
+
         (:name rdebug
                :description "Ruby debugger user interface, startup file."
                :type svn
                :url "http://ruby-debug.rubyforge.org/svn/trunk/emacs/")
+
         (:name rinari
                :description "Rinari Is Not A Rails IDE"
                :type git
@@ -332,6 +337,7 @@
                :info "doc"
                :features rinari
                :post-init (lambda () (rinari-hook)))
+
         (:name css-mode
                :type elpa
                :post-init (lambda () (css-mode-hook)))
@@ -347,6 +353,7 @@
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
                :post-init (lambda () (yaml-mode-hook)))
+
         (:name yasnippet
                :website "http://code.google.com/p/yasnippet/"
                :description "YASnippet is a template system for Emacs."
@@ -354,33 +361,13 @@
                :url "https://github.com/capitaomorte/yasnippet.git"
                :features "yasnippet"
                :prepare (lambda ()
-                          ;; Set up the default snippets directory
-                          ;;
-                          ;; Principle: don't override any user settings
-                          ;; for yas/snippet-dirs, whether those were made
-                          ;; with setq or customize.  If the user doesn't
-                          ;; want the default snippets, she shouldn't get
-                          ;; them!
                           (unless (or (boundp 'yas/snippet-dirs) (get 'yas/snippet-dirs 'customized-value))
                             (setq yas/snippet-dirs
                                   (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets")))))
                :post-init (lambda ()
-                            ;; Trick customize into believing the standard
-                            ;; value includes the default snippets.
-                            ;; yasnippet would probably do this itself,
-                            ;; except that it doesn't include an
-                            ;; installation procedure that sets up the
-                            ;; snippets directory, and thus doesn't know
-                            ;; where those snippets will be installed.  See
-                            ;; http://code.google.com/p/yasnippet/issues/detail?id=179
                             (put 'yas/snippet-dirs 'standard-value
-                                 ;; as cus-edit.el specifies, "a cons-cell
-                                 ;; whose car evaluates to the standard
-                                 ;; value"
                                  (list (list 'quote
                                              (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets"))))))
-               ;; byte-compile load vc-svn and that fails
-               ;; see https://github.com/dimitri/el-get/issues/200
                :compile nil)
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
@@ -451,6 +438,11 @@
                :features multiple-cursors
                :after (lambda () (require 'multiple-cursors nil t)))
 
+        (:name smooth-scroll
+               :description "Minor mode for smooth scrolling."
+               :type emacswiki
+               :features smooth-scroll
+               :after (lambda () (require 'smooth-scroll) (smooth-scroll-mode t)))
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"

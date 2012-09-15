@@ -25,4 +25,5 @@
                                evil-next-line
                                evil-previous-line))
 
-(setq mc/cmds-to-run-once '(save-buffer-always))
+(setq mc/cmds-to-run-once '(save-buffer-always
+                            widget-button-click))
