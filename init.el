@@ -66,7 +66,11 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
-
+;; Multi cursors
+(global-set-key (kbd "C-c C-d") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
 
@@ -439,6 +443,13 @@
                :url "https://github.com/TeMPOraL/nyan-mode.git"
                :features nyan-mode
                :after (lambda () (nyan-mode)))
+
+        (:name multiple-cursors
+               :description "Sublime-like multiple cursors"
+               :type git
+               :url "https://github.com/magnars/multiple-cursors.el.git"
+               :features multiple-cursors
+               :after (lambda () (require 'multiple-cursors nil t)))
 
         (:name pig-mode
                :type git
