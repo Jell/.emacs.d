@@ -6,7 +6,7 @@
 ;; Key bindings for mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
-
+(setq mac-function-modifier 'super)
 ;; Soft word wrap
 (global-visual-line-mode)
 
@@ -31,6 +31,14 @@
   (message (string (mc/num-cursors))))
 
 (global-set-key (kbd "<C-M-mouse-1>") 'control-meta-click)
+
+(global-set-key (kbd "C-c b SPC") 'bc-set)
+(global-set-key (kbd "C-c b <up>") 'bc-local-previous)
+(global-set-key (kbd "C-c b <down>") 'bc-local-next)
+(global-set-key (kbd "C-c b <right>") 'bc-previous)
+(global-set-key (kbd "C-c b <left>") 'bc-next)
+(global-set-key (kbd "C-c b l") 'bc-list)
+(global-set-key (kbd "C-c b c") 'bc-clear)
 
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
@@ -399,13 +407,23 @@
                :type git
                :url "https://github.com/magnars/multiple-cursors.el.git"
                :features multiple-cursors
-               :after (lambda () (require 'multiple-cursors nil t)))
+               :after (lambda () (require 'multiple-cursors nil t)
+                        (multiple-cursors-mode 0)))
 
         (:name smooth-scroll
                :description "Minor mode for smooth scrolling."
                :type emacswiki
                :features smooth-scroll
                :after (lambda () (require 'smooth-scroll) (smooth-scroll-mode t)))
+
+        (:name breadcrumb
+               :website "http://breadcrumbemacs.sourceforge.net/"
+               :description "Breadcrumb is an add-on module for Emacs that allows you to set a series of quick bookmarks in the file buffers, and jump back to them quickly."
+               :type http
+               :url "http://downloads.sourceforge.net/project/breadcrumbemacs/Breadcrumb%20for%20Emacs/1.1.3/breadcrumb-1.1.3.zip"
+               :build ("unzip breadcrumb-1.1.3.zip")
+               :after (lambda () (require 'breadcrumb)))
+
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
