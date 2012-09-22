@@ -3,7 +3,13 @@
 ;; It keeps track of your preferences for running commands with
 ;; multiple cursors.
 
-(setq mc/cmds-to-run-for-all '(evil-delete
+(setq mc/cmds-to-run-for-all '(evil-find-char-to
+                               evil-end-of-line
+                               evil-change-line
+                               ruby-end-space
+                               evil-delete-line
+                               paredit-backward-delete
+                               evil-delete
                                evil-indent
                                evil-visual-line
                                mwheel-scroll

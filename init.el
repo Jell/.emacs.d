@@ -11,7 +11,6 @@
 (global-visual-line-mode)
 
 ;; Extra keybindings
-(global-set-key (kbd "M-=") 'indent-region)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -209,6 +208,7 @@
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.arb\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda () (load "rb.el"))))
 
 (defun rinari-hook ()
@@ -340,6 +340,7 @@
                                  (list (list 'quote
                                              (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets"))))))
                :compile nil)
+
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
                :type git
@@ -351,17 +352,20 @@
                                          (expand-file-name "dict"))
                             (require 'auto-complete-config)
                             (ac-config-default)))
+
         (:name ruby-end
                :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
                :type http
                :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
                :features ruby-end)
+
         (:name markdown-mode
                :description "Major mode to edit Markdown files in Emacs"
                :type git
                :url "git://jblevins.org/git/markdown-mode.git"
                :post-init (add-to-list 'auto-mode-alist
                                        '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode)))
+
         (:name rspec-mode
                :description "Enhance ruby-mode for RSpec"
                :type git

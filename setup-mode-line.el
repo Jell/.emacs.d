@@ -1,11 +1,13 @@
 (setq-default mode-line-format
               (list
                ;; the buffer name; the file name as a tool tip
-               '(:eval (propertize " %b " 'face 'font-lock-keyword-face
+               '(:eval (propertize " %b "
+                                   'face 'font-lock-keyword-face
                                    'help-echo (buffer-file-name)))
 
                ;; line and column
-               (propertize " L%01l " 'face 'font-lock-type-face
+               (propertize " L%01l "
+                           'face 'font-lock-type-face
                            'help-echo '(format-mode-line "Line: %01l, Column: %01c"))
 
                '(:eval (when evil-mode evil-mode-line-tag))

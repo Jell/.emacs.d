@@ -39,7 +39,7 @@
  '(show-paren-mode t)
  '(smooth-scroll-mode t)
  '(smooth-scroll/vscroll-step-size 3)
- '(solarized-broken-srgb t)
+ '(solarized-broken-srgb nil)
  '(solarized-diff-mode (quote high))
  '(solarized-termcolors 256)
  '(speedbar-default-position (quote left))
