@@ -122,6 +122,10 @@
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (package-initialize)
 
+
+(setq solarized-broken-srgb nil)
+(setq solarized-diff-mode (quote high))
+(setq solarized-termcolors 256)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
