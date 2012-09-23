@@ -266,7 +266,7 @@
                :website "https://github.com/m2ym/popup-el"
                :description "Visual Popup Interface Library for Emacs"
                :type git
-               :url "https://github.com/m2ym/popup-el.git"
+               :url "https://github.com/auto-complete/popup-el.git"
                :features popup)
 
         (:name evil
