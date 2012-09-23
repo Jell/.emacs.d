@@ -232,7 +232,7 @@
 
 (defun css-mode-hook ()
   (autoload 'css-mode "css-mode" nil t)
-  (add-hook 'css-mode-hook '(lambda ()
+  (add-hook 'css-mode-hook '(progn
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
@@ -273,27 +273,27 @@
                :type git
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
-               :post-init (lambda () (evil-hook)))
+               :post-init (progn (evil-hook)))
 
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
                :type git
                :load "surround.el"
                :features surround
-               :post-init (lambda () (global-surround-mode 1)))
+               :post-init (progn (global-surround-mode 1)))
 
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :post-init (lambda () (rvm-hook)))
+               :post-init (progn (rvm-hook)))
 
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
-               :post-init (lambda () (ruby-mode-hook)))
+               :post-init (progn (ruby-mode-hook)))
 
         (:name ruby-compilation :type elpa)
 
@@ -311,23 +311,23 @@
                :build ("rake doc:install_info")
                :info "doc"
                :features rinari
-               :post-init (lambda () (rinari-hook)))
+               :post-init (progn (rinari-hook)))
 
         (:name css-mode
                :type elpa
-               :post-init (lambda () (css-mode-hook)))
+               :post-init (progn (css-mode-hook)))
 
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
-               :post-init (lambda () (rhtml-mode-hook)))
+               :post-init (progn (rhtml-mode-hook)))
 
         (:name yaml-mode
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :post-init (lambda () (yaml-mode-hook)))
+               :post-init (progn (yaml-mode-hook)))
 
         (:name yasnippet
                :website "http://code.google.com/p/yasnippet/"
@@ -335,11 +335,11 @@
                :type git
                :url "https://github.com/capitaomorte/yasnippet.git"
                :features "yasnippet"
-               :prepare (lambda ()
+               :prepare (progn
                           (unless (or (boundp 'yas/snippet-dirs) (get 'yas/snippet-dirs 'customized-value))
                             (setq yas/snippet-dirs
                                   (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets")))))
-               :post-init (lambda ()
+               :post-init (progn
                             (put 'yas/snippet-dirs 'standard-value
                                  (list (list 'quote
                                              (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets"))))))
@@ -350,7 +350,7 @@
                :type git
                :url "https://github.com/auto-complete/auto-complete.git"
                :depends popup
-               :post-init (lambda ()
+               :post-init (progn
                             (require 'auto-complete)
                             (add-to-list 'ac-dictionary-directories
                                          (expand-file-name "dict"))
@@ -392,7 +392,7 @@
                :type git
                :url "https://github.com/rooney/zencoding.git"
                :features zencoding-mode
-               :post-init (lambda ()
+               :post-init (progn
                             (require 'zencoding-mode)
                             (add-hook 'sgml-mode-hook 'zencoding-mode)))
 
@@ -408,21 +408,21 @@
                :type git
                :url "https://github.com/TeMPOraL/nyan-mode.git"
                :features nyan-mode
-               :after (lambda () (nyan-mode)))
+               :after (progn (nyan-mode)))
 
         (:name multiple-cursors
                :description "Sublime-like multiple cursors"
                :type git
                :url "https://github.com/magnars/multiple-cursors.el.git"
                :features multiple-cursors
-               :after (lambda () (require 'multiple-cursors nil t)
+               :after (progn (require 'multiple-cursors nil t)
                         (multiple-cursors-mode 0)))
 
         (:name smooth-scroll
                :description "Minor mode for smooth scrolling."
                :type emacswiki
                :features smooth-scroll
-               :after (lambda () (require 'smooth-scroll) (smooth-scroll-mode t)))
+               :after (progn (require 'smooth-scroll) (smooth-scroll-mode t)))
 
         (:name breadcrumb
                :website "http://breadcrumbemacs.sourceforge.net/"
@@ -430,13 +430,13 @@
                :type http
                :url "http://downloads.sourceforge.net/project/breadcrumbemacs/Breadcrumb%20for%20Emacs/1.1.3/breadcrumb-1.1.3.zip"
                :build ("unzip breadcrumb-1.1.3.zip")
-               :after (lambda () (require 'breadcrumb)))
+               :after (progn (require 'breadcrumb)))
 
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
                :features pig-mode
-               :after (lambda () (pig-mode-hook)))))
+               :after (progn (pig-mode-hook)))))
 
 ;; Trigger synchronization of el-get packages
 
