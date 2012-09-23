@@ -348,7 +348,7 @@
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
                :type git
-               :url "git://github.com/m2ym/auto-complete.git"
+               :url "https://github.com/auto-complete/auto-complete.git"
                :depends popup
                :post-init (lambda ()
                             (require 'auto-complete)
