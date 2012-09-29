@@ -138,9 +138,7 @@
                       coffee-mode
                       color-theme-solarized
                       gist
-                      full-ack
                       slime
-                      starter-kit
                       haskell-mode
                       erlang
                       sass-mode
@@ -257,6 +255,12 @@
                            "~/.emacs.d/snippets"))
   (setq yas/trigger-key "TAB")
   (yas/global-mode 1))
+
+(defun ack-and-a-half-hook ()
+  (defalias 'ack 'ack-and-a-half)
+  (defalias 'ack-same 'ack-and-a-half-same)
+  (defalias 'ack-find-file 'ack-and-a-half-find-file)
+  (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same))
 
 
 ;; Package list ----------------------------------------------------------------
@@ -386,6 +390,12 @@
                :type git
                :url "https://github.com/diasjorge/jekyll.el.git"
                :features jekyll)
+
+        (:name ack-and-a-half
+               :type git
+               :url "https://github.com/jhelwig/ack-and-a-half.git"
+               :features ack-and-a-half
+               :after (progn (ack-and-a-half-hook)))
 
         (:name zencoding-mode
                :description "Unfold CSS-selector-like expressions to markup"
