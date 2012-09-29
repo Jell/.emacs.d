@@ -21,6 +21,23 @@
  '(haskell-font-lock-symbols nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
+ '(initial-major-mode (quote ruby-mode))
+ '(initial-scratch-message "#
+#
+#              _      _____      _          _
+#            /\\ \\   /\\  ___\\   /\\ \\       /\\ \\
+#            \\_\\ \\  \\ \\  __\\   \\ \\ \\____  \\ \\ \\____
+#          /\\ ____\\  \\ \\ ____\\  \\ \\ ____\\  \\ \\ ____\\
+#          \\/_____/   \\/_____/   \\/_____/   \\/_____/
+#
+#                                ( Hooray for Zoidberg! )
+#              (\\/)_(^,,^)_(\\/) /
+#
+#
+
+
+
+")
  '(js-indent-level 2)
  '(latex-run-command "xelatex")
  '(mouse-yank-at-point t)

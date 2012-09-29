@@ -7,8 +7,6 @@
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 (setq mac-function-modifier 'super)
-;; Soft word wrap
-(global-visual-line-mode)
 
 ;; Extra keybindings
 (global-set-key (kbd "C-c C-c") 'comment-region)
