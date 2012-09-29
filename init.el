@@ -139,6 +139,7 @@
                       color-theme-solarized
                       gist
                       slime
+                      starter-kit
                       haskell-mode
                       erlang
                       sass-mode
