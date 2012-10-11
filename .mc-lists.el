@@ -3,7 +3,19 @@
 ;; It keeps track of your preferences for running commands with
 ;; multiple cursors.
 
-(setq mc/cmds-to-run-for-all '(evil-find-char-to
+(setq mc/cmds-to-run-for-all '(evil-append
+                               evil-forward-paragraph
+                               evil-backward-paragraph
+                               evil-forward-section-begin
+                               evil-backward-section-begin
+                               paredit-backward-slurp-sexp
+                               evil-paste-after
+                               evil-copy-from-above
+                               paredit-kill
+                               paredit-forward-slurp-sexp
+                               evil-emacs-state
+                               keyboard-escape-quit
+                               evil-find-char-to
                                evil-end-of-line
                                evil-change-line
                                ruby-end-space
@@ -11,7 +23,6 @@
                                paredit-backward-delete
                                evil-delete
                                evil-indent
-                               evil-visual-line
                                mwheel-scroll
                                evil-append-line
                                evil-insert-line
@@ -23,17 +34,24 @@
                                mouse-drag-region
                                evil-normal-state
                                evil-change
-                               evil-visual-char
                                evil-backward-word-begin
                                evil-force-normal-state
                                evil-forward-char
+                               evil-visual-line
                                evil-backward-char
-                               evil-exit-visual-state
+                               evil-visual-char
                                evil-forward-word-end
+                               evil-exit-visual-state
                                evil-next-line
                                evil-previous-line))
 
-(setq mc/cmds-to-run-once '(control-meta-click
+(setq mc/cmds-to-run-once '(mouse-set-region
+                            ido-switch-buffer
+                            delete-window
+                            smex
+                            fix-for-evil
+                            evil-mouse-drag-region
+                            control-meta-click
                             mouse-set-point
                             save-buffer-always
                             widget-button-click))

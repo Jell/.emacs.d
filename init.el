@@ -17,6 +17,8 @@
 (global-set-key (kbd "C--") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-+") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
+;; Expand mark
+(global-set-key (kbd "M-+") 'er/expand-region)
 
 (defun control-meta-click (event)
   (interactive "e")
@@ -205,6 +207,7 @@
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
@@ -425,7 +428,7 @@
                :url "https://github.com/magnars/multiple-cursors.el.git"
                :features multiple-cursors
                :after (progn (require 'multiple-cursors nil t)
-                        (multiple-cursors-mode 0)))
+                             (multiple-cursors-mode 0)))
 
         (:name smooth-scroll
                :description "Minor mode for smooth scrolling."
@@ -440,6 +443,13 @@
                :url "http://downloads.sourceforge.net/project/breadcrumbemacs/Breadcrumb%20for%20Emacs/1.1.3/breadcrumb-1.1.3.zip"
                :build ("unzip breadcrumb-1.1.3.zip")
                :after (progn (require 'breadcrumb)))
+
+        (:name expand-region
+               :type github
+               :pkgname "magnars/expand-region.el"
+               :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want."
+               :website "https://github.com/magnars/expand-region.el#readme"
+               :features expand-region)
 
         (:name pig-mode
                :type git
