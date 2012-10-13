@@ -19,6 +19,8 @@
 (global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
 ;; Expand mark
 (global-set-key (kbd "M-+") 'er/expand-region)
+;; For sublime users
+(global-set-key (kbd "C-c s") 'sublimify)
 
 (defun control-meta-click (event)
   (interactive "e")
@@ -484,6 +486,9 @@
 
 ;; Custom mode-line
 (load "setup-mode-line.el")
+
+;; Sublimify
+(load "sublimify.el")
 
 ;; Do not *ding* on scroll and other stuff.
 (defun my-bell-function ()

@@ -40,6 +40,7 @@
 
 ")
  '(js-indent-level 2)
+ '(kill-whole-line t)
  '(latex-run-command "xelatex")
  '(mouse-yank-at-point t)
  '(nyan-animate-nyancat nil)
