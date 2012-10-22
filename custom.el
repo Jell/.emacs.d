@@ -60,7 +60,7 @@
  '(ruby-deep-indent-paren nil)
  '(ruby-deep-indent-paren-style (quote space))
  '(ruby-end-check-statement-modifiers t)
- '(ruby-end-insert-newline nil)
+ '(ruby-end-insert-newline t)
  '(ruby-extra-keywords (quote ("require" "private" "alias" "include" "extend" "protected")))
  '(ruby-hanging-indent-level 2)
  '(shift-select-mode t)
