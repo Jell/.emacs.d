@@ -5,47 +5,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        evil-append
         evil-append-line
         evil-backward-char
-        evil-backward-paragraph
-        evil-backward-section-begin
-        evil-backward-word-begin
-        evil-change
-        evil-change-line
-        evil-copy-from-above
-        evil-delete
-        evil-delete-char
-        evil-delete-line
-        evil-emacs-state
-        evil-end-of-line
-        evil-exit-emacs-state
-        evil-exit-visual-state
-        evil-find-char-to
-        evil-force-normal-state
         evil-forward-char
-        evil-forward-paragraph
-        evil-forward-section-begin
-        evil-forward-word-end
-        evil-goto-line
-        evil-indent
-        evil-insert
-        evil-insert-line
-        evil-next-line
         evil-normal-state
         evil-paste-after
-        evil-previous-line
-        evil-replace
-        evil-visual-char
-        evil-visual-line
-        keyboard-escape-quit
-        mouse-drag-region
-        mwheel-scroll
-        paredit-backward-delete
-        paredit-backward-slurp-sexp
-        paredit-forward-slurp-sexp
-        paredit-kill
-        paredit-splice-sexp
+        ruby-electric-brace
         ruby-end-space
         ))
 

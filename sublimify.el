@@ -23,7 +23,9 @@
     ("\M-z" . undo)
     ("\M-Z" . redo)
     ("\M-d" . mc/mark-next-like-this)
-    ("\C-K" . kill-whole-line)
+    ("\M-a" . mark-whole-buffer)
+    ([C-M-up] . move-lines-up)
+    ([C-M-down] . move-lines-down)
     ("\C-z" . un-sublimify)
     ("\M-X" . smex)))
 

@@ -12,6 +12,7 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-S-k") 'kill-whole-line)
 ;; Multi cursors
 (global-set-key (kbd "C-c C-d") 'mc/edit-lines)
 (global-set-key (kbd "C--") 'mc/mark-next-like-this)
@@ -21,6 +22,9 @@
 (global-set-key (kbd "M-+") 'er/expand-region)
 ;; For sublime users
 (global-set-key (kbd "C-c s") 'sublimify)
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
 
 (defun control-meta-click (event)
   (interactive "e")
@@ -489,6 +493,8 @@
 
 ;; Sublimify
 (load "sublimify.el")
+;; Move Lines
+(load "movelines.el")
 
 ;; Do not *ding* on scroll and other stuff.
 (defun my-bell-function ()

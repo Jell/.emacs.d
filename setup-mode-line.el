@@ -27,6 +27,9 @@
                           (propertize (format-mode-line (list (nyan-create)))
                                       'help-echo "nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan nyan..."))))
 
+               '(:eval (propertize (if vc-mode (concat vc-mode " ") nil)
+                                   'face 'font-lock-special-keyword-face))
+
                ;; add the time, with the date and the emacs uptime in the tooltip
                '(:eval (propertize (format-time-string " %H:%M ")
                                    'help-echo
