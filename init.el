@@ -9,7 +9,7 @@
 (setq mac-function-modifier 'super)
 
 ;; Extra keybindings
-(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
@@ -456,6 +456,20 @@
                :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want."
                :website "https://github.com/magnars/expand-region.el#readme"
                :features expand-region)
+
+        (:name nrepl
+               :description "An Emacs client for nREPL, the Clojure networked REPL server."
+               :type github
+               :pkgname "kingtim/nrepl.el"
+               :features nrepl)
+
+        (:name ac-nrepl
+               :description "Autocomplete for nREPL"
+               :type git
+               :url "https://github.com/purcell/ac-nrepl.git"
+               :features ac-nrepl
+               :depends nrepl
+               :depends auto-complete)
 
         (:name pig-mode
                :type git

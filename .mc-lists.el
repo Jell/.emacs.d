@@ -5,8 +5,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        evil-append-line
-        evil-backward-char
+        evil-change
         evil-forward-char
         evil-normal-state
         evil-paste-after
@@ -19,6 +18,7 @@
         control-meta-click
         delete-window
         evil-mouse-drag-region
+        evil-search-symbol-backward
         fix-for-evil
         ido-switch-buffer
         mouse-set-point
