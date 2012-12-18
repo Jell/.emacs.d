@@ -2,7 +2,7 @@
 (require 'ruby-compilation)
 (require 'rspec-mode)
 (require 'rcodetools)
-(rvm-activate-corresponding-ruby)
+(rvm-autodetect-ruby)
 (rinari-launch)
 (electric-pair-mode)
 (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.3-p194/bin/ruby")

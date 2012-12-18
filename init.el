@@ -25,7 +25,6 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-
 (defun control-meta-click (event)
   (interactive "e")
   (if (> (mc/num-cursors) 1)
@@ -128,7 +127,6 @@
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-
 (setq solarized-broken-srgb nil)
 (setq solarized-diff-mode (quote high))
 (setq solarized-termcolors 256)
@@ -169,9 +167,10 @@
 (require 'ansi-color)
 (require 'recentf)
 (require 'undo-tree)
+(require 'magit)
 
 ;; Erlang
-(autoload 'erlang-mode "erlang-mode" nil t)
+(autoload 'erlang-mode "erlang" nil t)
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 
 ;; CoffeeScript
@@ -219,6 +218,8 @@
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.arb\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.builder\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda () (load "rb.el"))))
 
 (defun rinari-hook ()
@@ -238,6 +239,7 @@
 
 (defun css-mode-hook ()
   (autoload 'css-mode "css-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
   (add-hook 'css-mode-hook '(progn
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
@@ -414,6 +416,12 @@
                             (require 'zencoding-mode)
                             (add-hook 'sgml-mode-hook 'zencoding-mode)))
 
+        (:name bundler
+               :description "Interact with Bundler from Emacs"
+               :website "https://github.com/tobiassvn/bundler.el"
+               :type github
+               :pkgname "tobiassvn/bundler.el")
+
         (:name ecb
                :description "Emacs Code Browser"
                :type cvs
@@ -502,6 +510,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;
 ;; Custom mode-line
 (load "setup-mode-line.el")
 
@@ -517,7 +526,7 @@
                                 keyboard-quit mwheel-scroll down up next-line previous-line
                                 backward-char forward-char end-of-buffer))
     (ding)))
-(setq ring-bell-function 'my-bell-function)
+(setq ring-bell-function 'ignore)
 
 ;; Remove trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -550,3 +559,5 @@
 (when window-system
   (menu-bar-mode))
 (put 'ido-exit-minibuffer 'disabled nil)
+
+(load custom-file)

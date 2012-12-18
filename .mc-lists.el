@@ -5,10 +5,14 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        evil-append-line
         evil-change
         evil-forward-char
+        evil-delete-char
         evil-normal-state
         evil-paste-after
+        evil-previous-line
+        paredit-splice-sexp
         ruby-electric-brace
         ruby-end-space
         ))
@@ -17,8 +21,11 @@
       '(
         control-meta-click
         delete-window
+        comment-or-uncomment-region
+        evil-insert-digraph
         evil-mouse-drag-region
         evil-search-symbol-backward
+        evil-yank
         fix-for-evil
         ido-switch-buffer
         mouse-set-point

@@ -16,7 +16,14 @@
 
 ;; Indentation for compojure
 (define-clojure-indent
+  (run 'defun)
+  (fresh 'defun)
+  (defprotocol 'defun)
+  (defrecord 'defun)
+  (deftype 'defun)
   (defroutes 'defun)
+  (describe 'defun)
+  (it 'defun)
   (GET 2)
   (POST 2)
   (PUT 2)
@@ -24,3 +31,7 @@
   (HEAD 2)
   (ANY 2)
   (context 2))
+
+(modify-syntax-entry ?- "w" clojure-mode-syntax-table)
+(modify-syntax-entry ?! "w" clojure-mode-syntax-table)
+(modify-syntax-entry ?? "w" clojure-mode-syntax-table)
