@@ -6,12 +6,17 @@
 (setq mc/cmds-to-run-for-all
       '(
         evil-append-line
+        evil-backward-char
         evil-change
+        evil-delete
         evil-forward-char
         evil-delete-char
+        evil-insert
+        evil-insert-line
         evil-normal-state
         evil-paste-after
         evil-previous-line
+        indent-for-tab-command
         paredit-splice-sexp
         ruby-electric-brace
         ruby-end-space

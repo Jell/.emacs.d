@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: assoc-in
+# --
+(assoc-in ${1:assoc-struct} [${2:keys}] ${3:value}) 

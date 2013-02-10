@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: str-replace
+# --
+(${1:clojure.string}/replace ${2:string} #"${3:regex}" ${4:replacement})

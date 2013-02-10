@@ -188,6 +188,11 @@
 (autoload 'erlang-mode "erlang" nil t)
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 
+;; Sass
+(autoload 'sass-mode "sass-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.scss" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.sass" . sass-mode))
+
 ;; CoffeeScript
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
@@ -242,7 +247,7 @@
 
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
+  (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . rhtml-mode))
   (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
   (add-hook 'rhtml-mode '(lambda ()
                            (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
@@ -311,6 +316,14 @@
                :features surround
                :post-init (progn (global-surround-mode 1)))
 
+        (:name go-mode
+               :description "Major mode for the Go programming language"
+               :type http
+               :url "http://go.googlecode.com/hg/misc/emacs/go-mode.el?r=tip"
+               :localname "go-mode.el"
+               :features go-mode
+               :post-init (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
@@ -368,10 +381,7 @@
                           (unless (or (boundp 'yas/snippet-dirs) (get 'yas/snippet-dirs 'customized-value))
                             (setq yas/snippet-dirs
                                   (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets")))))
-               :post-init (progn
-                            (put 'yas/snippet-dirs 'standard-value
-                                 (list (list 'quote
-                                             (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets"))))))
+               :post-init (progn (yasnippet-hook))
                :compile nil)
 
         (:name auto-complete

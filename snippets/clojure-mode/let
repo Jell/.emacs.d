@@ -1,3 +1,5 @@
+# -*- mode: snippet -*-
 #name: let
 # --
-(let [$0])
+(let [$1]
+  $0)

@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: format
+# --
+(format "${1:format}" ${2:strings})
