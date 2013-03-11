@@ -8,6 +8,23 @@ To install, run:
 Next time you open emacs, all the dependencies will install
 themselves! Magic!
 
+## Dependencies:
+
+````ruby
+# Packages
+sudo apt-get install curl git git-core subversion openjdk-7-jdk
+zlib1g-dev libreadline-dev cvs ack-grep libssl-dev
+
+# RVM
+curl -L https://get.rvm.io | bash -s stable --ruby
+
+# Lein
+cd /usr/local/bin
+curl -O https://raw.github.com/technomancy/leiningen/stable/bin/lein
+chmod +x lein
+lein
+````
+
 ## Todo:
 
 - List all external dependencies (git, cvs, rvm...), maybe install

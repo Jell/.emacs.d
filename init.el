@@ -504,6 +504,14 @@
                :depends nrepl
                :depends auto-complete)
 
+        (:name puppet-mode
+               :description "A simple mode for editing puppet manifests"
+               :type http
+               :url "https://raw.github.com/puppetlabs/puppet/master/ext/emacs/puppet-mode.el"
+               :prepare (progn
+                          (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
+                          (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))))
+
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
