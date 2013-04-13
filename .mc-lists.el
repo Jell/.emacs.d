@@ -16,6 +16,7 @@
         evil-normal-state
         evil-paste-after
         evil-previous-line
+        evil-visual-char
         indent-for-tab-command
         paredit-splice-sexp
         ruby-electric-brace

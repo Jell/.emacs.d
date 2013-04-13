@@ -4,6 +4,8 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Key bindings for mac
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 (setq mac-function-modifier 'super)
@@ -125,11 +127,12 @@
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-(setq solarized-broken-srgb nil)
-(setq solarized-diff-mode (quote high))
-(setq solarized-termcolors 256)
+;; (setq solarized-broken-srgb nil)
+;; (setq solarized-diff-mode (quote high))
+;; (setq solarized-termcolors 256)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
@@ -140,9 +143,10 @@
                       rainbow-delimiters
                       rainbow-mode
                       coffee-mode
-                      color-theme-solarized
+                      ;; color-theme-solarized
                       gist
                       slime
+                      magit
                       starter-kit
                       haskell-mode
                       erlang
@@ -167,8 +171,9 @@
 (require 'ansi-color)
 (require 'recentf)
 (require 'undo-tree)
-(require 'magit)
 
+;; Magit
+(require 'magit)
 ;; full screen magit-status
 (defadvice magit-status (around magit-fullscreen activate)
   (window-configuration-to-register :magit-fullscreen)
@@ -240,7 +245,22 @@
   (add-to-list 'auto-mode-alist '("\\.arb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.builder\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-  (add-hook 'ruby-mode-hook '(lambda () (load "rb.el"))))
+  (add-hook 'ruby-mode-hook
+            '(lambda ()
+               (require 'ruby-mode)
+               (require 'ruby-compilation)
+               (require 'rspec-mode)
+               (require 'rcodetools)
+               (rvm-autodetect-ruby)
+               (rinari-launch)
+               (electric-pair-mode)
+               (setq enh-ruby-program "/Users/Jell/.rvm/rubies/ruby-1.9.3-p194/bin/ruby")
+               (define-key rspec-mode-verifible-keymap (kbd "s") 'rspec-verify-single)
+
+               ;; Fix word limits
+               (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
+               (modify-syntax-entry ?! "w" ruby-mode-syntax-table)
+               (modify-syntax-entry ?? "w" ruby-mode-syntax-table))))
 
 (defun rinari-hook ()
   (require 'rinari))
@@ -512,6 +532,32 @@
                           (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
                           (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))))
 
+        (:name quack
+               :description "Enhanced support for editing and running Scheme code"
+               :type http
+               :url "http://www.neilvandyke.org/quack/quack.el"
+               :features (quack))
+
+        (:name geiser
+               :website "http://www.nongnu.org/geiser/"
+               :description "Geiser is a collection of Emacs major and minor modes that conspire with one or more Scheme interpreters to keep the Lisp Machine Spirit alive. It draws inspiration (and a bit more) from environments such as Common Lisp's Slime, Factor's FUEL, Squeak or Emacs itself, and does its best to make Scheme hacking inside Emacs (even more) fun."
+               :type git
+               :url "git://git.sv.gnu.org/geiser.git"
+               :load-path ("./elisp")
+               :build `("./autogen.sh" "./configure"
+                        ,(concat "make EMACS=" el-get-emacs)
+                        ,(concat "make EMACS=" el-get-emacs "info-recursive"))
+                                        ;,(concat "cd doc ; " el-get-install-info " --dir-file=./dir *.info"))
+               :build/windows-nt `("sh ./autogen.sh" "sh ./configure" "make"
+                                   ,(concat "cd doc & " el-get-install-info " --dir-file=./dir *.info"))
+               :info "doc"
+               :features geiser-load)
+
+        (:name jell-theme
+               :type git
+               :url "git@github.com:Jell/jell-emacs-theme.git"
+               :features jell-theme)
+
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
@@ -586,6 +632,18 @@
                   week))
       (message file)
       (delete-file file))))
+
+(defun insert-date (prefix)
+  "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+  (interactive "P")
+  (let ((format (cond
+                 ((not prefix) "%d.%m.%Y")
+                 ((equal prefix '(4)) "%Y-%m-%d")
+                 ((equal prefix '(16)) "%A, %d. %B %Y")))
+        (system-time-locale "de_DE"))
+    (insert (format-time-string format))))
+(global-set-key (kbd "C-c d") 'insert-date)
 
 (setq c-tab-always-indent nil)
 
