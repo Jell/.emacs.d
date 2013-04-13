@@ -31,6 +31,7 @@
  '(global-auto-revert-non-file-buffers t)
  '(global-hl-line-mode t)
  '(haskell-font-lock-symbols nil)
+ '(hl-line-sticky-flag nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
  '(initial-scratch-message ";;

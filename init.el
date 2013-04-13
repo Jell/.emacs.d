@@ -144,10 +144,14 @@
                       rainbow-mode
                       coffee-mode
                       ;; color-theme-solarized
+                      paredit
+                      find-file-in-project
+                      smex
+                      ido-ubiquitous
                       gist
                       slime
                       magit
-                      starter-kit
+                      starter-kit ;; TODO: remove this dependency.
                       haskell-mode
                       erlang
                       sass-mode
@@ -650,5 +654,8 @@
 (when window-system
   (menu-bar-mode))
 (put 'ido-exit-minibuffer 'disabled nil)
+
+;; Disable idle highlight
+(remove-hook 'prog-mode-hook 'esk-turn-on-idle-highlight-mode)
 
 (load custom-file)
