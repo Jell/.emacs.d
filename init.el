@@ -477,7 +477,7 @@
         (:name nyan-mode
                :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!"
                :type git
-               :url "https://github.com/TeMPOraL/nyan-mode.git"
+               :url "git@github.com:Jell/nyan-mode.git"
                :features nyan-mode
                :after (progn (nyan-mode)))
 
