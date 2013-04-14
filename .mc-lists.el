@@ -18,6 +18,9 @@
         evil-previous-line
         evil-visual-char
         indent-for-tab-command
+        eval-defun
+        paredit-forward-slurp-sexp
+        paredit-open-round
         paredit-splice-sexp
         ruby-electric-brace
         ruby-end-space

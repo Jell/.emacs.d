@@ -340,6 +340,12 @@
                :features surround
                :post-init (progn (global-surround-mode 1)))
 
+        (:name jell-theme
+               :type git
+               :url "git@github.com:Jell/jell-emacs-theme.git"
+               :features jell-theme)
+
+
         (:name go-mode
                :description "Major mode for the Go programming language"
                :type http
@@ -557,16 +563,14 @@
                :info "doc"
                :features geiser-load)
 
-        (:name jell-theme
-               :type git
-               :url "git@github.com:Jell/jell-emacs-theme.git"
-               :features jell-theme)
 
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
                :features pig-mode
-               :after (progn (pig-mode-hook)))))
+               :after (progn (pig-mode-hook)))
+
+        ))
 
 ;; Trigger synchronization of el-get packages
 
