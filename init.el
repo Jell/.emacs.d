@@ -150,7 +150,6 @@
                       ido-ubiquitous
                       gist
                       slime
-                      magit
                       starter-kit ;; TODO: remove this dependency.
                       haskell-mode
                       erlang
@@ -175,23 +174,6 @@
 (require 'ansi-color)
 (require 'recentf)
 (require 'undo-tree)
-
-;; Magit
-(require 'magit)
-;; full screen magit-status
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
-
-(defun magit-quit-session ()
-  "Restores the previous window configuration and kills the magit buffer"
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :magit-fullscreen))
-
-(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
-
 
 ;; Erlang
 (autoload 'erlang-mode "erlang" nil t)
@@ -563,13 +545,29 @@
                :info "doc"
                :features geiser-load)
 
+        (:name cl-lib
+               :type elpa
+               :description "Properly prefixed CL functions and macros"
+               :url "http://elpa.gnu.org/packages/cl-lib.html")
+
+        (:name magit
+               :website "https://github.com/magit/magit#readme"
+               :description "It's Magit! An Emacs mode for Git."
+               :type github
+               :pkgname "magit/magit"
+               :info "."
+               :after (progn (require 'magit))
+               ;; let el-get care about autoloads so that it works with all OSes
+               :build (if (version<= "24.3" emacs-version)
+                          `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
+                        `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
+               :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake")))
 
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
                :features pig-mode
                :after (progn (pig-mode-hook)))
-
         ))
 
 ;; Trigger synchronization of el-get packages
@@ -596,6 +594,20 @@
 ;; Stuff to trigger last
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; full screen magit-status
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun magit-quit-session ()
+  "Restores the previous window configuration and kills the magit buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+
+(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;;
 ;; Custom mode-line
