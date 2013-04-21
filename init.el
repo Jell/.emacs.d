@@ -500,7 +500,8 @@
                :pkgname "magnars/expand-region.el"
                :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want."
                :website "https://github.com/magnars/expand-region.el#readme"
-               :features expand-region)
+               :features expand-region
+               :before (progn (defconst ruby-block-end-re "end")))
 
         (:name nrepl
                :description "An Emacs client for nREPL, the Clojure networked REPL server."
