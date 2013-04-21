@@ -19,6 +19,8 @@
         evil-visual-char
         indent-for-tab-command
         eval-defun
+        evil-yank-line
+        paredit-doublequote
         paredit-forward-slurp-sexp
         paredit-open-round
         paredit-splice-sexp
