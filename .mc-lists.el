@@ -5,14 +5,18 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        eval-defun
         evil-append-line
         evil-backward-char
         evil-change
         evil-delete
         evil-forward-char
         evil-delete-char
+        evil-delete-line
+        evil-forward-char
         evil-insert
         evil-insert-line
+        evil-next-line
         evil-normal-state
         evil-paste-after
         evil-previous-line
@@ -20,8 +24,10 @@
         indent-for-tab-command
         eval-defun
         evil-yank-line
+        indent-for-tab-command
         paredit-doublequote
         paredit-forward-slurp-sexp
+        paredit-kill
         paredit-open-round
         paredit-splice-sexp
         ruby-electric-brace

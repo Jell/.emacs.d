@@ -46,6 +46,12 @@
 (global-set-key (kbd "C-c b l") 'bc-list)
 (global-set-key (kbd "C-c b c") 'bc-clear)
 
+;; Spork & Nailgun
+(global-set-key (kbd "C-x C-l") 'sang-start-all)
+
+;; Fix encoding
+(setq default-process-coding-system '(utf-8 . utf-8))
+
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
 
@@ -327,7 +333,6 @@
                :url "git@github.com:Jell/jell-emacs-theme.git"
                :features jell-theme)
 
-
         (:name go-mode
                :description "Major mode for the Go programming language"
                :type http
@@ -563,6 +568,22 @@
                           `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
                         `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
                :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake")))
+
+
+        (:name spork-and-nailgun
+               :description "Support for spork and nailgun"
+               :type github
+               :pkgname "PugglePay/spork-and-nailgun.el"
+               :features spork-and-nailgun
+               :after (progn (require 'find-file-in-project)
+                             (require 'spork-and-nailgun)))
+
+        (:name puggle-utils
+               :description "Usefull functions used at PugglePay"
+               :type github
+               :pkgname "PugglePay/puggle-emacs-utils"
+               :features puggle-utils
+               :after (progn (require 'puggle-utils)))
 
         (:name pig-mode
                :type git
