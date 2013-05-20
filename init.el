@@ -472,13 +472,6 @@
                :type github
                :pkgname "tobiassvn/bundler.el")
 
-        (:name ecb
-               :description "Emacs Code Browser"
-               :type cvs
-               :module "ecb"
-               :url ":pserver:anonymous@ecb.cvs.sourceforge.net:/cvsroot/ecb"
-               :build `(("make" "CEDET=" ,(concat "EMACS=" (shell-quote-argument el-get-emacs)))))
-
         (:name nyan-mode
                :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!"
                :type git
