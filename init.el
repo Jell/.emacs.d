@@ -12,7 +12,7 @@
 
 ;; Extra keybindings
 (global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'find-file-in-project)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
 ;; Multi cursors
@@ -136,9 +136,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-;; (setq solarized-broken-srgb nil)
-;; (setq solarized-diff-mode (quote high))
-;; (setq solarized-termcolors 256)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
@@ -149,7 +146,6 @@
                       rainbow-delimiters
                       rainbow-mode
                       coffee-mode
-                      ;; color-theme-solarized
                       paredit
                       find-file-in-project
                       smex
@@ -282,11 +278,23 @@
 (defun pig-mode-hook ()
   (autoload 'pig-mode "pig-mode" nil t))
 
+
+(defun fix-for-evil ()
+  (when (and (> (mc/num-cursors) 0)
+             (evil-normal-state-p evil-next-state))
+    (mc/execute-command-for-all-fake-cursors 'evil-backward-char)))
+
+(defun other-fix-for-evil ()
+  (when (and (> (mc/num-cursors) 0)
+             (not (evil-visual-state-p evil-next-state)))
+    (mc/execute-command-for-all-fake-cursors 'evil-visual-char)))
+
 (defun evil-hook ()
   (setq viper-mode t)
   (setq viper-custom-file-name "~/.emacs.d/viper")
   (setq viper-ex-style-editing nil)
   (setq evil-want-fine-undo t)
+  ;; (add-hook 'evil-normal-state-exit-hook 'fix-for-evil)
   (require 'evil)
   (evil-mode 1))
 
@@ -569,6 +577,14 @@
                         `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
                :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake")))
 
+        (:name emacs-jabber
+               :description "A minimal jabber client"
+               :type git
+               :url "git://emacs-jabber.git.sourceforge.net/gitroot/emacs-jabber/emacs-jabber"
+               :info "."
+               :load-path (".")
+               :features jabber-autoloads
+               :build ("autoreconf -i" "./configure" "make" "mv jabber.info emacs-jabber.info" ))
 
         (:name spork-and-nailgun
                :description "Support for spork and nailgun"
