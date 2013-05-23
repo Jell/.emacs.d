@@ -13,7 +13,7 @@ themselves! Magic!
 ````ruby
 # Packages
 sudo apt-get install curl git git-core subversion openjdk-7-jdk
-zlib1g-dev libreadline-dev cvs ack-grep libssl-dev texinfo aspell
+zlib1g-dev libreadline-dev cvs ack-grep libssl-dev texinfo aspell dbus
 
 # RVM
 curl -L https://get.rvm.io | bash -s stable --ruby
