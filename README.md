@@ -17,6 +17,7 @@ zlib1g-dev libreadline-dev cvs ack-grep libssl-dev texinfo aspell dbus
 
 # RVM
 curl -L https://get.rvm.io | bash -s stable --ruby
+rvm install ruby-1.9.3-p194
 
 # Lein
 cd /usr/local/bin
