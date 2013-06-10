@@ -24,6 +24,7 @@
 (global-set-key (kbd "M-+") 'er/expand-region)
 ;; For sublime users
 (global-set-key (kbd "C-c s") 'sublimify)
+(global-set-key (kbd "C-c e") 'emacsify)
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -663,6 +664,8 @@
 
 ;; Sublimify
 (load "sublimify.el")
+;; Emacsify
+(load "emacsify.el")
 ;; Move Lines
 (load "movelines.el")
 

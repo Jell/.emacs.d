@@ -1,12 +1,16 @@
 (defun sublimify ()
   (interactive)
   (evil-mode 0)
+  (global-emacs-keys-mode 0)
   (global-sublime-keys-mode 1))
 
 (defun un-sublimify ()
   (interactive)
   (global-sublime-keys-mode 0)
-  (evil-mode 1))
+  (evil-mode 1)
+  (dolist (b (buffer-list))
+    (unless (minibufferp b)
+      (evil-initialize-state 'normal b))))
 
 (define-minor-mode sublime-keys-mode
   "A minor mode for sublime keys."

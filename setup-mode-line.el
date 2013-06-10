@@ -4,25 +4,36 @@
   ;; the buffer name; the file name as a tool tip
   '(:eval
     (propertize
-     " %b "
+     " %b"
      'face 'font-lock-keyword-face
      'help-echo (buffer-file-name)))
 
   ;; line and column
   (propertize
-   " L%01l "
+   ":%01l "
    'face 'font-lock-type-face
    'help-echo '(format-mode-line "Line: %01l, Column: %01c"))
 
   '(:eval
-    (when evil-mode evil-mode-line-tag))
+    (propertize
+     (concat (cond (evil-mode (cond ((evil-normal-state-p) "N")
+                                    ((evil-insert-state-p) "I")
+                                    ((evil-visual-state-p) "V")
+                                    ((evil-emacs-state-p) "E")
+                                    ((evil-replace-state-p) "R")
+                                    ((evil-operator-state-p) "O")
+                                    ((evil-motion-state-p) "M")
+                                    (t evil-mode)))
+                   (global-sublime-keys-mode "SUBLIME")
+                   (global-emacs-keys-mode "EMACS")
+                   (t "")))))
 
   ;; the current major mode for the buffer.
   '(:eval
     (propertize
      (concat " "
              (format-mode-line mode-name)
-             " ")
+             "")
      'face 'font-lock-string-face
      'help-echo (concat "Minor modes: ["
                         (format-mode-line minor-mode-alist)
