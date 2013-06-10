@@ -31,7 +31,8 @@
     ([C-M-up] . move-lines-up)
     ([C-M-down] . move-lines-down)
     ("\C-z" . un-sublimify)
-    ("\M-X" . smex)))
+    ("\M-p" . goto-anything)
+    ("\M-P" . smex)))
 
 (define-global-minor-mode global-sublime-keys-mode
   sublime-keys-mode

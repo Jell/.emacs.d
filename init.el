@@ -612,6 +612,12 @@
                :features puggle-utils
                :after (progn (require 'puggle-utils)))
 
+        (:name helm
+               :description "Emacs incremental and narrowing framework"
+               :type github
+               :pkgname "emacs-helm/helm"
+               :features helm-config)
+
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
@@ -661,6 +667,19 @@
 ;;
 ;; Custom mode-line
 (load "setup-mode-line.el")
+
+;; goto-anything
+(eval-after-load "helm-regexp"
+  '(helm-attrset 'follow 1 helm-source-moccur))
+
+(defun goto-anything ()
+  "multi-occur in all buffers backed by files."
+  (interactive)
+  (helm-multi-occur
+   (delq nil
+         (mapcar (lambda (b)
+                   (when (buffer-file-name b) (buffer-name b)))
+                 (buffer-list)))))
 
 ;; Sublimify
 (load "sublimify.el")
