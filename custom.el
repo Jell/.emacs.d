@@ -35,22 +35,6 @@
  '(hl-line-sticky-flag nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
- '(initial-scratch-message ";;
-;;
-;;              _      _____      _          _
-;;            /\\ \\   /\\  ___\\   /\\ \\       /\\ \\
-;;            \\_\\ \\  \\ \\  __\\   \\ \\ \\____  \\ \\ \\____
-;;          /\\ ____\\  \\ \\ ____\\  \\ \\ ____\\  \\ \\ ____\\
-;;          \\/_____/   \\/_____/   \\/_____/   \\/_____/
-;;
-;;                                ( Hooray for Zoidberg! )
-;;              (\\/)_(^,,^)_(\\/) /
-;;
-;;
-
-
-
-")
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(latex-run-command "xelatex")

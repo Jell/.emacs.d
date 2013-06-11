@@ -1,7 +1,14 @@
 ;; Turn off mouse interface early in startup to avoid momentary display
-;; You really don't need these; trust me.
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; Setup scratch screen
+(let ((file (expand-file-name (concat "~/.emacs.d/scratch-messages/" (user-login-name) ".el"))))
+  (when (file-exists-p file)
+    (setq initial-scratch-message
+          (with-temp-buffer
+            (insert-file-contents file)
+            (buffer-string)))))
 
 ;; Key bindings for mac
 (when (fboundp 'windmove-default-keybindings)
