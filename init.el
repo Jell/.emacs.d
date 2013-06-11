@@ -13,6 +13,7 @@
 ;; Key bindings for mac
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 (setq mac-function-modifier 'super)
@@ -34,6 +35,8 @@
 (global-set-key (kbd "C-c e") 'emacsify)
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
+;; Ack
+(global-set-key (kbd "C-x C-p") 'ack-and-a-half)
 
 (defun control-meta-click (event)
   (interactive "e")
