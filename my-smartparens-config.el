@@ -1,10 +1,12 @@
 (require 'smartparens)
+(sp-use-paredit-bindings)
 
 ;; do not autoinsert ' pair if the point is preceeded by word.  This
 ;; will handle the situation when ' is used as a contraction symbol in
 ;; natural language.  Nil for second argument means to keep the
 ;; original definition of closing pair.
 (sp-pair "'" nil :unless '(sp-point-after-word-p))
+
 
 ;; NOTE: Normally, `sp-local-pair' accepts list of modes (or a single
 ;; mode) as a first argument.  The macro `sp-with-modes' adds this
@@ -24,8 +26,7 @@
   (sp-local-pair "`" "'")
   (sp-local-tag "\\b" "\\begin{_}" "\\end{_}"))
 
-(sp-use-paredit-bindings)
-
+;; Ruby mode
 (defun my-sp-ruby-block-on-newline (id action context)
   "Put trailing pair on newline and return to point."
   (save-excursion
