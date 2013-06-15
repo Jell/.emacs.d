@@ -46,15 +46,27 @@
     (indent-according-to-mode)))
 
 (defun my-sp-insert-ruby-end (id action context)
-  (when (string-prefix-p "close" (symbol-name action))
-    (if (equal action 'close-forward)
-        (save-excursion
-          (sp-backward-sexp)
-          (delete-indentation))
+  (when (equal action 'slurp-backward)
+    (save-excursion
+      (newline))
+    (delete-indentation))
+
+  (when (equal action 'barf-backward)
+    (save-excursion
+      (newline))
+    (delete-indentation))
+
+  (when (equal action 'slurp-forward)
       (save-excursion
-        (sp-forward-sexp)
-        (next-line)
-        (delete-indentation)))
+        (sp-backward-sexp)
+        (delete-indentation))
+    (newline))
+
+  (when (equal action 'barf-forward)
+    (save-excursion
+      (sp-forward-sexp)
+      (next-line)
+      (delete-indentation))
     (newline)))
 
 (sp-with-modes '(
