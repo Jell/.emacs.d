@@ -285,7 +285,7 @@
                (require 'rcodetools)
                (rvm-autodetect-ruby)
                (rinari-launch)
-               (electric-pair-mode))))
+               (ruby-end-mode 0)))) ; I don't want that.
 
 (defun rinari-hook ()
   (require 'rinari))
@@ -637,6 +637,18 @@
                :pkgname "emacs-helm/helm"
                :features helm-config)
 
+        (:name dash
+               :description "A modern list library for Emacs"
+               :type github
+               :pkgname "magnars/dash.el"
+               :features dash)
+
+        (:name smartparens
+               :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
+               :type github
+               :pkgname "Jell/smartparens"
+               :features smartparens)
+
         (:name pig-mode
                :type git
                :url "https://github.com/motus/pig-mode.git"
@@ -762,5 +774,8 @@
 
 ;; Disable idle highlight
 (remove-hook 'prog-mode-hook 'esk-turn-on-idle-highlight-mode)
+
+;; Setup smartparens
+(require 'my-smartparens-config)
 
 (load custom-file)
