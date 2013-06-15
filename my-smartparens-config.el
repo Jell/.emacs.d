@@ -29,19 +29,21 @@
 ;; Ruby mode
 (defun my-sp-ruby-block-on-newline (id action context)
   "Put trailing pair on newline and return to point."
-  (save-excursion
-    (newline)
-    (indent-according-to-mode))
-  (indent-according-to-mode))
+  (when (equal action 'insert)
+    (save-excursion
+      (newline)
+      (indent-according-to-mode))
+    (indent-according-to-mode)))
 
 (defun my-sp-ruby-def-on-newline (id action context)
   "Put trailing pair on newline and return to point."
-  (save-excursion
-    (insert "_")
-    (newline)
-    (indent-according-to-mode))
-  (kill-forward-chars 1)
-  (indent-according-to-mode))
+  (when (equal action 'insert)
+    (save-excursion
+      (insert "_")
+      (newline)
+      (indent-according-to-mode))
+    (kill-forward-chars 1)
+    (indent-according-to-mode)))
 
 (defun my-sp-insert-ruby-end (id action context)
   (when (string-prefix-p "close" (symbol-name action))
@@ -59,6 +61,7 @@
                  ruby-mode
                  )
 
+  ;; Blocks
   (sp-local-pair " do" "  end"
                  :unless '(sp-in-string-p)
                  :actions '(insert)
@@ -71,11 +74,38 @@
                  :pre-handlers '(my-sp-insert-ruby-end)
                  :post-handlers '(my-sp-ruby-block-on-newline))
 
+  ;; Defs
+
   (sp-local-pair "def " "  end"
                  :unless '(sp-in-string-p)
                  :actions '(insert)
                  :pre-handlers '(my-sp-insert-ruby-end)
                  :post-handlers '(my-sp-ruby-def-on-newline))
+
+  (sp-local-pair "class " "  end"
+                 :unless '(sp-in-string-p)
+                 :actions '(insert)
+                 :pre-handlers '(my-sp-insert-ruby-end)
+                 :post-handlers '(my-sp-ruby-def-on-newline))
+
+  (sp-local-pair "module " "  end"
+                 :unless '(sp-in-string-p)
+                 :actions '(insert)
+                 :pre-handlers '(my-sp-insert-ruby-end)
+                 :post-handlers '(my-sp-ruby-def-on-newline))
+
+  (sp-local-pair "if " "  end"
+                 :unless '(sp-in-string-p)
+                 :actions '(insert)
+                 :pre-handlers '(my-sp-insert-ruby-end)
+                 :post-handlers '(my-sp-ruby-def-on-newline))
+
+  (sp-local-pair "unless " "  end"
+                 :unless '(sp-in-string-p)
+                 :actions '(insert)
+                 :pre-handlers '(my-sp-insert-ruby-end)
+                 :post-handlers '(my-sp-ruby-def-on-newline))
+
   )
 
 ;; html modes
