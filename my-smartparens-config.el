@@ -26,100 +26,6 @@
   (sp-local-pair "`" "'")
   (sp-local-tag "\\b" "\\begin{_}" "\\end{_}"))
 
-;; Ruby mode
-(defun my-sp-ruby-block-on-newline (id action context)
-  "Put trailing pair on newline and return to point."
-  (when (equal action 'insert)
-    (save-excursion
-      (newline)
-      (indent-according-to-mode))
-    (indent-according-to-mode)))
-
-(defun my-sp-ruby-def-on-newline (id action context)
-  "Put trailing pair on newline and return to point."
-  (when (equal action 'insert)
-    (save-excursion
-      (insert "_")
-      (newline)
-      (indent-according-to-mode))
-    (kill-forward-chars 1)
-    (indent-according-to-mode)))
-
-(defun my-sp-insert-ruby-end (id action context)
-  (when (equal action 'slurp-backward)
-    (save-excursion
-      (newline))
-    (delete-indentation))
-
-  (when (equal action 'barf-backward)
-    (save-excursion
-      (newline))
-    (delete-indentation))
-
-  (when (equal action 'slurp-forward)
-      (save-excursion
-        (sp-backward-sexp)
-        (delete-indentation))
-    (newline))
-
-  (when (equal action 'barf-forward)
-    (save-excursion
-      (sp-forward-sexp)
-      (next-line)
-      (delete-indentation))
-    (newline)))
-
-(sp-with-modes '(
-                 ruby-mode
-                 )
-
-  ;; Blocks
-  (sp-local-pair " do" "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-block-on-newline))
-
-  (sp-local-pair "begin" "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-block-on-newline))
-
-  ;; Defs
-
-  (sp-local-pair "def " "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-def-on-newline))
-
-  (sp-local-pair "class " "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-def-on-newline))
-
-  (sp-local-pair "module " "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-def-on-newline))
-
-  (sp-local-pair "if " "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-def-on-newline))
-
-  (sp-local-pair "unless " "  end"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(my-sp-insert-ruby-end)
-                 :post-handlers '(my-sp-ruby-def-on-newline))
-
-  )
-
 ;; html modes
 (sp-with-modes '(
                  sgml-mode
@@ -129,6 +35,7 @@
   (sp-local-tag  "<" "<_>" "</_>" :transform 'sp-match-sgml-tags))
 
 ;; smartparens where we want
+(require 'smartparens-ruby)
 (add-hook 'ruby-mode-hook (lambda () (smartparens-mode +1)))
 
 (provide 'my-smartparens-config)
