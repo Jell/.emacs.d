@@ -20,18 +20,22 @@
 (defun sp-ruby-pre-handler (id action context)
   (when (equal action 'slurp-backward)
     (save-excursion
-      (newline))
-    (delete-indentation))
+      (sp-forward-sexp)
+      (delete-indentation -1))
+    (save-excursion
+      (newline)))
 
   (when (equal action 'barf-backward)
     (save-excursion
-      (newline))
-    (delete-indentation))
+      (sp-backward-sexp)
+      (delete-indentation))
+    (save-excursion
+      (newline)))
 
   (when (equal action 'slurp-forward)
-      (save-excursion
-        (sp-backward-sexp)
-        (delete-indentation))
+    (save-excursion
+      (sp-backward-sexp)
+      (delete-indentation))
     (newline))
 
   (when (equal action 'barf-forward)
