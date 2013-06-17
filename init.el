@@ -64,7 +64,6 @@
 (global-set-key (kbd "C-c C-<down>") 'windmove-down)
 
 ;; Extra keybindings for when working in tty
-
 (global-set-key (kbd "M-[ c") (kbd "C-<right>"))
 (global-set-key (kbd "M-[ d") (kbd "C-<left>"))
 (global-set-key (kbd "M-[ a") (kbd "C-<up>"))
@@ -73,6 +72,14 @@
 (global-set-key (kbd "C-c M-[ d") (kbd "C-c C-<left>"))
 (global-set-key (kbd "C-c M-[ a") (kbd "C-c C-<up>"))
 (global-set-key (kbd "C-c M-[ b") (kbd "C-c C-<down>"))
+(global-set-key (kbd "ESC <down>") (kbd "M-<down>"))
+(global-set-key (kbd "ESC <up>") (kbd "M-<up>"))
+
+;; Add those escape sequences to iterm2.
+(define-key input-decode-map "\e[1;8A" [C-M-up])
+(define-key input-decode-map "\e[1;8B" [C-M-down])
+(define-key input-decode-map "\e[1;8C" [C-M-right])
+(define-key input-decode-map "\e[1;8D" [C-M-left])
 
 ;; Spork & Nailgun
 (global-set-key (kbd "C-x C-l") 'sang-start-all)
