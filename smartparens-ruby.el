@@ -1,6 +1,16 @@
 (require 'smartparens)
 
 ;; helpers
+(defun sp-ruby-delete-indentation (&optional arg)
+  (delete-indentation arg)
+  (when (looking-at " [.(\\[]")
+    (delete-char 1))
+  (save-excursion
+    (backward-char)
+    (when (looking-at "[.)[] ")
+      (forward-char)
+      (delete-char 1))))
+
 (defun sp-ruby-block-post-handler (id action context)
   (when (equal action 'insert)
     (save-excursion
@@ -21,27 +31,31 @@
   (when (equal action 'slurp-backward)
     (save-excursion
       (sp-forward-sexp)
-      (delete-indentation -1))
+      (sp-ruby-delete-indentation -1))
     (save-excursion
-      (newline)))
+      (newline))
+    (when (not (looking-back " "))
+      (insert " ")))
 
   (when (equal action 'barf-backward)
     (save-excursion
       (sp-backward-sexp)
-      (delete-indentation))
+      (sp-ruby-delete-indentation))
     (save-excursion
-      (newline)))
+      (newline))
+    (when (not (looking-back " "))
+      (insert " ")))
 
   (when (equal action 'slurp-forward)
     (save-excursion
       (sp-backward-sexp)
-      (delete-indentation))
+      (sp-ruby-delete-indentation))
     (newline))
 
   (when (equal action 'barf-forward)
     (save-excursion
       (sp-forward-sexp)
-      (delete-indentation -1))
+      (sp-ruby-delete-indentation -1))
     (newline)))
 
 (defun sp-ruby-in-string-or-word-p (id action context)
@@ -58,6 +72,12 @@
 
   ;; Blocks
   (sp-local-pair "do" "end"
+                 :unless '(sp-ruby-no-do-block-p)
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-block-post-handler))
+
+  (sp-local-pair "{" "}"
                  :unless '(sp-ruby-no-do-block-p)
                  :actions '(insert)
                  :pre-handlers '(sp-ruby-pre-handler)

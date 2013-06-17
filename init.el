@@ -280,6 +280,7 @@
   (ruby-set-enh-ruby-program)
 
   ;; Fix word limits
+  (modify-syntax-entry ?@ "w" ruby-mode-syntax-table)
   (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
   (modify-syntax-entry ?! "w" ruby-mode-syntax-table)
   (modify-syntax-entry ?? "w" ruby-mode-syntax-table)
