@@ -285,6 +285,10 @@
   (modify-syntax-entry ?! "w" ruby-mode-syntax-table)
   (modify-syntax-entry ?? "w" ruby-mode-syntax-table)
 
+  ;; Some extra keys
+  (evil-define-key 'normal ruby-mode-map
+    "J" (lambda () (sp-ruby-delete-indentation -1)))
+
   (add-hook 'ruby-mode-hook
             '(lambda ()
                (require 'ruby-mode)
