@@ -3,11 +3,11 @@
 ;; helpers
 (defun sp-ruby-delete-indentation (&optional arg)
   (delete-indentation arg)
-  (when (looking-at " [.(\\[]")
+  (when (looking-at " [.([,]")
     (delete-char 1))
   (save-excursion
     (backward-char)
-    (when (looking-at "[.)[] ")
+    (when (looking-at "\\. ")
       (forward-char)
       (delete-char 1))))
 
@@ -80,8 +80,7 @@
   (sp-local-pair "{" "}"
                  :unless '(sp-ruby-no-do-block-p)
                  :actions '(insert)
-                 :pre-handlers '(sp-ruby-pre-handler)
-                 :post-handlers '(sp-ruby-block-post-handler))
+                 :pre-handlers '(sp-ruby-pre-handler))
 
   (sp-local-pair "begin" "end"
                  :unless '(sp-ruby-in-string-or-word-p)
