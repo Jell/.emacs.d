@@ -295,6 +295,7 @@
                (require 'ruby-compilation)
                (require 'rspec-mode)
                (require 'rcodetools)
+               (require 'ruby-end-mode)
                (rvm-autodetect-ruby))))
 
 (defun rhtml-mode-hook ()
@@ -407,6 +408,12 @@
                :post-init (progn (ruby-mode-hook)))
 
         (:name ruby-compilation :type elpa)
+
+        (:name ruby-end
+               :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
+               :type http
+               :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
+               :features ruby-end)
 
         (:name rdebug
                :description "Ruby debugger user interface, startup file."
