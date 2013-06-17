@@ -11,10 +11,10 @@
 (defun sp-ruby-def-post-handler (id action context)
   (when (equal action 'insert)
     (save-excursion
-      (insert "_")
+      (insert " _")
       (newline)
       (indent-according-to-mode))
-    (kill-forward-chars 1)
+    (kill-forward-chars 2)
     (indent-according-to-mode)))
 
 (defun sp-ruby-pre-handler (id action context)
@@ -56,11 +56,6 @@
                  :pre-handlers '(sp-ruby-pre-handler)
                  :post-handlers '(sp-ruby-block-post-handler))
 
-  (sp-local-pair "<<-EOF" "EOF"
-                 :unless '(sp-in-string-p)
-                 :actions '(insert)
-                 :pre-handlers '(sp-ruby-pre-handler)
-                 :post-handlers '(sp-ruby-block-post-handler))
   ;; Defs
 
   (sp-local-pair "def" "end"
@@ -92,7 +87,6 @@
                  :actions '(insert)
                  :pre-handlers '(sp-ruby-pre-handler)
                  :post-handlers '(sp-ruby-def-post-handler))
-
   )
 
 (provide 'smartparens-ruby)
