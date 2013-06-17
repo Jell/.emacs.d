@@ -41,8 +41,7 @@
   (when (equal action 'barf-forward)
     (save-excursion
       (sp-forward-sexp)
-      (next-line)
-      (delete-indentation))
+      (delete-indentation -1))
     (newline)))
 
 (sp-with-modes '(ruby-mode)
