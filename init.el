@@ -25,8 +25,8 @@
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
 ;; Multi cursors
 (global-set-key (kbd "C-c C-d") 'mc/edit-lines)
-(global-set-key (kbd "C--") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M--") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-+") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
 ;; Expand mark
 (global-set-key (kbd "M-+") 'er/expand-region)
@@ -283,12 +283,7 @@
                (require 'ruby-compilation)
                (require 'rspec-mode)
                (require 'rcodetools)
-               (rvm-autodetect-ruby)
-               (rinari-launch)
-               (ruby-end-mode 0)))) ; I don't want that.
-
-(defun rinari-hook ()
-  (require 'rinari))
+               (rvm-autodetect-ruby))))
 
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
@@ -406,17 +401,6 @@
                :type svn
                :url "http://ruby-debug.rubyforge.org/svn/trunk/emacs/")
 
-        (:name rinari
-               :description "Rinari Is Not A Rails IDE"
-               :type git
-               :url "http://github.com/eschulte/rinari.git"
-               :load-path ("." "util" "util/jump")
-               :compile ("\\.el$" "util")
-               :build ("rake doc:install_info")
-               :info "doc"
-               :features rinari
-               :post-init (progn (rinari-hook)))
-
         (:name css-mode
                :type elpa
                :post-init (progn (css-mode-hook)))
@@ -457,12 +441,6 @@
                                          (expand-file-name "dict"))
                             (require 'auto-complete-config)
                             (ac-config-default)))
-
-        (:name ruby-end
-               :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
-               :type http
-               :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
-               :features ruby-end)
 
         (:name markdown-mode
                :description "Major mode to edit Markdown files in Emacs"
@@ -654,6 +632,13 @@
                :url "https://github.com/motus/pig-mode.git"
                :features pig-mode
                :after (progn (pig-mode-hook)))
+
+        (:name ace-jump-mode
+               :website "https://github.com/winterTTr/ace-jump-mode/wiki"
+               :description "A quick cursor location minor mode for emacs"
+               :type github
+               :pkgname "winterTTr/ace-jump-mode"
+               :features ace-jump-mode)
         ))
 
 ;; Trigger synchronization of el-get packages
