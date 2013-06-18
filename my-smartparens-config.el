@@ -35,7 +35,7 @@
   (sp-local-tag  "<" "<_>" "</_>" :transform 'sp-match-sgml-tags))
 
 ;; smartparens where we want
-(require 'my-smartparens-ruby)
+(require 'smartparens-ruby)
 (add-hook 'ruby-mode-hook (lambda () (smartparens-mode +1)))
 
 (provide 'my-smartparens-config)
