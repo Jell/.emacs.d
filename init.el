@@ -198,7 +198,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-(load custom-file)
 ;; Package defs ----------------------------------------------------------------
 
 (setq dotfiles-dir (file-name-directory
@@ -263,7 +262,7 @@
              (ruby-root (expand-file-name (first (last rubies)))))
         (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))))
 
-(defun ruby-mode-hook ()
+(defun ruby-mode-setup ()
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
@@ -298,31 +297,27 @@
                (require 'ruby-end-mode)
                (rvm-autodetect-ruby))))
 
-(defun rhtml-mode-hook ()
+(defun rhtml-mode-setup ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . rhtml-mode))
   (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
   (add-hook 'rhtml-mode '(lambda ()
                            (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
 
-(defun yaml-mode-hook ()
+(defun yaml-mode-setup ()
   (autoload 'yaml-mode "yaml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
 
-(defun css-mode-hook ()
+(defun css-mode-setup ()
   (autoload 'css-mode "css-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
   (add-hook 'css-mode-hook '(progn
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
-(defun rvm-hook ()
+(defun rvm-setup ()
   (rvm-use-default))
-
-(defun pig-mode-hook ()
-  (autoload 'pig-mode "pig-mode" nil t))
-
 
 (defun fix-for-evil ()
   (when (and (> (mc/num-cursors) 0)
@@ -334,7 +329,7 @@
              (not (evil-visual-state-p evil-next-state)))
     (mc/execute-command-for-all-fake-cursors 'evil-visual-char)))
 
-(defun evil-hook ()
+(defun evil-setup ()
   (setq viper-mode t)
   (setq viper-custom-file-name "~/.emacs.d/viper")
   (setq viper-ex-style-editing nil)
@@ -343,7 +338,7 @@
   (require 'evil)
   (evil-mode 1))
 
-(defun yasnippet-hook ()
+(defun yasnippet-setup ()
   (require 'yasnippet)
   (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"
                            "~/.emacs.d/el-get/yasnippet/extras/imported"
@@ -351,7 +346,7 @@
   (setq yas/trigger-key "TAB")
   (yas/global-mode 1))
 
-(defun ack-and-a-half-hook ()
+(defun ack-and-a-half-setup ()
   (defalias 'ack 'ack-and-a-half)
   (defalias 'ack-same 'ack-and-a-half-same)
   (defalias 'ack-find-file 'ack-and-a-half-find-file)
@@ -372,14 +367,14 @@
                :type git
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
-               :post-init (progn (evil-hook)))
+               :post-init (evil-setup))
 
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
                :type git
                :load "surround.el"
                :features surround
-               :post-init (progn (global-surround-mode 1)))
+               :post-init (global-surround-mode 1))
 
         (:name jell-theme
                :type git
@@ -399,13 +394,13 @@
                :url "git://github.com/senny/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :post-init (progn (rvm-hook)))
+               :post-init (rvm-setup))
 
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
-               :post-init (progn (ruby-mode-hook)))
+               :post-init (ruby-mode-setup))
 
         (:name ruby-compilation :type elpa)
 
@@ -422,19 +417,19 @@
 
         (:name css-mode
                :type elpa
-               :post-init (progn (css-mode-hook)))
+               :post-init (css-mode-setup))
 
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
-               :post-init (progn (rhtml-mode-hook)))
+               :post-init (rhtml-mode-setup))
 
         (:name yaml-mode
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :post-init (progn (yaml-mode-hook)))
+               :post-init (yaml-mode-setup))
 
         (:name yasnippet
                :website "http://code.google.com/p/yasnippet/"
@@ -443,10 +438,13 @@
                :url "https://github.com/capitaomorte/yasnippet.git"
                :features "yasnippet"
                :prepare (progn
-                          (unless (or (boundp 'yas/snippet-dirs) (get 'yas/snippet-dirs 'customized-value))
+                          (unless (or (boundp 'yas/snippet-dirs)
+                                      (get 'yas/snippet-dirs 'customized-value))
                             (setq yas/snippet-dirs
-                                  (list (concat el-get-dir (file-name-as-directory "yasnippet") "snippets")))))
-               :post-init (progn (yasnippet-hook))
+                                  (list (concat el-get-dir
+                                                (file-name-as-directory "yasnippet")
+                                                "snippets")))))
+               :post-init (yasnippet-setup)
                :compile nil)
 
         (:name auto-complete
@@ -454,12 +452,11 @@
                :type git
                :url "https://github.com/auto-complete/auto-complete.git"
                :depends popup
-               :post-init (progn
-                            (require 'auto-complete)
-                            (add-to-list 'ac-dictionary-directories
-                                         (expand-file-name "dict"))
-                            (require 'auto-complete-config)
-                            (ac-config-default)))
+               :post-init (progn (require 'auto-complete)
+                                 (add-to-list 'ac-dictionary-directories
+                                              (expand-file-name "dict"))
+                                 (require 'auto-complete-config)
+                                 (ac-config-default)))
 
         (:name markdown-mode
                :description "Major mode to edit Markdown files in Emacs"
@@ -489,16 +486,15 @@
                :type git
                :url "https://github.com/jhelwig/ack-and-a-half.git"
                :features ack-and-a-half
-               :after (progn (ack-and-a-half-hook)))
+               :after (ack-and-a-half-setup))
 
         (:name zencoding-mode
                :description "Unfold CSS-selector-like expressions to markup"
                :type git
                :url "https://github.com/rooney/zencoding.git"
                :features zencoding-mode
-               :post-init (progn
-                            (require 'zencoding-mode)
-                            (add-hook 'sgml-mode-hook 'zencoding-mode)))
+               :post-init (progn (require 'zencoding-mode)
+                                 (add-hook 'sgml-mode-hook 'zencoding-mode)))
 
         (:name bundler
                :description "Interact with Bundler from Emacs"
@@ -511,7 +507,7 @@
                :type git
                :url "git@github.com:Jell/nyan-mode.git"
                :features nyan-mode
-               :after (progn (nyan-mode)))
+               :after (nyan-mode))
 
         (:name multiple-cursors
                :description "Sublime-like multiple cursors"
@@ -525,7 +521,8 @@
                :description "Minor mode for smooth scrolling."
                :type emacswiki
                :features smooth-scroll
-               :after (progn (require 'smooth-scroll) (smooth-scroll-mode t)))
+               :after (progn (require 'smooth-scroll)
+                             (smooth-scroll-mode t)))
 
         (:name breadcrumb
                :website "http://breadcrumbemacs.sourceforge.net/"
@@ -533,7 +530,7 @@
                :type http
                :url "http://downloads.sourceforge.net/project/breadcrumbemacs/Breadcrumb%20for%20Emacs/1.1.3/breadcrumb-1.1.3.zip"
                :build ("unzip breadcrumb-1.1.3.zip")
-               :after (progn (require 'breadcrumb)))
+               :after (require 'breadcrumb))
 
         (:name expand-region
                :type github
@@ -541,7 +538,7 @@
                :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want."
                :website "https://github.com/magnars/expand-region.el#readme"
                :features expand-region
-               :before (progn (defconst ruby-block-end-re "end")))
+               :before (defconst ruby-block-end-re "end"))
 
         (:name nrepl
                :description "An Emacs client for nREPL, the Clojure networked REPL server."
@@ -597,7 +594,7 @@
                :type github
                :pkgname "magit/magit"
                :info "."
-               :after (progn (require 'magit))
+               :after (require 'magit)
                ;; let el-get care about autoloads so that it works with all OSes
                :build (if (version<= "24.3" emacs-version)
                           `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
@@ -626,7 +623,7 @@
                :type github
                :pkgname "PugglePay/puggle-emacs-utils"
                :features puggle-utils
-               :after (progn (require 'puggle-utils)))
+               :after (require 'puggle-utils))
 
         (:name helm
                :description "Emacs incremental and narrowing framework"
@@ -644,13 +641,8 @@
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
                :pkgname "Jell/smartparens"
-               :features smartparens)
-
-        (:name pig-mode
-               :type git
-               :url "https://github.com/motus/pig-mode.git"
-               :features pig-mode
-               :after (progn (pig-mode-hook)))
+               :features smartparens
+               :after (require 'my-smartparens-config))
 
         (:name ace-jump-mode
                :website "https://github.com/winterTTr/ace-jump-mode/wiki"
@@ -778,8 +770,3 @@
 
 ;; Disable idle highlight
 (remove-hook 'prog-mode-hook 'esk-turn-on-idle-highlight-mode)
-
-;; Setup smartparens
-(require 'my-smartparens-config)
-
-(load custom-file)
