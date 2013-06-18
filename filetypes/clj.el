@@ -49,3 +49,5 @@
 Display the results in a hyperlinked *compilation* buffer."
   (interactive)
   (compile "lein kibit"))
+
+(provide 'clj)

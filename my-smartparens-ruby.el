@@ -11,6 +11,11 @@
       (forward-char)
       (delete-char 1))))
 
+(defun sp-ruby-post-handler (id action context)
+  "Removes end right after inserting it"
+  (when (equal action 'insert)
+    (delete-forward-char 3)))
+
 (defun sp-ruby-pre-handler (id action context)
   (when (equal action 'slurp-backward)
     (save-excursion
@@ -46,38 +51,43 @@
 
   ;; Blocks
   (sp-local-pair "do" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
 
   (sp-local-pair "{" "}"
-                 :actions '(insert wrap)
+                 :actions '(insert)
                  :pre-handlers '(sp-ruby-pre-handler))
 
   (sp-local-pair "begin" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
-
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
   ;; Defs
 
   (sp-local-pair "def" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
 
   (sp-local-pair "class" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
 
   (sp-local-pair "module" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
 
   (sp-local-pair "if" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler))
 
   (sp-local-pair "unless" "end"
-                 :actions '()
-                 :pre-handlers '(sp-ruby-pre-handler))
-  )
+                 :actions '(insert)
+                 :pre-handlers '(sp-ruby-pre-handler)
+                 :post-handlers '(sp-ruby-post-handler)))
 
-(provide 'smartparens-ruby)
+(provide 'my-smartparens-ruby)
