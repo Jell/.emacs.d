@@ -342,7 +342,6 @@
                :localname "go-mode.el"
                :features go-mode
                :post-init (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
-
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
@@ -362,7 +361,8 @@
                :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
                :type http
                :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
-               :features ruby-end)
+               :features ruby-end
+               :after (require 'ruby-end))
 
         (:name rdebug
                :description "Ruby debugger user interface, startup file."
@@ -374,22 +374,22 @@
                :post-init (css-mode-setup))
 
         (:name rhtml
-               :type git
-               :url "https://github.com/eschulte/rhtml.git"
+               :type github
+               :url "eschulte/rhtml"
                :features rhtml-mode
                :post-init (rhtml-mode-setup))
 
         (:name yaml-mode
-               :type git
-               :url "http://github.com/yoshiki/yaml-mode.git"
+               :type github
+               :pkgname "yoshiki/yaml-mode"
                :features yaml-mode
                :post-init (yaml-mode-setup))
 
         (:name yasnippet
                :website "http://code.google.com/p/yasnippet/"
                :description "YASnippet is a template system for Emacs."
-               :type git
-               :url "https://github.com/capitaomorte/yasnippet.git"
+               :type github
+               :pkgname "capitaomorte/yasnippet"
                :features "yasnippet"
                :prepare (progn
                           (unless (or (boundp 'yas/snippet-dirs)
@@ -403,8 +403,8 @@
 
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
-               :type git
-               :url "https://github.com/auto-complete/auto-complete.git"
+               :type github
+               :pkgname "auto-complete/auto-complete"
                :depends popup
                :post-init (progn (require 'auto-complete)
                                  (add-to-list 'ac-dictionary-directories
@@ -421,38 +421,37 @@
 
         (:name rspec-mode
                :description "Enhance ruby-mode for RSpec"
-               :type git
-               :url "git@github.com:PugglePay/rspec-mode.git"
+               :type github
+               :pkgname "pezra/rspec-mode"
                :features rspec-mode)
 
         (:name cucumber-mode
                :description "Cucumber mode"
-               :type git
-               :url "https://github.com/michaelklishin/cucumber.el.git"
+               :type github
+               :pkgname "michaelklishin/cucumber.el"
                :features feature-mode)
 
         (:name jekyll
-               :type git
-               :url "https://github.com/diasjorge/jekyll.el.git"
+               :type github
+               :pkgname "diasjorge/jekyll.el"
                :features jekyll)
 
         (:name ack-and-a-half
-               :type git
-               :url "https://github.com/jhelwig/ack-and-a-half.git"
+               :type github
+               :pkgname "jhelwig/ack-and-a-half"
                :features ack-and-a-half
                :after (ack-and-a-half-setup))
 
         (:name zencoding-mode
                :description "Unfold CSS-selector-like expressions to markup"
-               :type git
-               :url "https://github.com/rooney/zencoding.git"
+               :type github
+               :pkgname "rooney/zencoding"
                :features zencoding-mode
                :post-init (progn (require 'zencoding-mode)
                                  (add-hook 'sgml-mode-hook 'zencoding-mode)))
 
         (:name bundler
                :description "Interact with Bundler from Emacs"
-               :website "https://github.com/tobiassvn/bundler.el"
                :type github
                :pkgname "tobiassvn/bundler.el")
 
@@ -465,8 +464,8 @@
 
         (:name multiple-cursors
                :description "Sublime-like multiple cursors"
-               :type git
-               :url "https://github.com/magnars/multiple-cursors.el.git"
+               :type github
+               :pkgname "magnars/multiple-cursors.el"
                :features multiple-cursors
                :after (progn (require 'multiple-cursors nil t)
                              (multiple-cursors-mode 0)))
@@ -502,8 +501,8 @@
 
         (:name ac-nrepl
                :description "Autocomplete for nREPL"
-               :type git
-               :url "https://github.com/purcell/ac-nrepl.git"
+               :type github
+               :pkgname "purcell/ac-nrepl"
                :features ac-nrepl
                :depends nrepl
                :depends auto-complete)
