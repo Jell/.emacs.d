@@ -28,6 +28,5 @@ lein
 
 ## Todo:
 
-- List all external dependencies (git, cvs, rvm...), maybe install
-  them automatically via brew or apt-get depending on the platform?
-- Remove hardcoded path to ruby 1.9 (Maybe not needed once ruby 1.8 is EOL?)
+- Cleanup el-get recipes
+- Organise init.el
