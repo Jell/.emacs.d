@@ -375,7 +375,7 @@
 
         (:name rhtml
                :type github
-               :url "eschulte/rhtml"
+               :pkgname "eschulte/rhtml"
                :features rhtml-mode
                :post-init (rhtml-mode-setup))
 
