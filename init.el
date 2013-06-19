@@ -342,6 +342,7 @@
                :localname "go-mode.el"
                :features go-mode
                :post-init (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
@@ -356,13 +357,6 @@
                :post-init (require 'rb))
 
         (:name ruby-compilation :type elpa)
-
-        (:name ruby-end
-               :description "Emacs minor mode for automatic insertion of end blocks for Ruby"
-               :type http
-               :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el"
-               :features ruby-end
-               :after (require 'ruby-end))
 
         (:name rdebug
                :description "Ruby debugger user interface, startup file."

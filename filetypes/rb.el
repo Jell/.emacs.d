@@ -29,7 +29,7 @@
 
 ;; Some extra keys
 (evil-define-key 'normal ruby-mode-map
-  "J" (lambda () (sp-ruby-delete-indentation -1)))
+  "J" (lambda () (interactive) (sp-ruby-delete-indentation -1)))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
