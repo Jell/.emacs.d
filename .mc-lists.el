@@ -6,25 +6,34 @@
 (setq mc/cmds-to-run-for-all
       '(
         eval-defun
+        eval-defun
+        evil-append
         evil-append-line
         evil-backward-char
+        evil-backward-word-begin
         evil-change
         evil-delete
-        evil-forward-char
+        evil-delete-backward-char-and-join
         evil-delete-char
         evil-delete-line
+        evil-emacs-state
+        evil-exit-emacs-state
         evil-forward-char
+        evil-forward-char
+        evil-indent
         evil-insert
         evil-insert-line
+        evil-join
         evil-next-line
         evil-normal-state
         evil-paste-after
         evil-previous-line
+        evil-search-next
         evil-visual-char
-        indent-for-tab-command
-        eval-defun
         evil-yank-line
         indent-for-tab-command
+        indent-for-tab-command
+        paredit-close-round
         paredit-doublequote
         paredit-forward-slurp-sexp
         paredit-kill
@@ -32,13 +41,18 @@
         paredit-splice-sexp
         ruby-electric-brace
         ruby-end-space
+        sp--self-insert-command
+        sp-backward-slurp-sexp
+        sp-forward-slurp-sexp
+        sp-splice-sexp
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        comment-or-uncomment-region
         control-meta-click
         delete-window
-        comment-or-uncomment-region
+        evil-find-char
         evil-insert-digraph
         evil-mouse-drag-region
         evil-search-symbol-backward

@@ -35,3 +35,5 @@
 (define-global-minor-mode global-emacs-keys-mode
   emacs-keys-mode
   (lambda () (emacs-keys-mode 1)))
+
+(provide 'emacsify)

@@ -37,3 +37,5 @@
 (define-global-minor-mode global-sublime-keys-mode
   sublime-keys-mode
   (lambda () (sublime-keys-mode 1)))
+
+(provide 'sublimify)

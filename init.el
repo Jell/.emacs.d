@@ -231,7 +231,7 @@
 (add-hook 'coffee-mode-hook 'coffee-mode-hook)
 
 ;; Clojure
-(add-hook 'clojure-mode-hook (lambda () (require "clj")))
+(add-hook 'clojure-mode-hook (lambda () (require 'clj)))
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
 ;; Enable rainbow delimiters
@@ -288,6 +288,7 @@
   (setq viper-custom-file-name "~/.emacs.d/viper")
   (setq viper-ex-style-editing nil)
   (setq evil-want-fine-undo t)
+  (setq evil-default-cursor t)
   ;; (add-hook 'evil-normal-state-exit-hook 'fix-for-evil)
   (require 'evil)
   (evil-mode 1))
@@ -591,6 +592,8 @@
                :features smartparens
                :after (require 'my-smartparens-config))
 
+        (:name ruby-tools :type elpa)
+
         (:name ace-jump-mode
                :website "https://github.com/winterTTr/ace-jump-mode/wiki"
                :description "A quick cursor location minor mode for emacs"
@@ -640,7 +643,7 @@
 
 ;;
 ;; Custom mode-line
-(load "setup-mode-line.el")
+(require 'setup-mode-line)
 
 ;; goto-anything
 (eval-after-load "helm-regexp"
@@ -656,11 +659,13 @@
                  (buffer-list)))))
 
 ;; Sublimify
-(load "sublimify.el")
+(require 'sublimify)
 ;; Emacsify
-(load "emacsify.el")
+(require 'emacsify)
 ;; Move Lines
-(load "movelines.el")
+(require 'movelines)
+;; Compatibility
+(require 'compatibility)
 
 ;; Do not *ding* on scroll and other stuff.
 (defun my-bell-function ()

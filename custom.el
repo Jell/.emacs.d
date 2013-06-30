@@ -43,10 +43,10 @@
  '(magit-diff-refine-hunk t)
  '(mouse-yank-at-point t)
  '(nrepl-popup-stacktraces nil)
- '(nyan-animate-nyancat nil)
+ '(nyan-animation-frame-interval 0.1)
  '(nyan-bar-length 20)
  '(nyan-mode t)
- '(nyan-wavy-trail t)
+ '(nyan-wavy-trail nil)
  '(pr-gv-command "open")
  '(rspec-compilation-buffer-name "*RSPEC*")
  '(rspec-spec-command "smart_rspec")
@@ -85,4 +85,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "yellow")))))
+ )

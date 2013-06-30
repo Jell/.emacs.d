@@ -83,3 +83,5 @@
        " Mod "
        'face 'font-lock-warning-face
        'help-echo "Buffer has been modified")))))
+
+(provide 'setup-mode-line)

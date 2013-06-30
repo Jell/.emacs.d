@@ -36,3 +36,5 @@
   "move the line(s) spanned by the active region down by N lines."
   (interactive "*p")
   (move-lines (or n 1)))
+
+(provide 'movelines)
