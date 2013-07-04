@@ -38,6 +38,7 @@
         paredit-forward-slurp-sexp
         paredit-kill
         paredit-open-round
+        paredit-open-square
         paredit-splice-sexp
         ruby-electric-brace
         ruby-end-space
