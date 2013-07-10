@@ -5,6 +5,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        cua-delete-region
         eval-defun
         eval-defun
         evil-append
