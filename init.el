@@ -262,15 +262,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; Install hooks, called only after the package is installed (so we
-;; can install them asynchronously. Pretty cool stuff.
-(defun rhtml-mode-setup ()
-  (autoload 'rhtml-mode "rhtml-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . rhtml-mode))
-  (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
-  (add-hook 'rhtml-mode '(lambda ()
-                           (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
-
 (defun yaml-mode-setup ()
   (autoload 'yaml-mode "yaml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -377,12 +368,6 @@
         (:name css-mode
                :type elpa
                :post-init (css-mode-setup))
-
-        (:name rhtml
-               :type github
-               :pkgname "eschulte/rhtml"
-               :features rhtml-mode
-               :post-init (rhtml-mode-setup))
 
         (:name yaml-mode
                :type github

@@ -20,6 +20,7 @@
         evil-exit-emacs-state
         evil-forward-char
         evil-forward-char
+        evil-forward-word-end
         evil-indent
         evil-insert
         evil-insert-line
@@ -27,7 +28,9 @@
         evil-next-line
         evil-normal-state
         evil-paste-after
+        evil-paste-before
         evil-previous-line
+        evil-scroll-line-up
         evil-search-next
         evil-visual-char
         evil-yank-line
