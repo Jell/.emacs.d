@@ -25,6 +25,7 @@
   ;; Key Bindings
   `((,(kbd "C-z") . un-emacsify)
     (,(kbd "M-C-z") . un-emacsify)
+    (,(kbd "M-C-g") . keyboard-quit)
     (,(kbd "C-c RET") . cua-set-rectangle-mark)
     (,(kbd "M-.") . complete-symbol)
     (,(kbd "M-:") . mc/mark-next-like-this)
