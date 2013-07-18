@@ -19,6 +19,7 @@
         evil-delete-line
         evil-emacs-state
         evil-exit-emacs-state
+        evil-exit-visual-state
         evil-forward-char
         evil-forward-char
         evil-forward-word-end
@@ -37,6 +38,7 @@
         evil-yank-line
         indent-for-tab-command
         indent-for-tab-command
+        keyboard-escape-quit
         paredit-close-round
         paredit-doublequote
         paredit-forward-slurp-sexp
@@ -50,6 +52,7 @@
         sp-backward-slurp-sexp
         sp-forward-slurp-sexp
         sp-splice-sexp
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
