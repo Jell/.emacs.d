@@ -72,6 +72,7 @@
  '(smooth-scroll-mode t)
  '(smooth-scroll/vscroll-step-size 3)
  '(sp-autoescape-string-quote nil)
+ '(sp-navigate-consider-symbols t)
  '(speedbar-default-position (quote left))
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
  '(speedbar-frame-plist (quote (minibuffer nil width 30 border-width 0 internal-border-width 0 unsplittable t default-toolbar-visible-p t has-modeline-p t menubar-visible-p t default-gutter-visible-p nil)))

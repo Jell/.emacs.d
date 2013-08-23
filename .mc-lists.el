@@ -13,6 +13,7 @@
         evil-backward-char
         evil-backward-word-begin
         evil-change
+        evil-change-line
         evil-delete
         evil-delete-backward-char-and-join
         evil-delete-char

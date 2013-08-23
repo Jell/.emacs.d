@@ -587,7 +587,11 @@
                :features smartparens
                :after (require 'my-smartparens-config))
 
-        (:name ruby-tools :type elpa)
+        (:name elixir-mode
+               :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
+               :type github
+               :pkgname "elixir-lang/emacs-elixir"
+               :features elixir-mode)
 
         (:name ace-jump-mode
                :website "https://github.com/winterTTr/ace-jump-mode/wiki"
@@ -598,7 +602,6 @@
         ))
 
 ;; Trigger synchronization of el-get packages
-
 (defun sync-packages ()
   "Synchronize packages"
   (interactive)
