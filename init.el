@@ -266,13 +266,6 @@
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
 
-(defun css-mode-setup ()
-  (autoload 'css-mode "css-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-  (add-hook 'css-mode-hook '(progn
-                              (setq css-indent-level 2)
-                              (setq css-indent-offset 2))))
-
 (defun fix-for-evil ()
   (when (and (> (mc/num-cursors) 0)
              (evil-normal-state-p evil-next-state))
@@ -292,14 +285,6 @@
   ;; (add-hook 'evil-normal-state-exit-hook 'fix-for-evil)
   (require 'evil)
   (evil-mode 1))
-
-(defun yasnippet-setup ()
-  (require 'yasnippet)
-  (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"
-                           "~/.emacs.d/el-get/yasnippet/extras/imported"
-                           "~/.emacs.d/snippets"))
-  (setq yas/trigger-key "TAB")
-  (yas/global-mode 1))
 
 (defun ack-and-a-half-setup ()
   (defalias 'ack 'ack-and-a-half)
@@ -336,14 +321,6 @@
                :url "git@github.com:Jell/jell-emacs-theme.git"
                :features jell-theme)
 
-        (:name go-mode
-               :description "Major mode for the Go programming language"
-               :type http
-               :url "http://go.googlecode.com/hg/misc/emacs/go-mode.el?r=tip"
-               :localname "go-mode.el"
-               :features go-mode
-               :post-init (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
-
         (:name rvm
                :type git
                :url "git://github.com/senny/rvm.el.git"
@@ -364,31 +341,17 @@
                :type svn
                :url "http://ruby-debug.rubyforge.org/svn/trunk/emacs/")
 
-        (:name css-mode
-               :type elpa
-               :post-init (css-mode-setup))
+        (:name scss-mode
+               :description "Major mode for editing SCSS files(http://sass-lang.com)"
+               :type github
+               :pkgname "antonj/scss-mode"
+               :features scss-mode)
 
         (:name yaml-mode
                :type github
                :pkgname "yoshiki/yaml-mode"
                :features yaml-mode
                :post-init (yaml-mode-setup))
-
-        (:name yasnippet
-               :website "http://code.google.com/p/yasnippet/"
-               :description "YASnippet is a template system for Emacs."
-               :type github
-               :pkgname "capitaomorte/yasnippet"
-               :features "yasnippet"
-               :prepare (progn
-                          (unless (or (boundp 'yas/snippet-dirs)
-                                      (get 'yas/snippet-dirs 'customized-value))
-                            (setq yas/snippet-dirs
-                                  (list (concat el-get-dir
-                                                (file-name-as-directory "yasnippet")
-                                                "snippets")))))
-               :post-init (yasnippet-setup)
-               :compile nil)
 
         (:name auto-complete
                :description "The most intelligent auto-completion extension."
@@ -431,14 +394,6 @@
                :features ack-and-a-half
                :after (ack-and-a-half-setup))
 
-        (:name zencoding-mode
-               :description "Unfold CSS-selector-like expressions to markup"
-               :type github
-               :pkgname "rooney/zencoding"
-               :features zencoding-mode
-               :post-init (progn (require 'zencoding-mode)
-                                 (add-hook 'sgml-mode-hook 'zencoding-mode)))
-
         (:name bundler
                :description "Interact with Bundler from Emacs"
                :type github
@@ -466,14 +421,6 @@
                :after (progn (require 'smooth-scroll)
                              (smooth-scroll-mode t)))
 
-        (:name breadcrumb
-               :website "http://breadcrumbemacs.sourceforge.net/"
-               :description "Breadcrumb is an add-on module for Emacs that allows you to set a series of quick bookmarks in the file buffers, and jump back to them quickly."
-               :type http
-               :url "http://downloads.sourceforge.net/project/breadcrumbemacs/Breadcrumb%20for%20Emacs/1.1.3/breadcrumb-1.1.3.zip"
-               :build ("unzip breadcrumb-1.1.3.zip")
-               :after (require 'breadcrumb))
-
         (:name expand-region
                :type github
                :pkgname "magnars/expand-region.el"
@@ -496,39 +443,9 @@
                :depends nrepl
                :depends auto-complete)
 
-        (:name puppet-mode
-               :description "A simple mode for editing puppet manifests"
-               :type http
-               :url "https://raw.github.com/puppetlabs/puppet/master/ext/emacs/puppet-mode.el"
-               :prepare (progn
-                          (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
-                          (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))))
-
-        (:name quack
-               :description "Enhanced support for editing and running Scheme code"
-               :type http
-               :url "http://www.neilvandyke.org/quack/quack.el"
-               :features (quack))
-
-        (:name geiser
-               :website "http://www.nongnu.org/geiser/"
-               :description "Geiser is a collection of Emacs major and minor modes that conspire with one or more Scheme interpreters to keep the Lisp Machine Spirit alive. It draws inspiration (and a bit more) from environments such as Common Lisp's Slime, Factor's FUEL, Squeak or Emacs itself, and does its best to make Scheme hacking inside Emacs (even more) fun."
-               :type git
-               :url "git://git.sv.gnu.org/geiser.git"
-               :load-path ("./elisp")
-               :build `("./autogen.sh" "./configure"
-                        ,(concat "make EMACS=" el-get-emacs)
-                        ,(concat "make EMACS=" el-get-emacs "info-recursive"))
-                                        ;,(concat "cd doc ; " el-get-install-info " --dir-file=./dir *.info"))
-               :build/windows-nt `("sh ./autogen.sh" "sh ./configure" "make"
-                                   ,(concat "cd doc & " el-get-install-info " --dir-file=./dir *.info"))
-               :info "doc"
-               :features geiser-load)
-
         (:name cl-lib
-               :type elpa
-               :description "Properly prefixed CL functions and macros"
-               :url "http://elpa.gnu.org/packages/cl-lib.html")
+               :type github
+               :pkgname "emacsmirror/cl-lib")
 
         (:name magit
                :website "https://github.com/magit/magit#readme"
@@ -542,15 +459,6 @@
                           `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
                         `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
                :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake")))
-
-        (:name emacs-jabber
-               :description "A minimal jabber client"
-               :type git
-               :url "git://emacs-jabber.git.sourceforge.net/gitroot/emacs-jabber/emacs-jabber"
-               :info "."
-               :load-path (".")
-               :features jabber-autoloads
-               :build ("autoreconf -i" "./configure" "make" "mv jabber.info emacs-jabber.info" ))
 
         (:name spork-and-nailgun
                :description "Support for spork and nailgun"
