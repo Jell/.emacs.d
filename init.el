@@ -677,6 +677,9 @@
 ;; Remove trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; No native fullscreen, thank you very much.
+(setq ns-use-native-fullscreen nil)
+
 ;; Always save even when buffer is not modified
 (defun save-buffer-always ()
   "Save the buffer even if it is not modified."
