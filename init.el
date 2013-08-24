@@ -187,6 +187,8 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
+                      nrepl
+                      ac-nrepl
                       rainbow-delimiters
                       rainbow-mode
                       coffee-mode
@@ -428,20 +430,6 @@
                :website "https://github.com/magnars/expand-region.el#readme"
                :features expand-region
                :before (defconst ruby-block-end-re "end"))
-
-        (:name nrepl
-               :description "An Emacs client for nREPL, the Clojure networked REPL server."
-               :type github
-               :pkgname "kingtim/nrepl.el"
-               :features nrepl)
-
-        (:name ac-nrepl
-               :description "Autocomplete for nREPL"
-               :type github
-               :pkgname "purcell/ac-nrepl"
-               :features ac-nrepl
-               :depends nrepl
-               :depends auto-complete)
 
         (:name cl-lib
                :type github
