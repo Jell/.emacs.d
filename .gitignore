@@ -11,4 +11,4 @@ ac-comphist.dat
 /eshell
 /var/pcache
 /tramp
-/init/*.elc
+/**/*.elc

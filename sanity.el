@@ -26,12 +26,13 @@
       apropos-do-all t
       mouse-yank-at-point t
       save-place-file (concat user-emacs-directory "places"))
-
 ;; Fix scrolling
 (setq auto-window-vscroll nil)
 ;; Diable ring bell
 (setq ring-bell-function 'ignore)
 ;; Remove trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'sanity)

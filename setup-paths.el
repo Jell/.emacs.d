@@ -1,7 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "~/.emacs.d/el-get-init")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
 (add-to-list 'load-path "~/.emacs.d/other")
-(add-to-list 'load-path "~/.emacs.d/init")
 
 ;; Extra bin folders
 (add-to-list 'exec-path "/usr/local/bin")

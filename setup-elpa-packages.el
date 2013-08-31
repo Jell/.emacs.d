@@ -43,6 +43,10 @@
 (require 'ansi-color)
 (require 'recentf)
 
+;; Ido Ubi
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode +1)
+
 ;; Erlang
 (autoload 'erlang-mode "erlang" nil t)
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
