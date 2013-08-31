@@ -262,99 +262,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq el-get-sources
-      '((:name undo-tree
-               :description "Treat undo history as a tree"
-               :type git
-               :url "http://www.dr-qubit.org/git/undo-tree.git"
-               :prepare (progn
-                          (autoload 'undo-tree-mode "undo-tree.el"
-                            "Undo tree mode; see undo-tree.el for details" t)
-                          (autoload 'global-undo-tree-mode "undo-tree.el"
-                            "Global undo tree mode" t)))
-
-        (:name evil
-               :website "http://gitorious.org/evil/pages/Home"
-               :type git
-               :url "https://git.gitorious.org/evil/evil.git"
-               :features evil
-               :depends undo-tree)
-
-        (:name evil-surround
-               :website "http://github.com/timcharper/evil-surround"
-               :type github
-               :pkgname "timcharper/evil-surround"
-               :features surround
-               :post-init (global-surround-mode 1)
-               :depends evil)
+      '(undo-tree
+        evil
+        evil-surround
 
         (:name jell-theme
                :type git
                :url "git@github.com:Jell/jell-emacs-theme.git"
                :features jell-theme)
 
-        (:name rvm
-               :description "Emacs integration for rvm"
-               :type github
-               :features rvm
-               :pkgname "senny/rvm.el"
-               :compile "rvm.el"
-               :post-init (rvm-use-default))
+        rvm
 
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el")
 
-        (:name ruby-compilation :type elpa)
-
-        (:name rdebug
-               :description "Ruby debugger user interface, startup file."
-               :type svn
-               :url "http://ruby-debug.rubyforge.org/svn/trunk/emacs/")
-
-        (:name scss-mode
-               :description "Major mode for editing SCSS files(http://sass-lang.com)"
-               :type github
-               :pkgname "antonj/scss-mode"
-               :features scss-mode)
-
-        (:name yaml-mode
-               :type github
-               :pkgname "yoshiki/yaml-mode"
-               :features yaml-mode)
-
-        (:name auto-complete
-               :website "http://auto-complete.org/"
-               :description "The most intelligent auto-completion extension."
-               :type github
-               :pkgname "auto-complete/auto-complete"
-               :depends (popup fuzzy))
-
-        (:name markdown-mode
-               :description "Major mode to edit Markdown files in Emacs"
-               :type git
-               :url "git://jblevins.org/git/markdown-mode.git")
-
-        (:name rspec-mode
-               :description "Enhance ruby-mode for RSpec"
-               :type github
-               :pkgname "pezra/rspec-mode"
-               :features rspec-mode)
-
-        (:name jekyll
-               :type github
-               :pkgname "diasjorge/jekyll.el"
-               :features jekyll)
+        ruby-compilation
+        rdebug
+        scss-mode
+        yaml-mode
+        auto-complete
+        markdown-mode
+        rspec-mode
+        jekyll
 
         (:name ack-and-a-half
                :type github
                :pkgname "jhelwig/ack-and-a-half"
                :features ack-and-a-half)
 
-        (:name bundler
-               :description "Interact with Bundler from Emacs"
-               :type github
-               :pkgname "tobiassvn/bundler.el")
+        bundler
 
         (:name nyan-mode
                :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!"
@@ -363,21 +301,12 @@
                :features nyan-mode
                :after (nyan-mode))
 
-        (:name multiple-cursors
-               :description "Sublime-like multiple cursors"
-               :type github
-               :pkgname "magnars/multiple-cursors.el"
-               :features multiple-cursors)
-
-        (:name smooth-scroll
-               :description "Minor mode for smooth scrolling."
-               :type emacswiki
-               :features smooth-scroll)
+        multiple-cursors
+        smooth-scroll
 
         (:name expand-region
                :type github
                :pkgname "magnars/expand-region.el"
-               :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want."
                :website "https://github.com/magnars/expand-region.el#readme"
                :features expand-region
                :before (defconst ruby-block-end-re "end"))
@@ -424,11 +353,7 @@
                :features puggle-utils
                :after (require 'puggle-utils))
 
-        (:name helm
-               :description "Emacs incremental and narrowing framework"
-               :type github
-               :pkgname "emacs-helm/helm"
-               :features helm-config)
+        helm
 
         (:name dash
                :description "A modern list library for Emacs"
@@ -449,12 +374,7 @@
                :pkgname "elixir-lang/emacs-elixir"
                :features elixir-mode)
 
-        (:name ace-jump-mode
-               :website "https://github.com/winterTTr/ace-jump-mode/wiki"
-               :description "A quick cursor location minor mode for emacs"
-               :type github
-               :pkgname "winterTTr/ace-jump-mode"
-               :features ace-jump-mode)
+        ace-jump-mode
         ))
 
 ;; Trigger synchronization of el-get packages
