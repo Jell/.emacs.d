@@ -285,7 +285,7 @@
         auto-complete
         markdown-mode
         rspec-mode
-        jekyll
+        jekyll-el
 
         (:name ack-and-a-half
                :type github
