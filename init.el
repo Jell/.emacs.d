@@ -2,96 +2,11 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; Setup scratch screen
-(let ((file (expand-file-name (concat "~/.emacs.d/scratch-messages/" (user-login-name) ".el"))))
-  (when (file-exists-p file)
-    (setq initial-scratch-message
-          (with-temp-buffer
-            (insert-file-contents file)
-            (buffer-string)))))
-
-;; Key bindings for mac
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-
-(setq mac-option-modifier 'none)
-(setq mac-command-modifier 'meta)
-(setq mac-function-modifier 'super)
-
-;; Extra keybindings
-(global-set-key (kbd "C-x f") 'find-file-in-project)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-S-k") 'kill-whole-line)
-;; Multi cursors
-(global-set-key (kbd "C-c C-d") 'mc/edit-lines)
-(global-set-key (kbd "M--") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-+") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
-;; Expand mark
-(global-set-key (kbd "M-+") 'er/expand-region)
-;; For sublime users
-(global-set-key (kbd "C-c s") 'sublimify)
-(global-set-key (kbd "C-c e") 'emacsify)
-;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
-;; Ack
-(global-set-key (kbd "C-x C-p") 'ack-and-a-half)
-
-(defun control-meta-click (event)
-  (interactive "e")
-  (if (> (mc/num-cursors) 1)
-      (multiple-cursors-mode 1)
-    (multiple-cursors-mode 0))
-  (mc/create-fake-cursor-at-point)
-  (mouse-set-point event)
-  (message (string (mc/num-cursors))))
-
-(global-set-key (kbd "<C-M-mouse-1>") 'control-meta-click)
-
-(global-set-key (kbd "C-c b SPC") 'bc-set)
-(global-set-key (kbd "C-c b <up>") 'bc-local-previous)
-(global-set-key (kbd "C-c b <down>") 'bc-local-next)
-(global-set-key (kbd "C-c b <right>") 'bc-previous)
-(global-set-key (kbd "C-c b <left>") 'bc-next)
-(global-set-key (kbd "C-c b l") 'bc-list)
-(global-set-key (kbd "C-c b c") 'bc-clear)
-
-;; Switch panel
-(global-set-key (kbd "C-c C-<right>") 'windmove-right)
-(global-set-key (kbd "C-c C-<left>") 'windmove-left)
-(global-set-key (kbd "C-c C-<up>") 'windmove-up)
-(global-set-key (kbd "C-c C-<down>") 'windmove-down)
-
-;; Extra keybindings for when working in tty
-(global-set-key (kbd "M-[ c") (kbd "C-<right>"))
-(global-set-key (kbd "M-[ d") (kbd "C-<left>"))
-(global-set-key (kbd "M-[ a") (kbd "C-<up>"))
-(global-set-key (kbd "M-[ b") (kbd "C-<down>"))
-(global-set-key (kbd "C-c M-[ c") (kbd "C-c C-<right>"))
-(global-set-key (kbd "C-c M-[ d") (kbd "C-c C-<left>"))
-(global-set-key (kbd "C-c M-[ a") (kbd "C-c C-<up>"))
-(global-set-key (kbd "C-c M-[ b") (kbd "C-c C-<down>"))
-(global-set-key (kbd "ESC <down>") (kbd "M-<down>"))
-(global-set-key (kbd "ESC <up>") (kbd "M-<up>"))
-
-;; Add those escape sequences to iterm2.
-(define-key input-decode-map "\e[1;4A" [M-up])
-(define-key input-decode-map "\e[1;4B" [M-down])
-(define-key input-decode-map "\e[1;4C" [M-right])
-(define-key input-decode-map "\e[1;4D" [M-left])
-
-(define-key input-decode-map "\e[1;5A" [C-up])
-(define-key input-decode-map "\e[1;5B" [C-down])
-(define-key input-decode-map "\e[1;5C" [C-right])
-(define-key input-decode-map "\e[1;5D" [C-left])
-
-(define-key input-decode-map "\e[1;8A" [C-M-up])
-(define-key input-decode-map "\e[1;8B" [C-M-down])
-(define-key input-decode-map "\e[1;8C" [C-M-right])
-(define-key input-decode-map "\e[1;8D" [C-M-left])
-
-;; Spork & Nailgun
-(global-set-key (kbd "C-x C-l") 'sang-start-all)
+;; Extra load paths
+(add-to-list 'load-path "~/.emacs.d")
+(require 'setup-paths)
+(require 'setup-scratch-message)
+(require 'setup-keys)
 
 ;; Fix encoding
 (setq default-process-coding-system '(utf-8 . utf-8))
@@ -119,30 +34,6 @@
         try-expand-list-all-buffers
         try-expand-whole-kill))
 
-;; Extra load paths
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(add-to-list 'load-path "~/.emacs.d/filetypes")
-(add-to-list 'load-path "~/.emacs.d/other")
-(add-to-list 'load-path "~/.emacs.d/init")
-
-;; Extra bin folders
-(add-to-list 'exec-path "/usr/local/bin")
-
-;; Path to binary files
-(setq-default ispell-program-name "/usr/local/bin/aspell")
-
-;; Fix rhtml colors
-(defface erb-face
-  `((t (:background "grey18")))
-  "Default inherited face for ERB tag body"
-  :group 'rhtml-faces)
-
-(defface erb-delim-face
-  `((t (:background "grey15")))
-  "Default inherited face for ERB tag delimeters"
-  :group 'rhtml-faces)
-
 ;; Fix tab indent
 (defun indent-or-expand (arg)
   "Either indent according to mode, or expand the word preceding point."
@@ -159,13 +50,6 @@
 ;; Bug fix
 (setq stack-trace-on-error t)
 (setq imenu-auto-rescan t)
-
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(if window-system (set-exec-path-from-shell-PATH))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
