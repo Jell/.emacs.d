@@ -220,7 +220,6 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-(require 'undo-tree)
 
 ;; Erlang
 (autoload 'erlang-mode "erlang" nil t)
