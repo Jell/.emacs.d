@@ -124,6 +124,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/filetypes")
 (add-to-list 'load-path "~/.emacs.d/other")
+(add-to-list 'load-path "~/.emacs.d/init")
 
 ;; Extra bin folders
 (add-to-list 'exec-path "/usr/local/bin")
@@ -187,6 +188,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
+                      evil
                       nrepl
                       ac-nrepl
                       rainbow-delimiters
@@ -242,8 +244,7 @@
 (add-hook 'coffee-mode-hook 'coffee-mode-hook)
 
 ;; Clojure
-(require 'setup-clojure)
-(add-hook 'clojure-mode-hook (lambda ()))
+(require 'init-clojure-mode)
 
 ;; Enable rainbow delimiters
 (global-rainbow-delimiters-mode)
@@ -255,6 +256,11 @@
 (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+
+(setq evil-want-fine-undo t)
+(setq evil-default-cursor t)
+(require 'evil)
+(evil-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -275,7 +281,6 @@
   (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same))
 
 
-
 ;; Package list ---------------------------------------------------------------
 
 (setq el-get-sources
@@ -285,12 +290,6 @@
                :type git
                :url "https://github.com/auto-complete/popup-el.git"
                :features popup)
-
-        (:name evil
-               :type git
-               :url "git://gitorious.org/evil/evil.git"
-               :load "evil.el"
-               :post-init (require 'setup-evil))
 
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
@@ -314,8 +313,7 @@
         (:name Enhanced-Ruby-Mode
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
-               :load "ruby-mode.el"
-               :post-init (require 'setup-ruby))
+               :load "ruby-mode.el")
 
         (:name ruby-compilation :type elpa)
 
@@ -410,11 +408,21 @@
                :type github
                :pkgname "emacsmirror/cl-lib")
 
+        (:name git-modes
+               :description "Major mode for editing git commit messages"
+               :type github
+               :pkgname "magit/git-modes"
+               :features (git-commit-mode
+                          git-rebase-mode
+                          gitconfig-mode
+                          gitignore-mode))
+
         (:name magit
                :website "https://github.com/magit/magit#readme"
                :description "It's Magit! An Emacs mode for Git."
                :type github
                :pkgname "magit/magit"
+               :depends git-modes
                :info "."
                :after (require 'magit)
                ;; let el-get care about autoloads so that it works with all OSes
@@ -461,8 +469,7 @@
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
                :pkgname "elixir-lang/emacs-elixir"
-               :features elixir-mode
-               :after (require 'setup-elixir))
+               :features elixir-mode)
 
         (:name ace-jump-mode
                :website "https://github.com/winterTTr/ace-jump-mode/wiki"

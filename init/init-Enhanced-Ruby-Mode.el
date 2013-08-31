@@ -39,5 +39,3 @@
              (require 'rcodetools)
              (rspec-mode +1)
              (rvm-autodetect-ruby)))
-
-(provide 'setup-ruby)

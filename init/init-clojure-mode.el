@@ -37,4 +37,4 @@
 
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 
-(provide 'setup-clojure)
+(provide 'init-clojure-mode)
