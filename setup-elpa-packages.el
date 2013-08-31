@@ -31,7 +31,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; Package defs ----------------------------------------------------------------
+;; Package defs ---------------------------------------------------------------
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))

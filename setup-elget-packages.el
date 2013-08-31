@@ -102,8 +102,7 @@
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
                :pkgname "Jell/smartparens"
-               :features smartparens
-               :after (require 'my-smartparens-config))
+               :features smartparens)
 
         (:name elixir-mode
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
