@@ -188,7 +188,6 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
-                      evil
                       nrepl
                       ac-nrepl
                       rainbow-delimiters
@@ -203,8 +202,7 @@
                       starter-kit ;; TODO: remove this dependency.
                       haskell-mode
                       erlang
-                      sass-mode
-                      undo-tree )
+                      sass-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -257,10 +255,6 @@
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
 
-(setq evil-want-fine-undo t)
-(setq evil-default-cursor t)
-(require 'evil)
-(evil-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -269,20 +263,30 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq el-get-sources
-      '((:name popup
-               :website "https://github.com/m2ym/popup-el"
-               :description "Visual Popup Interface Library for Emacs"
+      '((:name undo-tree
+               :description "Treat undo history as a tree"
                :type git
-               :url "https://github.com/auto-complete/popup-el.git"
-               :features popup)
+               :url "http://www.dr-qubit.org/git/undo-tree.git"
+               :prepare (progn
+                          (autoload 'undo-tree-mode "undo-tree.el"
+                            "Undo tree mode; see undo-tree.el for details" t)
+                          (autoload 'global-undo-tree-mode "undo-tree.el"
+                            "Global undo tree mode" t)))
 
+        (:name evil
+               :website "http://gitorious.org/evil/pages/Home"
+               :type git
+               :url "https://git.gitorious.org/evil/evil.git"
+               :features evil
+               :depends undo-tree)
 
         (:name evil-surround
-               :url "git://github.com/timcharper/evil-surround.git"
-               :type git
-               :load "surround.el"
+               :website "http://github.com/timcharper/evil-surround"
+               :type github
+               :pkgname "timcharper/evil-surround"
                :features surround
-               :post-init (global-surround-mode 1))
+               :post-init (global-surround-mode 1)
+               :depends evil)
 
         (:name jell-theme
                :type git
