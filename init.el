@@ -262,26 +262,11 @@
 (require 'evil)
 (evil-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; el-get packages
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-(defun yaml-mode-setup ()
-  (autoload 'yaml-mode "yaml-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
-
-(defun ack-and-a-half-setup ()
-  (defalias 'ack 'ack-and-a-half)
-  (defalias 'ack-same 'ack-and-a-half-same)
-  (defalias 'ack-find-file 'ack-and-a-half-find-file)
-  (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same))
-
-
-;; Package list ---------------------------------------------------------------
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq el-get-sources
       '((:name popup
@@ -290,6 +275,7 @@
                :type git
                :url "https://github.com/auto-complete/popup-el.git"
                :features popup)
+
 
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
@@ -304,10 +290,11 @@
                :features jell-theme)
 
         (:name rvm
-               :type git
-               :url "git://github.com/senny/rvm.el.git"
-               :load "rvm.el"
-               :compile ("rvm.el")
+               :description "Emacs integration for rvm"
+               :type github
+               :features rvm
+               :pkgname "senny/rvm.el"
+               :compile "rvm.el"
                :post-init (rvm-use-default))
 
         (:name Enhanced-Ruby-Mode
@@ -331,26 +318,19 @@
         (:name yaml-mode
                :type github
                :pkgname "yoshiki/yaml-mode"
-               :features yaml-mode
-               :post-init (yaml-mode-setup))
+               :features yaml-mode)
 
         (:name auto-complete
+               :website "http://auto-complete.org/"
                :description "The most intelligent auto-completion extension."
                :type github
                :pkgname "auto-complete/auto-complete"
-               :depends popup
-               :post-init (progn (require 'auto-complete)
-                                 (add-to-list 'ac-dictionary-directories
-                                              (expand-file-name "dict"))
-                                 (require 'auto-complete-config)
-                                 (ac-config-default)))
+               :depends (popup fuzzy))
 
         (:name markdown-mode
                :description "Major mode to edit Markdown files in Emacs"
                :type git
-               :url "git://jblevins.org/git/markdown-mode.git"
-               :post-init (add-to-list 'auto-mode-alist
-                                       '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode)))
+               :url "git://jblevins.org/git/markdown-mode.git")
 
         (:name rspec-mode
                :description "Enhance ruby-mode for RSpec"
@@ -366,8 +346,7 @@
         (:name ack-and-a-half
                :type github
                :pkgname "jhelwig/ack-and-a-half"
-               :features ack-and-a-half
-               :after (ack-and-a-half-setup))
+               :features ack-and-a-half)
 
         (:name bundler
                :description "Interact with Bundler from Emacs"
@@ -385,16 +364,12 @@
                :description "Sublime-like multiple cursors"
                :type github
                :pkgname "magnars/multiple-cursors.el"
-               :features multiple-cursors
-               :after (progn (require 'multiple-cursors nil t)
-                             (multiple-cursors-mode 0)))
+               :features multiple-cursors)
 
         (:name smooth-scroll
                :description "Minor mode for smooth scrolling."
                :type emacswiki
-               :features smooth-scroll
-               :after (progn (require 'smooth-scroll)
-                             (smooth-scroll-mode t)))
+               :features smooth-scroll)
 
         (:name expand-region
                :type github
