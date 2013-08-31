@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-#name: defn
-# --
-(defn ${1:name} [${4:arg-list}]
-  $0)

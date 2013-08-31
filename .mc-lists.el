@@ -53,6 +53,7 @@
         sp-backward-slurp-sexp
         sp-forward-slurp-sexp
         sp-splice-sexp
+        sp-splice-sexp-killing-backward
         yas-expand
         ))
 

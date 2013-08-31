@@ -242,8 +242,8 @@
 (add-hook 'coffee-mode-hook 'coffee-mode-hook)
 
 ;; Clojure
-(add-hook 'clojure-mode-hook (lambda () (require 'clj)))
-(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+(require 'setup-clojure)
+(add-hook 'clojure-mode-hook (lambda ()))
 
 ;; Enable rainbow delimiters
 (global-rainbow-delimiters-mode)
@@ -256,37 +256,17 @@
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; el-get packages
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (defun yaml-mode-setup ()
   (autoload 'yaml-mode "yaml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
-
-(defun fix-for-evil ()
-  (when (and (> (mc/num-cursors) 0)
-             (evil-normal-state-p evil-next-state))
-    (mc/execute-command-for-all-fake-cursors 'evil-backward-char)))
-
-(defun other-fix-for-evil ()
-  (when (and (> (mc/num-cursors) 0)
-             (not (evil-visual-state-p evil-next-state)))
-    (mc/execute-command-for-all-fake-cursors 'evil-visual-char)))
-
-(defun evil-setup ()
-  (setq viper-mode t)
-  (setq viper-custom-file-name "~/.emacs.d/viper")
-  (setq viper-ex-style-editing nil)
-  (setq evil-want-fine-undo t)
-  (setq evil-default-cursor t)
-  ;; (add-hook 'evil-normal-state-exit-hook 'fix-for-evil)
-  (require 'evil)
-  (evil-mode 1))
 
 (defun ack-and-a-half-setup ()
   (defalias 'ack 'ack-and-a-half)
@@ -295,7 +275,8 @@
   (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same))
 
 
-;; Package list ----------------------------------------------------------------
+
+;; Package list ---------------------------------------------------------------
 
 (setq el-get-sources
       '((:name popup
@@ -309,7 +290,7 @@
                :type git
                :url "git://gitorious.org/evil/evil.git"
                :load "evil.el"
-               :post-init (evil-setup))
+               :post-init (require 'setup-evil))
 
         (:name evil-surround
                :url "git://github.com/timcharper/evil-surround.git"
@@ -334,7 +315,7 @@
                :type git
                :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
                :load "ruby-mode.el"
-               :post-init (require 'rb))
+               :post-init (require 'setup-ruby))
 
         (:name ruby-compilation :type elpa)
 
@@ -378,12 +359,6 @@
                :type github
                :pkgname "pezra/rspec-mode"
                :features rspec-mode)
-
-        (:name cucumber-mode
-               :description "Cucumber mode"
-               :type github
-               :pkgname "michaelklishin/cucumber.el"
-               :features feature-mode)
 
         (:name jekyll
                :type github
@@ -486,7 +461,8 @@
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
                :pkgname "elixir-lang/emacs-elixir"
-               :features elixir-mode)
+               :features elixir-mode
+               :after (require 'setup-elixir))
 
         (:name ace-jump-mode
                :website "https://github.com/winterTTr/ace-jump-mode/wiki"

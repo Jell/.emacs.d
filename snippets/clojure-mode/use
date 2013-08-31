@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-#name: use
-# --
-(:use [${1:namespace}${2: :only [${3:fns}]}])

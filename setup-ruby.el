@@ -37,8 +37,7 @@
              (require 'ruby-compilation)
              (require 'rspec-mode)
              (require 'rcodetools)
-             (require 'ruby-tools)
-             (ruby-tools-mode +1)
+             (rspec-mode +1)
              (rvm-autodetect-ruby)))
 
-(provide 'rb)
+(provide 'setup-ruby)
