@@ -38,6 +38,7 @@
  '(global-auto-revert-mode t)
  '(global-auto-revert-non-file-buffers t)
  '(global-hl-line-mode t)
+ '(gud-tooltip-echo-area nil)
  '(haskell-font-lock-symbols nil)
  '(hl-line-sticky-flag nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
@@ -100,6 +101,9 @@
    (quote
     (".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".clj")))
  '(tool-bar-mode nil)
+ '(tooltip-mode nil)
+ '(tooltip-short-delay 0)
+ '(tooltip-use-echo-area t)
  '(transient-mark-mode (quote (only . t)))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(visible-cursor t))
