@@ -41,10 +41,19 @@
         multiple-cursors
         smooth-scroll
 
+        (:name grizzl
+               :type github
+               :pkgname "d11wtq/grizzl"
+               :features grizzl)
+
+        (:name fiplr
+               :type github
+               :pkgname "d11wtq/fiplr"
+               :features fiplr)
+
         (:name expand-region
                :type github
                :pkgname "magnars/expand-region.el"
-               :website "https://github.com/magnars/expand-region.el#readme"
                :features expand-region
                :before (defconst ruby-block-end-re "end"))
 

@@ -7,7 +7,7 @@
 (setq mac-function-modifier 'super)
 
 ;; Extra keybindings
-(global-set-key (kbd "C-x f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
