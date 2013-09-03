@@ -1,0 +1,35 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("mantis"
+ (filename . "~/PugglePay/mantis/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Apr 16 09:34 ")
+ (position . 233))
+("serverconfig"
+ (filename . "~/PugglePay/serverconfig/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Oct  1  2012 ")
+ (position . 235))
+("jane"
+ (filename . "~/PugglePay/jane/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "76 Sep  3 17:59 ")
+ (position . 227))
+("portal"
+ (filename . "~/PugglePay/boar/engines/portal/")
+ (front-context-string . ".gitignore\n  -rw")
+ (rear-context-string . "45 Aug 20 15:15 ")
+ (position . 242))
+("boar"
+ (filename . "~/PugglePay/boar/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Jul 15 20:11 ")
+ (position . 231))
+(".emacs.d"
+ (filename . "~/.emacs.d/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "42 Sep  3 22:29 ")
+ (position . 225))
+)
