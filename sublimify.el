@@ -19,7 +19,7 @@
   ;; The indicator for the mode line.
   " SUBL"
   ;; Key Bindings
-  '(("\M-t" . fiplr-find-file)
+  '(("\M-t" . find-file-in-project)
     ("\M-s" . save-buffer-always)
     ("\M-v" . yank)
     ("\M-c" . kill-ring-save)
