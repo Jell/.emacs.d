@@ -13,3 +13,4 @@
 (require 'emacsify)
 (require 'movelines)
 (require 'setup-backup)
+(require 'setup-agda)
