@@ -110,8 +110,19 @@
         (:name smartparens
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
-               :pkgname "Jell/smartparens"
+               :pkgname "Fuco1/smartparens"
                :features smartparens)
+
+        (:name maps
+               :type github
+               :pkgname "megakorre/maps"
+               :features maps)
+
+        (:name pivotal
+               :type github
+               :pkgname "megakorre/pivotal"
+               :depends maps
+               :features pivotal)
 
         (:name elixir-mode
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."

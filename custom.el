@@ -8,6 +8,7 @@
  '(ac-ignore-case nil)
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(auth-source-save-behavior nil)
  '(blink-cursor-alist nil)
  '(blink-cursor-mode t)
  '(css-indent-level 2)
@@ -84,6 +85,7 @@
  '(scroll-margin 3)
  '(scroll-preserve-screen-position nil)
  '(scroll-step 0)
+ '(send-mail-function (quote smtpmail-send-it))
  '(shift-select-mode t)
  '(show-paren-mode t)
  '(smooth-scroll-mode t)

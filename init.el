@@ -14,3 +14,4 @@
 (require 'movelines)
 (require 'setup-backup)
 (require 'setup-agda)
+(require 'setup-mail)
