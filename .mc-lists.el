@@ -33,6 +33,7 @@
         evil-previous-line
         evil-scroll-line-up
         evil-search-next
+        evil-substitute
         evil-visual-char
         evil-yank-line
         indent-for-tab-command

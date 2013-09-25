@@ -36,4 +36,7 @@
 
 ;; smartparens where we want
 (require 'smartparens-ruby)
-(add-hook 'ruby-mode-hook (lambda () (smartparens-mode +1)))
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (smartparens-mode +1)
+            (show-smartparens-mode)))

@@ -12,3 +12,4 @@ ac-comphist.dat
 /var/pcache
 /tramp
 /**/*.elc
+/.cask
