@@ -30,4 +30,10 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
 (provide 'sanity)

@@ -4,9 +4,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -32,9 +29,6 @@
     (package-install p)))
 
 ;; Package defs ---------------------------------------------------------------
-
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
 
 (require 'cl)
 (require 'saveplace)

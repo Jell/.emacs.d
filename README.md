@@ -27,6 +27,4 @@ lein
 ````
 
 ## Todo:
-
-- Cleanup el-get recipes
-- Organise init.el
+- Multi user support
