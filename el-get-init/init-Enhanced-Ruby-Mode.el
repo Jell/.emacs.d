@@ -46,11 +46,24 @@
                       (cons (concat (getenv "HOME") "/.rbenv/bin")
                             exec-path)))
 
+(add-hook 'post-self-insert-hook #'ruby-awesome-block)
+(defun ruby-awesome-block ()
+  (when (string= major-mode "ruby-mode")
+    (when (and (looking-at-p "}") (looking-back "{ "))
+      (save-excursion
+        (insert " ")))
+    (when (or (and (looking-at-p "}") (looking-back "{\n"))
+              (and (looking-at-p ")") (looking-back "(\n"))
+              (and (looking-at-p "\\]") (looking-back "\\[\n")))
+      (save-excursion
+        (insert "\n")
+        (indent-according-to-mode))
+      (indent-according-to-mode))))
+
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'ruby-mode)
              (require 'ruby-compilation)
              (require 'rspec-mode)
              (require 'rcodetools)
-             (rspec-mode +1)
-             (rvm-autodetect-ruby)))
+             (rspec-mode +1)))

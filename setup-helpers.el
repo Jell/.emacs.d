@@ -30,5 +30,8 @@
          (mapcar (lambda (b)
                    (when (buffer-file-name b) (buffer-name b)))
                  (buffer-list)))))
+(defun print-major-mode ()
+  (interactive)
+  (message "%s" major-mode))
 
 (provide 'setup-helpers)
