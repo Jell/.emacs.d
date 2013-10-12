@@ -16,6 +16,10 @@
     (unless (minibufferp b)
       (evil-initialize-state 'normal b))))
 
+(defun patrik-delete-indentation ()
+  (interactive)
+  (delete-indentation -1))
+
 (define-minor-mode emacs-keys-mode
   "A minor mode for emacs keys."
   ;; The initial value
@@ -32,7 +36,8 @@
     (,(kbd "M-;") . mc/mark-previous-like-this)
     (,(kbd "C-v") . er/expand-region)
     (,(kbd "C-f") . kill-whole-line)
-    (,(kbd "M-*") . ace-jump-word-mode)))
+    (,(kbd "M-*") . ace-jump-word-mode)
+    (,(kbd "C--") . patrik-delete-indentation)))
 
 (define-global-minor-mode global-emacs-keys-mode
   emacs-keys-mode

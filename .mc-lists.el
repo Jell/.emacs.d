@@ -3,7 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        cua-copy-region
         cua-delete-region
+        cua-paste
         eval-defun
         eval-defun
         evil-append
@@ -52,6 +54,7 @@
         sp--self-insert-command
         sp-backward-slurp-sexp
         sp-forward-slurp-sexp
+        sp-remove-active-pair-overlay
         sp-splice-sexp
         sp-splice-sexp-killing-backward
         yas-expand
