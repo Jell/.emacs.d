@@ -4,11 +4,11 @@
     (when (> (length rvm-path) 0)
       (let* ((rvm-path (replace-regexp-in-string "\n$" "" rvm-path))
              (rubies (file-expand-wildcards
-                      (concat rvm-path "/../../rubies/ruby-2.0*")))
+                      (concat rvm-path "/../../rubies/ruby-1.9*")))
              (ruby-root (expand-file-name (first (last rubies)))))
         (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))
     (when (> (length rbenv-path) 0)
-      (let* ((rubies (file-expand-wildcards "~/.rbenv/versions/2.0*"))
+      (let* ((rubies (file-expand-wildcards "~/.rbenv/versions/1.9*"))
              (ruby-root (expand-file-name (first (last rubies)))))
         (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))))
 

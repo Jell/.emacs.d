@@ -49,6 +49,7 @@
         paredit-open-square
         paredit-splice-sexp
         paredit-splice-sexp-killing-backward
+        rspec-verify-continue
         ruby-electric-brace
         ruby-end-space
         sp--self-insert-command

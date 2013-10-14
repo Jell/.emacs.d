@@ -84,6 +84,9 @@
                         `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
                :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake")))
 
+        (:name web-mode
+               :type elpa)
+
         (:name spork-and-nailgun
                :description "Support for spork and nailgun"
                :type github
