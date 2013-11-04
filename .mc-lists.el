@@ -33,6 +33,7 @@
         evil-paste-after
         evil-paste-before
         evil-previous-line
+        evil-ret-and-indent
         evil-scroll-line-up
         evil-search-next
         evil-substitute
@@ -58,6 +59,7 @@
         sp-remove-active-pair-overlay
         sp-splice-sexp
         sp-splice-sexp-killing-backward
+        un-emacsify
         yas-expand
         ))
 

@@ -1,4 +1,5 @@
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+(if (not (string= "" (shell-command-to-string "which agda-mode")))
+    (load-file (let ((coding-system-for-read 'utf-8))
+                 (shell-command-to-string "agda-mode locate"))))
 
 (provide 'setup-agda)
