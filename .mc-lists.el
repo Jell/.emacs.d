@@ -14,6 +14,7 @@
         evil-backward-word-begin
         evil-change
         evil-change-line
+        evil-copy-from-above
         evil-delete
         evil-delete-backward-char-and-join
         evil-delete-char
