@@ -16,7 +16,6 @@
                :load "ruby-mode.el")
 
         ruby-compilation
-        rdebug
         scss-mode
         yaml-mode
         auto-complete

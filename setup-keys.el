@@ -14,7 +14,6 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
 ;; Multi cursors
 (global-set-key (kbd "C-c C-d") 'mc/edit-lines)
@@ -30,6 +29,8 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 ;; Ack
 (global-set-key (kbd "C-x C-p") 'ack-and-a-half)
+;; Smex
+(global-set-key (kbd "M-x") 'smex)
 
 (defun control-meta-click (event)
   (interactive "e")
