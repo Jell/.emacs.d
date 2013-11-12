@@ -11,31 +11,38 @@
       (let* ((rubies (file-expand-wildcards "~/.rbenv/versions/1.9*"))
              (ruby-root (expand-file-name (first (last rubies)))))
         (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))))
-
-(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.arb\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.builder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-
 ;; Set proper path to ruby
 (ruby-set-enh-ruby-program)
 
+(add-to-list 'auto-mode-alist '("Capfile" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.thor\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.arb\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.builder\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+(add-to-list 'ac-modes 'enh-ruby-mode)
+
+;; I already have faces
+(remove-hook 'enh-ruby-mode-hook 'erm-define-faces)
+
 ;; Fix word limits
-(modify-syntax-entry ?@ "w" ruby-mode-syntax-table)
-(modify-syntax-entry ?$ "w" ruby-mode-syntax-table)
-(modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
-(modify-syntax-entry ?! "w" ruby-mode-syntax-table)
-(modify-syntax-entry ?? "w" ruby-mode-syntax-table)
+(modify-syntax-entry ?@ "w" enh-ruby-mode-syntax-table)
+(modify-syntax-entry ?$ "w" enh-ruby-mode-syntax-table)
+(modify-syntax-entry ?_ "w" enh-ruby-mode-syntax-table)
+(modify-syntax-entry ?! "w" enh-ruby-mode-syntax-table)
+(modify-syntax-entry ?? "w" enh-ruby-mode-syntax-table)
+
+;; Add flyspell
+(add-hook 'enh-ruby-mode-hook (lambda () (flyspell-prog-mode)))
 
 ;; Some extra keys
-(evil-define-key 'normal ruby-mode-map
+(evil-define-key 'normal enh-ruby-mode-map
   "J" (lambda () (interactive) (sp-ruby-delete-indentation -1)))
 
 (setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:"
@@ -48,7 +55,7 @@
 
 (add-hook 'post-self-insert-hook #'ruby-awesome-block)
 (defun ruby-awesome-block ()
-  (when (string= major-mode "ruby-mode")
+  (when (string= major-mode "enh-ruby-mode")
     (when (and (looking-at-p "}") (looking-back "{ "))
       (save-excursion
         (insert " ")))
@@ -60,9 +67,8 @@
         (indent-according-to-mode))
       (indent-according-to-mode))))
 
-(add-hook 'ruby-mode-hook
+(add-hook 'enh-ruby-mode-hook
           '(lambda ()
-             (require 'ruby-mode)
              (require 'ruby-compilation)
              (require 'rspec-mode)
              (require 'rcodetools)

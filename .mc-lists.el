@@ -31,6 +31,7 @@
         evil-join
         evil-next-line
         evil-normal-state
+        evil-open-below
         evil-paste-after
         evil-paste-before
         evil-previous-line
@@ -38,6 +39,7 @@
         evil-scroll-line-up
         evil-search-next
         evil-substitute
+        evil-visual-block
         evil-visual-char
         evil-yank-line
         indent-for-tab-command

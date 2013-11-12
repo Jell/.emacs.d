@@ -8,12 +8,10 @@
                :url "git@github.com:Jell/jell-emacs-theme.git"
                :features jell-theme)
 
-        rvm
-
-        (:name Enhanced-Ruby-Mode
-               :type git
-               :url "git://github.com/Jell/Enhanced-Ruby-Mode.git"
-               :load "ruby-mode.el")
+        (:name enh-ruby-mode
+               :type github
+               :pkgname "zenspider/enhanced-ruby-mode"
+               :features enh-ruby-mode)
 
         ruby-compilation
         scss-mode
