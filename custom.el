@@ -22,6 +22,7 @@
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(el-get-user-package-directory "~/.emacs.d/el-get-init")
+ '(enh-ruby-deep-indent-paren nil)
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#got.clj" "#ruby" "#emacs"))))
  '(erc-autojoin-delay 30)
  '(erc-email-userid "jean-louis@jawaninja.com")
