@@ -22,7 +22,16 @@
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(el-get-user-package-directory "~/.emacs.d/el-get-init")
+ '(enh-ruby-check-syntax (quote errors-and-warnings))
+ '(enh-ruby-deep-arglist t)
  '(enh-ruby-deep-indent-paren nil)
+ '(enh-ruby-deep-indent-paren-style (quote space))
+ '(enh-ruby-end-check-statement-modifiers nil)
+ '(enh-ruby-end-insert-newline nil)
+ '(enh-ruby-extra-keywords
+   (quote
+    ("require" "private" "alias" "include" "extend" "protected" "public" "raise")))
+ '(enh-ruby-hanging-indent-level 2)
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#got.clj" "#ruby" "#emacs"))))
  '(erc-autojoin-delay 30)
  '(erc-email-userid "jean-louis@jawaninja.com")
@@ -73,16 +82,6 @@
  '(rspec-use-rake-flag nil)
  '(rspec-use-rake-when-possible nil)
  '(rspec-use-rvm t)
- '(ruby-check-syntax (quote errors-and-warnings))
- '(ruby-deep-arglist t)
- '(ruby-deep-indent-paren nil)
- '(ruby-deep-indent-paren-style (quote space))
- '(ruby-end-check-statement-modifiers nil)
- '(ruby-end-insert-newline nil)
- '(ruby-extra-keywords
-   (quote
-    ("require" "private" "alias" "include" "extend" "protected" "public" "raise")))
- '(ruby-hanging-indent-level 2)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 100000000)
  '(scroll-margin 3)
