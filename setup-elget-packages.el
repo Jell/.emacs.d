@@ -107,6 +107,12 @@
                :pkgname "magnars/dash.el"
                :features dash)
 
+        (:name s
+               :description "The long lost Emacs string manipulation library"
+               :type github
+               :pkgname "magnars/s.el"
+               :features s)
+
         (:name smartparens
                :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
                :type github
@@ -121,7 +127,7 @@
         (:name pivotal
                :type github
                :pkgname "megakorre/pivotal"
-               :depends maps
+               :depends (s dash maps)
                :features pivotal)
 
         (:name elixir-mode
