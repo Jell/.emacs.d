@@ -7,13 +7,12 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(clojure-mode
-                      nrepl
-                      ac-nrepl
-                      rainbow-delimiters
+(defvar my-packages '(rainbow-delimiters
                       rainbow-mode
                       coffee-mode
                       paredit
+                      cider
+                      ac-nrepl
                       find-file-in-project
                       smex
                       ido-ubiquitous
@@ -41,6 +40,9 @@
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode +1)
 
+;; Clojure
+(require 'init-cider)
+
 ;; Erlang
 (autoload 'erlang-mode "erlang" nil t)
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
@@ -59,9 +61,6 @@
 (defun coffee-mode-hook ()
   (set (make-local-variable 'tab-width) 2))
 (add-hook 'coffee-mode-hook 'coffee-mode-hook)
-
-;; Clojure
-(require 'init-clojure-mode)
 
 ;; Enable rainbow delimiters
 (global-rainbow-delimiters-mode)
