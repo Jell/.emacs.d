@@ -35,6 +35,7 @@
         evil-paste-after
         evil-paste-before
         evil-previous-line
+        evil-replace
         evil-ret-and-indent
         evil-scroll-line-up
         evil-search-next

@@ -1,4 +1,5 @@
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(server-start)
 (require 'sanity)
 (require 'setup-paths)
 (require 'setup-scratch-message)

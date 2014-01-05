@@ -81,7 +81,7 @@
  '(rspec-use-opts-file-when-available t)
  '(rspec-use-rake-flag nil)
  '(rspec-use-rake-when-possible nil)
- '(rspec-use-rvm t)
+ '(rspec-use-rvm nil)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 100000000)
  '(scroll-margin 3)

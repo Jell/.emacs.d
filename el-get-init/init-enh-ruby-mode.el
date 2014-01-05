@@ -35,9 +35,6 @@
 (modify-syntax-entry ?! "w" enh-ruby-mode-syntax-table)
 (modify-syntax-entry ?? "w" enh-ruby-mode-syntax-table)
 
-;; Add flyspell
-(add-hook 'enh-ruby-mode-hook (lambda () (flyspell-prog-mode)))
-
 ;; Some extra keys
 (evil-define-key 'normal enh-ruby-mode-map
   "J" (lambda () (interactive) (sp-ruby-delete-indentation -1)))
