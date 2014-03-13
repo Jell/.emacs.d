@@ -13,3 +13,4 @@ ac-comphist.dat
 /tramp
 /**/*.elc
 /.cask
+/.DS_Store

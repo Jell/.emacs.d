@@ -17,4 +17,6 @@
 
 (if window-system (set-exec-path-from-shell-PATH))
 
+(setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
+
 (provide 'setup-paths)

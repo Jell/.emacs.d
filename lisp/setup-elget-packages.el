@@ -135,8 +135,28 @@
                :pkgname "elixir-lang/emacs-elixir"
                :features elixir-mode)
 
+        idris-mode
         ace-jump-mode
-        ))
+        twittering-mode
+        emacs-w3m
+
+        (:name bbdb
+               :website "http://bbdb.sourceforge.net/"
+               :description "The Insidious Big Brother Database (BBDB) is a contact management utility."
+               :type git
+               :url "git://git.savannah.nongnu.org/bbdb.git"
+               :load-path ("./lisp")
+               ;; if using vm, add `--with-vm-dir=DIR' after ./configure
+               :build
+               `("./autogen.sh"
+                 "./configure"
+                 ;; disable docs
+                 "echo 'all:' > doc/Makefile"
+                 "echo 'all:' > tex/Makefile"
+                 "make")
+               :features bbdb-loaddefs
+               :autoloads nil
+               :post-init (bbdb-initialize))))
 
 ;; Trigger synchronization of el-get packages
 (defun sync-packages ()

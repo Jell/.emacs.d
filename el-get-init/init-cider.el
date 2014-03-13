@@ -17,6 +17,8 @@
 (eval-after-load "cider"
   '(define-key cider-repl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
 
+(modify-syntax-entry ?/ "w" clojure-mode-syntax-table)
+
 ;; Indentation for compojure
 (define-clojure-indent
   (run 'defun)

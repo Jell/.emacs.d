@@ -6,6 +6,7 @@
         cua-copy-region
         cua-delete-region
         cua-paste
+        electric-indent-just-newline
         eval-defun
         eval-defun
         evil-append
@@ -22,6 +23,7 @@
         evil-emacs-state
         evil-exit-emacs-state
         evil-exit-visual-state
+        evil-force-normal-state
         evil-forward-char
         evil-forward-char
         evil-forward-word-end
@@ -43,6 +45,7 @@
         evil-visual-block
         evil-visual-char
         evil-yank-line
+        forward-sexp
         indent-for-tab-command
         indent-for-tab-command
         keyboard-escape-quit
@@ -58,7 +61,9 @@
         ruby-electric-brace
         ruby-end-space
         sp--self-insert-command
+        sp-backward-sexp
         sp-backward-slurp-sexp
+        sp-forward-sexp
         sp-forward-slurp-sexp
         sp-remove-active-pair-overlay
         sp-splice-sexp

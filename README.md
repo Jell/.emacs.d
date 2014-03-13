@@ -10,7 +10,7 @@ themselves! Magic!
 
 ## Dependencies:
 
-````ruby
+```sh
 # Packages
 sudo apt-get install curl git git-core subversion openjdk-7-jdk
 zlib1g-dev libreadline-dev cvs ack-grep libssl-dev texinfo aspell dbus
@@ -24,7 +24,7 @@ cd /usr/local/bin
 curl -O https://raw.github.com/technomancy/leiningen/stable/bin/lein
 chmod +x lein
 lein
-````
+```
 
 ## Todo:
 - Multi user support
