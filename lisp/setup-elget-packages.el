@@ -135,13 +135,15 @@
                :pkgname "elixir-lang/emacs-elixir"
                :features elixir-mode)
 
+        dash-at-point
         idris-mode
         ace-jump-mode
         twittering-mode
         emacs-w3m
 
+        ;; Had to write my own recipe, the default one was
+        ;; broken. Replace with vanillia install ASAP.
         (:name bbdb
-               :website "http://bbdb.sourceforge.net/"
                :description "The Insidious Big Brother Database (BBDB) is a contact management utility."
                :type git
                :url "git://git.savannah.nongnu.org/bbdb.git"

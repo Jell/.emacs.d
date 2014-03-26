@@ -31,6 +31,9 @@
 (global-set-key (kbd "C-x C-p") 'ack-and-a-half)
 ;; Smex
 (global-set-key (kbd "M-x") 'smex)
+;; Dash
+(global-set-key (kbd "C-c C-d") 'dash-at-point)
+(global-set-key (kbd "C-c C-c C-d") 'dash-at-point-with-docset)
 
 (defun control-meta-click (event)
   (interactive "e")
