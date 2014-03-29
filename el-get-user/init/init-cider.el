@@ -1,5 +1,4 @@
 (require 'cider)
-(require 'popup)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 

@@ -1,6 +1,5 @@
 (setq my-packages
       '(rainbow-delimiters
-        rainbow-mode
         coffee-mode
         paredit
         cider

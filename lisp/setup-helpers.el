@@ -5,4 +5,14 @@
   (set-buffer-modified-p t)
   (save-buffer))
 
+;; Sublime-like click and make cursor
+(defun control-meta-click (event)
+  (interactive "e")
+  (if (> (mc/num-cursors) 1)
+      (multiple-cursors-mode 1)
+    (multiple-cursors-mode 0))
+  (mc/create-fake-cursor-at-point)
+  (mouse-set-point event)
+  (message (string (mc/num-cursors))))
+
 (provide 'setup-helpers)
