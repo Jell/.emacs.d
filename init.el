@@ -11,6 +11,7 @@
 (require 'setup-keys)
 (require 'setup-hippie-expand)
 (require 'setup-mode-line)
+(require 'setup-auto-revert)
 (require 'sublimify)
 (require 'emacsify)
 (require 'movelines)
