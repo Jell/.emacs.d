@@ -9,6 +9,7 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auth-source-save-behavior nil)
+ '(auto-revert-interval 1)
  '(blink-cursor-alist nil)
  '(blink-cursor-mode t)
  '(cider-popup-on-error nil)
@@ -22,7 +23,6 @@
  '(dired-listing-switches "-al")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
- '(el-get-user-package-directory "~/.emacs.d/el-get-init")
  '(enh-ruby-check-syntax (quote errors-and-warnings))
  '(enh-ruby-deep-arglist t)
  '(enh-ruby-deep-indent-paren nil)

@@ -2,8 +2,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
-;; Fix encoding
-(setq default-process-coding-system '(utf-8 . utf-8))
 ;; Larger fonts
 (set-face-attribute 'default nil :height 150)
 ;; Bug fix
@@ -35,5 +33,12 @@
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
+
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
 
 (provide 'sanity)

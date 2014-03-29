@@ -1,0 +1,6 @@
+(:name puggle-utils
+       :description "Usefull functions used at PugglePay"
+       :type github
+       :pkgname "PugglePay/puggle-emacs-utils"
+       :features puggle-utils
+       :after (require 'puggle-utils))

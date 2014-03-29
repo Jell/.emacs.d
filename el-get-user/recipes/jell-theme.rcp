@@ -1,0 +1,4 @@
+(:name jell-theme
+       :type git
+       :url "git@github.com:Jell/jell-emacs-theme.git"
+       :features jell-theme)

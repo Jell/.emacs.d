@@ -1,0 +1,18 @@
+;; Had to write my own recipe, the default one was
+;; broken. Replace with vanillia install ASAP.
+(:name bbdb
+       :description "The Insidious Big Brother Database (BBDB) is a contact management utility."
+       :type git
+       :url "git://git.savannah.nongnu.org/bbdb.git"
+       :load-path ("./lisp")
+       ;; if using vm, add `--with-vm-dir=DIR' after ./configure
+       :build
+       `("./autogen.sh"
+         "./configure"
+         ;; disable docs
+         "echo 'all:' > doc/Makefile"
+         "echo 'all:' > tex/Makefile"
+         "make")
+       :features bbdb-loaddefs
+       :autoloads nil
+       :post-init (bbdb-initialize))

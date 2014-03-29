@@ -1,0 +1,4 @@
+(:name maps
+       :type github
+       :pkgname "megakorre/maps"
+       :features maps)

@@ -1,0 +1,5 @@
+(:name pivotal
+       :type github
+       :pkgname "megakorre/pivotal"
+       :depends (s dash maps)
+       :features pivotal)

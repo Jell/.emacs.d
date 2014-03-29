@@ -1,0 +1,5 @@
+(:name elixir-mode
+       :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
+       :type github
+       :pkgname "elixir-lang/emacs-elixir"
+       :features elixir-mode)

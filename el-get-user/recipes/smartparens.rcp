@@ -1,0 +1,5 @@
+(:name smartparens
+       :description "Modern minor mode for Emacs that deals with parens pairs and tries to be smart about it."
+       :type github
+       :pkgname "Fuco1/smartparens"
+       :features smartparens)
