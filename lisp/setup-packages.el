@@ -44,6 +44,7 @@
         gist
         haskell-mode
         erlang
+        wgrep
         sass-mode))
 
 (el-get 'sync my-packages)
