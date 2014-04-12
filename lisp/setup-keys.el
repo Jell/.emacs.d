@@ -26,8 +26,8 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; Ack
-(global-set-key (kbd "C-x C-p") 'ack-and-a-half)
+;; Ag
+(global-set-key (kbd "C-x C-p") 'ag-project)
 
 ;; Smex
 (global-set-key (kbd "M-x") 'smex)

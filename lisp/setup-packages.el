@@ -19,7 +19,7 @@
         markdown-mode
         rspec-mode
         jekyll-el
-        ack-and-a-half
+        ag
         bundler
         nyan-mode
         multiple-cursors
