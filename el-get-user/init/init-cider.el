@@ -18,6 +18,8 @@
   (deftype 'defun)
   (defroutes 'defun)
   (describe 'defun)
+  (for-all 'defun)
+  (for-all* 'defun)
   (it 'defun)
   (GET 2)
   (POST 2)

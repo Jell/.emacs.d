@@ -14,6 +14,7 @@
  '(blink-cursor-mode t)
  '(cider-popup-on-error nil)
  '(css-indent-level 2)
+ '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
  '(custom-enabled-themes (quote (jell)))
  '(custom-safe-themes
@@ -23,8 +24,9 @@
  '(dired-listing-switches "-al")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(enh-ruby-bounce-deep-indent nil)
  '(enh-ruby-check-syntax (quote errors-and-warnings))
- '(enh-ruby-deep-arglist t)
+ '(enh-ruby-deep-arglist nil)
  '(enh-ruby-deep-indent-paren nil)
  '(enh-ruby-deep-indent-paren-style (quote space))
  '(enh-ruby-end-check-statement-modifiers nil)

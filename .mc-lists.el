@@ -69,6 +69,8 @@
         sp-splice-sexp
         sp-splice-sexp-killing-backward
         un-emacsify
+        wgrep-finish-edit
+        yaml-electric-dash-and-dot
         yas-expand
         ))
 
@@ -89,4 +91,5 @@
         save-buffer-always
         smex
         widget-button-click
+        yaml-electric-backspace
         ))
