@@ -1,0 +1,5 @@
+(:name typed-clojure-mode
+       :type github
+       :pkgname "typedclojure/typed-clojure-mode"
+       :depends (clojure-mode cider)
+       :features typed-clojure-mode)

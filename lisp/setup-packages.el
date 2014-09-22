@@ -10,6 +10,7 @@
         undo-tree
         evil
         evil-surround
+        evil-leader
         jell-theme
         enh-ruby-mode
         ruby-compilation
@@ -34,6 +35,7 @@
         smartparens
         maps
         pivotal
+        typed-clojure-mode
         elixir-mode
         dash-at-point
         idris-mode
@@ -45,6 +47,9 @@
         haskell-mode
         erlang
         wgrep
+        feature-mode
+        jinja2-mode
+        matlab-mode
         sass-mode))
 
 (el-get 'sync my-packages)

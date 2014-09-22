@@ -69,6 +69,7 @@
         sp-splice-sexp
         sp-splice-sexp-killing-backward
         un-emacsify
+        wdired-finish-edit
         wgrep-finish-edit
         yaml-electric-dash-and-dot
         yas-expand
@@ -82,6 +83,7 @@
         evil-find-char
         evil-insert-digraph
         evil-mouse-drag-region
+        evil-scroll-line-down
         evil-search-symbol-backward
         evil-yank
         fix-for-evil
