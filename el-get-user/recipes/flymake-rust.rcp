@@ -1,0 +1,5 @@
+(:name flymake-rust
+       :type github
+       :pkgname "jxs/flymake-rust"
+       :features flymake-rust
+       :depends flymake-easy)

@@ -47,9 +47,12 @@
         haskell-mode
         erlang
         wgrep
+        restclient
         feature-mode
         jinja2-mode
         matlab-mode
+        rust-mode
+        flymake-rust
         sass-mode))
 
 (el-get 'sync my-packages)

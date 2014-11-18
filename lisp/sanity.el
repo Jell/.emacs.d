@@ -24,6 +24,7 @@
 ;; Diable ring bell
 (setq ring-bell-function 'ignore)
 ;; Remove trailing whitespaces
+(remove-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
