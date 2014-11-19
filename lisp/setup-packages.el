@@ -37,7 +37,6 @@
         pivotal
         typed-clojure-mode
         elixir-mode
-        dash-at-point
         idris-mode
         ace-jump-mode
         twittering-mode

@@ -16,7 +16,6 @@
 (global-set-key (kbd "C-S-k") 'kill-whole-line)
 
 ;; Multi cursors
-(global-set-key (kbd "C-c C-d") 'mc/edit-lines)
 (global-set-key (kbd "M--") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-+") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-M-+") 'mc/mark-all-like-this)
@@ -37,10 +36,6 @@
 
 ;; Smex
 (global-set-key (kbd "M-x") 'smex)
-
-;; Dash
-(global-set-key (kbd "C-c d") 'dash-at-point)
-(global-set-key (kbd "C-c C-d") 'dash-at-point-with-docset)
 
 ;; Breadcrumbs
 (global-set-key (kbd "C-c b SPC") 'bc-set)
