@@ -36,6 +36,7 @@
         s
         smartparens
         maps
+        guide-key
         pivotal
         typed-clojure-mode
         elixir-mode

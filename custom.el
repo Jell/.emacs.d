@@ -63,6 +63,9 @@
  '(global-auto-revert-non-file-buffers t)
  '(global-hl-line-mode t)
  '(gud-tooltip-echo-area nil)
+ '(guide-key/guide-key-sequence (quote ("C-x" "C-c")))
+ '(guide-key/popup-window-position (quote bottom))
+ '(guide-key/recursive-key-sequence-flag t)
  '(haskell-font-lock-symbols nil)
  '(haskell-process-type (quote cabal-repl))
  '(haskell-program-name "cabal repl")
@@ -141,7 +144,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(diff-refine-added ((t (:inherit magit-diff-add :inverse-video t))))
- '(diff-refine-change ((t (:inverse-video t :underline nil :slant normal :weight normal))))
  '(diff-refine-removed ((t (:inherit magit-diff-del :inverse-video t))))
  '(idris-loaded-region-face ((t (:background "#003000"))))
  '(idris-prover-processed-face ((t (:background "#003000"))))
