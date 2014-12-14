@@ -11,6 +11,7 @@
         evil
         evil-surround
         evil-leader
+        evil-exchange
         jell-theme
         enh-ruby-mode
         ruby-compilation
@@ -28,6 +29,7 @@
         expand-region
         cl-lib
         magit
+        git-timemachine
         web-mode
         puggle-utils
         dash

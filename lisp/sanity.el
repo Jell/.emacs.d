@@ -36,9 +36,7 @@
                     (or (buffer-file-name) load-file-name)))
 
 (require 'cl)
-(require 'saveplace)
 (require 'ffap)
-(require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
 

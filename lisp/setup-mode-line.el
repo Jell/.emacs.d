@@ -50,7 +50,7 @@
   '(:eval
     (propertize
      (if vc-mode (concat vc-mode " ") "")
-     'face 'font-lock-special-keyword-face))
+     'face 'font-lock-variable-name-face))
 
   ;; add the time, with the date and the emacs uptime in the tooltip
   '(:eval

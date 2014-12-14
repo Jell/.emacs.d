@@ -24,8 +24,8 @@
 (global-set-key (kbd "M-+") 'er/expand-region)
 
 ;; For sublime users
-(global-set-key (kbd "C-c s") 'sublimify)
-(global-set-key (kbd "C-c e") 'emacsify)
+;; (global-set-key (kbd "C-c s") 'sublimify)
+;; (global-set-key (kbd "C-c e") 'emacsify)
 (global-set-key (kbd "<C-M-mouse-1>") 'control-meta-click)
 
 ;; Magit
