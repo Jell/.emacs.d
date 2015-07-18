@@ -15,7 +15,6 @@
         company-mode
         auto-complete
         enh-ruby-mode
-        ruby-compilation
         scss-mode
         yaml-mode
         markdown-mode
@@ -40,20 +39,18 @@
         pivotal
         typed-clojure-mode
         elixir-mode
-        idris-mode
         ace-jump-mode
         twittering-mode
         emacs-w3m
         bbdb
         gist
         haskell-mode
-        erlang
         wgrep
         restclient
         feature-mode
         jinja2-mode
-        matlab-mode
         rust-mode
+        flymake-easy
         flymake-rust
         org-present
         tuareg-mode

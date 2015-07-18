@@ -1,3 +1,0 @@
-(:name cl-lib
-       :type github
-       :pkgname "emacsmirror/cl-lib")
