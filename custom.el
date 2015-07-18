@@ -157,8 +157,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(diff-refine-added ((t (:inherit magit-diff-add :inverse-video t))))
- '(diff-refine-removed ((t (:inherit magit-diff-del :inverse-video t))))
+ '(diff-refine-added ((t (:inherit diff-refine-change :background "#118811"))))
+ '(diff-refine-change ((t (:inverse-video nil :underline nil :slant normal :weight normal))))
  '(idris-loaded-region-face ((t (:background "#003000"))))
  '(idris-prover-processed-face ((t (:background "#003000"))))
- '(idris-prover-processing-face ((t (:background "DarkGoldenrod4")))))
+ '(idris-prover-processing-face ((t (:background "DarkGoldenrod4"))))
+ '(magit-diff-context-highlight ((t (:background "grey12" :foreground "grey70"))))
+ '(magit-section-highlight ((t (:background "gray12")))))
