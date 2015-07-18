@@ -5,7 +5,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-show-compilation nil)
  '(ac-ignore-case nil)
+ '(ac-modes
+   (quote
+    (enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode web-mode ts-mode sclang-mode verilog-mode qml-mode)))
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auth-source-save-behavior nil)
@@ -90,7 +94,17 @@
  '(nyan-bar-length 20)
  '(nyan-mode t)
  '(nyan-wavy-trail nil)
+ '(org-babel-load-languages
+   (quote
+    ((emacs-lisp . t)
+     (haskell . t)
+     (clojure . t)
+     (python . t))))
+ '(org-image-actual-width 100)
+ '(org-startup-with-inline-images t)
+ '(org-startup-with-latex-preview t)
  '(pr-gv-command "open")
+ '(require-final-newline (quote ask))
  '(rspec-command-options "")
  '(rspec-compilation-buffer-name "*RSPEC*")
  '(rspec-spec-command "rspec")
@@ -147,5 +161,4 @@
  '(diff-refine-removed ((t (:inherit magit-diff-del :inverse-video t))))
  '(idris-loaded-region-face ((t (:background "#003000"))))
  '(idris-prover-processed-face ((t (:background "#003000"))))
- '(idris-prover-processing-face ((t (:background "DarkGoldenrod4"))))
- '(magit-item-highlight ((t nil))))
+ '(idris-prover-processing-face ((t (:background "DarkGoldenrod4")))))

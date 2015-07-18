@@ -3,7 +3,6 @@
         coffee-mode
         paredit
         cider
-        ac-nrepl
         find-file-in-project
         smex
         ido-ubiquitous
@@ -13,11 +12,12 @@
         evil-leader
         evil-exchange
         jell-theme
+        company-mode
+        auto-complete
         enh-ruby-mode
         ruby-compilation
         scss-mode
         yaml-mode
-        auto-complete
         markdown-mode
         rspec-mode
         jekyll-el
@@ -55,6 +55,9 @@
         matlab-mode
         rust-mode
         flymake-rust
+        org-present
+        tuareg-mode
+        ;; auctex
         sass-mode))
 
 (el-get 'sync my-packages)

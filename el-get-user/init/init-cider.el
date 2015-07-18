@@ -13,6 +13,7 @@
 
 ;; Indentation for compojure
 (define-clojure-indent
+  (ns 'defun)
   (run 'defun)
   (fresh 'defun)
   (defprotocol 'defun)
@@ -20,9 +21,20 @@
   (deftype 'defun)
   (defroutes 'defun)
   (describe 'defun)
+  (around 'defun)
   (for-all 'defun)
   (for-all* 'defun)
+  (clone-for 'defun)
+  (reset! 'defun)
+  (join 'defun)
+  (swap! 'defun)
+  (update-in 'defun)
+  (describe 'defun)
+  (context 'defun)
   (it 'defun)
+  (at 'defun)
+  (listen 'defun)
+  (from 'defun)
   (up 'defun)
   (down 'defun)
   (match 'defun)
@@ -34,7 +46,6 @@
   (PUT 2)
   (DELETE 2)
   (HEAD 2)
-  (ANY 2)
-  (context 2))
+  (ANY 2))
 
 (provide 'init-cider)

@@ -11,7 +11,10 @@
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
 (defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
+  (let ((path-from-shell
+         (substring
+          (shell-command-to-string "$SHELL -i -c 'echo $PATH'")
+          0 -1)))
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
