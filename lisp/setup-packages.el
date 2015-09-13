@@ -38,6 +38,7 @@
         guide-key
         pivotal
         typed-clojure-mode
+        clj-refactor
         elixir-mode
         ace-jump-mode
         twittering-mode

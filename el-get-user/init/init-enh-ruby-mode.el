@@ -63,7 +63,6 @@
 
 (add-hook 'enh-ruby-mode-hook
           '(lambda ()
-             (require 'ruby-compilation)
              (require 'rspec-mode)
              (require 'rcodetools)
              (rspec-mode +1)))
