@@ -13,8 +13,13 @@
 
 ;; Indentation for compojure
 (define-clojure-indent
+  (register-sub 1)
+  (start 'defun)
+  (stop 'defun)
   (ns 'defun)
   (run 'defun)
+  (when-dev 0)
+  (modify-if 1)
   (fresh 'defun)
   (defprotocol 'defun)
   (defrecord 'defun)

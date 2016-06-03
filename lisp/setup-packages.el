@@ -34,11 +34,11 @@
         dash
         s
         smartparens
+        clj-refactor
         maps
         guide-key
         pivotal
         typed-clojure-mode
-        clj-refactor
         elixir-mode
         ace-jump-mode
         twittering-mode
@@ -55,6 +55,7 @@
         flymake-rust
         org-present
         tuareg-mode
+        org-trello
         ;; auctex
         sass-mode))
 
