@@ -106,6 +106,10 @@
  '(org-image-actual-width 100)
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
+ '(org-trello-current-prefix-keybinding "C-c o")
+ '(org-trello-files
+   (quote
+    ("~/PugglePay/trello/testing.org" "~/PugglePay/trello/dev.org" "~/PugglePay/trello/design.org")))
  '(pr-gv-command "open")
  '(require-final-newline (quote ask))
  '(rspec-command-options "")
