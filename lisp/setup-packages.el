@@ -39,7 +39,7 @@
         guide-key
         pivotal
         typed-clojure-mode
-        elixir-mode
+        alchemist
         ace-jump-mode
         twittering-mode
         emacs-w3m
@@ -55,7 +55,8 @@
         flymake-rust
         org-present
         tuareg-mode
-        org-trello
+        ;; org-trello
+        ;; travis
         ;; auctex
         sass-mode))
 

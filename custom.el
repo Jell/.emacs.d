@@ -16,6 +16,7 @@
  '(auto-revert-interval 1)
  '(blink-cursor-alist nil)
  '(blink-cursor-mode t)
+ '(cider-cljs-lein-repl "(use 'figwheel-sidecar.repl-api) (cljs-repl)")
  '(css-indent-level 2)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
@@ -106,10 +107,6 @@
  '(org-image-actual-width 100)
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
- '(org-trello-current-prefix-keybinding "C-c o")
- '(org-trello-files
-   (quote
-    ("~/PugglePay/trello/testing.org" "~/PugglePay/trello/dev.org" "~/PugglePay/trello/design.org")))
  '(pr-gv-command "open")
  '(require-final-newline (quote ask))
  '(rspec-command-options "")

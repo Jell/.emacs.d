@@ -1,5 +1,7 @@
+;; (package-initialize) ; Skip before elget
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(server-start)
+;; (server-start)
 (require 'sanity)
 (require 'compatibility)
 (require 'setup-paths)

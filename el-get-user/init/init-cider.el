@@ -1,7 +1,7 @@
 (require 'cider)
 (add-hook 'cider-mode-hook #'paredit-mode)
 (add-hook 'cider-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'cider-mode-hook #'cider-turn-on-eldoc-mode)
+;; (add-hook 'cider-mode-hook #'cider-turn-on-eldoc-mode)
 
 ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
@@ -52,5 +52,27 @@
   (DELETE 2)
   (HEAD 2)
   (ANY 2))
+
+(defun cljs-tests-run-ns-tests ()
+  (interactive)
+  (cider-interactive-eval
+   (concat "(cljs.test/run-tests '" (cider-current-ns) ")")))
+
+(defun cljs-tests-run-all-tests ()
+  (interactive)
+  (cider-interactive-eval
+   (concat "(cljs.test/run-all-tests)")))
+
+(defun cljs-tests-run-single-test ()
+  (interactive)
+  (cider-interactive-eval (concat "(cljs.test.repl/run-single-test #'"
+                                  (cider-current-ns)
+                                  "/"
+                                  (symbol-name (symbol-at-point)) ")")))
+
+(define-key clojurescript-mode-map [remap cider-test-run-ns-tests] 'cljs-tests-run-ns-tests)
+(define-key clojurescript-mode-map (kbd "C-c , s") 'cljs-tests-run-single-test)
+(define-key clojurescript-mode-map (kbd "C-c , v") 'cljs-tests-run-ns-tests)
+(define-key clojurescript-mode-map (kbd "C-c , a") 'cljs-tests-run-all-tests)
 
 (provide 'init-cider)

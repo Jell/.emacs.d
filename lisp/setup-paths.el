@@ -18,7 +18,7 @@
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
-(if window-system (set-exec-path-from-shell-PATH))
+(set-exec-path-from-shell-PATH)
 
 (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
 
