@@ -14,7 +14,6 @@
 (require 'setup-hippie-expand)
 (require 'setup-mode-line)
 (require 'setup-auto-revert)
-(require 'setup-agda)
 ;; (require 'sublimify)
 ;; (require 'emacsify)
 ;; (require 'movelines)
