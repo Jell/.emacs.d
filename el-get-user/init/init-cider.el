@@ -75,4 +75,6 @@
 (define-key clojurescript-mode-map (kbd "C-c , v") 'cljs-tests-run-ns-tests)
 (define-key clojurescript-mode-map (kbd "C-c , a") 'cljs-tests-run-all-tests)
 
+(setq cider-test-items-background-color (cider-scale-background-color))
+
 (provide 'init-cider)

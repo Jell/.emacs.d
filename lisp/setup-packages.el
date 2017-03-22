@@ -1,5 +1,6 @@
 (setq my-packages
-      '(rainbow-delimiters
+      '(jell-theme
+        rainbow-delimiters
         coffee-mode
         paredit
         cider
@@ -11,7 +12,6 @@
         evil-surround
         evil-leader
         evil-exchange
-        jell-theme
         company-mode
         auto-complete
         enh-ruby-mode
@@ -45,7 +45,7 @@
         emacs-w3m
         bbdb
         gist
-        haskell-mode
+        intero
         wgrep
         restclient
         feature-mode
@@ -55,6 +55,15 @@
         flymake-rust
         org-present
         tuareg-mode
+        polymode
+        purescript-mode
+        elm-mode
+        js2-mode
+        skewer-mode
+        jade
+        ess
+        rubocop
+        ;; suggest
         ;; org-trello
         ;; travis
         ;; auctex

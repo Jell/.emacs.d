@@ -1,2 +1,2 @@
 (:name clj-refactor :type elpa
-       :depends (s yasnippet edn inflections clojure-mode dash hydra))
+       :depends (s yasnippet edn inflections clojure-mode dash hydra paredit))

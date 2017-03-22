@@ -3,6 +3,7 @@
 ;; Extra package repos
 (setq package-archives '())
 (add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
