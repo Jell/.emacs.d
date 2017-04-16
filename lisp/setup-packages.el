@@ -51,7 +51,8 @@
         jade
         ess
         rubocop
-        sass-mode))
+        sass-mode
+        impatient-mode))
 
 (el-get 'sync my-packages)
 

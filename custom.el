@@ -111,7 +111,9 @@
  '(org-src-fontify-natively t)
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
- '(package-selected-packages (quote (jade intero travis org-trello clj-refactor)))
+ '(package-selected-packages
+   (quote
+    (impatient-mode jade intero travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(require-final-newline (quote ask))
  '(rspec-command-options "")
