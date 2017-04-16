@@ -22,7 +22,7 @@
   (modify-if 1)
   (fresh 'defun)
   (defprotocol 'defun)
-  (defrecord 'defun)
+  (defrecord '(2 nil nil (1)))
   (deftype 'defun)
   (defroutes 'defun)
   (describe 'defun)
