@@ -1,5 +1,0 @@
-(:name pivotal
-       :type github
-       :pkgname "Jell/pivotal"
-       :depends (s dash maps)
-       :features pivotal)
