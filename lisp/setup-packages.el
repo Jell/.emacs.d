@@ -52,7 +52,8 @@
         ess
         rubocop
         sass-mode
-        impatient-mode))
+        impatient-mode
+        idris-mode))
 
 (el-get 'sync my-packages)
 

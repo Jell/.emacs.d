@@ -80,7 +80,7 @@
  '(hl-line-sticky-flag nil)
  '(ido-auto-merge-delay-time 10)
  '(idris-interpreter-flags nil)
- '(idris-interpreter-path "idris")
+ '(idris-interpreter-path "/usr/local/Cellar/idris/1.0/bin/idris")
  '(idris-metavariable-list-show-expanded nil)
  '(idris-metavariable-show-on-load nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
@@ -174,8 +174,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(diff-refine-added ((t (:inherit diff-refine-change :background "#118811"))))
- '(idris-loaded-region-face ((t (:background "#003000"))))
+ '(idris-identifier-face ((t nil)))
+ '(idris-loaded-region-face ((t (:background "#001500"))) t)
  '(idris-prover-processed-face ((t (:background "#003000"))))
  '(idris-prover-processing-face ((t (:background "DarkGoldenrod4"))))
+ '(idris-semantic-bound-face ((t (:foreground "MediumOrchid1"))))
+ '(idris-semantic-data-face ((t (:foreground "coral1"))))
+ '(idris-semantic-function-face ((t (:foreground "light green"))))
+ '(idris-semantic-type-face ((t (:foreground "dodger blue" :weight extra-bold))))
  '(magit-diff-context-highlight ((t (:background "grey12" :foreground "grey70"))))
  '(magit-section-highlight ((t (:background "gray12")))))
