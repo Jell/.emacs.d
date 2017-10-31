@@ -5,7 +5,6 @@
         cider
         find-file-in-project
         smex
-        ido-ubiquitous
         undo-tree
         evil
         evil-surround
@@ -48,7 +47,6 @@
         elm-mode
         js2-mode
         skewer-mode
-        jade
         ess
         rubocop
         sass-mode

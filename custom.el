@@ -31,6 +31,7 @@
  '(dired-use-ls-dired (quote unspecified))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(el-get-allow-insecure t)
  '(enh-ruby-bounce-deep-indent nil)
  '(enh-ruby-check-syntax (quote errors-and-warnings))
  '(enh-ruby-deep-arglist nil)
@@ -95,6 +96,9 @@
  '(magit-merge-arguments (quote ("--no-ff")))
  '(magit-push-arguments (quote ("--set-upstream")))
  '(magit-set-upstream-on-push (quote askifnotset))
+ '(magit-visit-ref-behavior
+   (quote
+    (focus-on-ref create-branch checkout-any checkout-branch)))
  '(mouse-yank-at-point t)
  '(nrepl-force-ssh-for-remote-hosts nil)
  '(nyan-animation-frame-interval 0.1)
@@ -113,7 +117,7 @@
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
    (quote
-    (impatient-mode jade intero travis org-trello clj-refactor)))
+    (haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(require-final-newline (quote ask))
  '(rspec-command-options "")
