@@ -13,7 +13,6 @@
         company-mode
         auto-complete
         enh-ruby-mode
-        scss-mode
         yaml-mode
         markdown-mode
         rspec-mode
