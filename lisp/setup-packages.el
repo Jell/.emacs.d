@@ -43,6 +43,7 @@
         org-present
         tuareg-mode
         purescript-mode
+        psc-ide
         elm-mode
         js2-mode
         skewer-mode
@@ -51,7 +52,9 @@
         sass-mode
         impatient-mode
         idris-mode
-        esup))
+        esup
+        graphviz-dot-mode
+        go-mode))
 
 (el-get 'sync my-packages)
 

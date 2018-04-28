@@ -16,8 +16,7 @@
  '(auto-revert-interval 1)
  '(blink-cursor-alist nil)
  '(blink-cursor-mode t)
- '(cider-cljs-lein-repl
-   "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
+ '(cider-cljs-lein-repl "")
  '(cider-prefer-local-resources nil)
  '(css-indent-level 2)
  '(css-indent-offset 2)
@@ -71,6 +70,8 @@
  '(global-auto-revert-mode t)
  '(global-auto-revert-non-file-buffers t)
  '(global-hl-line-mode t)
+ '(graphviz-dot-auto-preview-on-save t)
+ '(graphviz-dot-preview-extension "png")
  '(gud-tooltip-echo-area nil)
  '(guide-key/guide-key-sequence (quote ("C-x" "C-c")))
  '(guide-key/popup-window-position (quote bottom))
@@ -81,7 +82,7 @@
  '(hl-line-sticky-flag nil)
  '(ido-auto-merge-delay-time 10)
  '(idris-interpreter-flags nil)
- '(idris-interpreter-path "/usr/local/Cellar/idris/1.0/bin/idris")
+ '(idris-interpreter-path "/Users/Jell/Library/Haskell/bin/idris")
  '(idris-metavariable-list-show-expanded nil)
  '(idris-metavariable-show-on-load nil)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
@@ -117,8 +118,9 @@
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
    (quote
-    (haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
+    (psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
+ '(psc-ide-rebuild-on-save nil)
  '(require-final-newline (quote ask))
  '(rspec-command-options "")
  '(rspec-compilation-buffer-name "*RSPEC*")
