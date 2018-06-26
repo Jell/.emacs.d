@@ -54,7 +54,9 @@
         idris-mode
         esup
         graphviz-dot-mode
-        go-mode))
+        go-mode
+        dockerfile-mode
+        terraform-mode))
 
 (el-get 'sync my-packages)
 

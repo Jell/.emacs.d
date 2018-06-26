@@ -141,6 +141,8 @@
  '(scroll-preserve-screen-position nil)
  '(scroll-step 0)
  '(send-mail-function (quote smtpmail-send-it))
+ '(sh-basic-offset 2)
+ '(sh-indentation 2)
  '(shift-select-mode t)
  '(show-paren-mode t)
  '(smooth-scroll-mode t)
