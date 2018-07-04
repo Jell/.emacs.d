@@ -56,7 +56,8 @@
         graphviz-dot-mode
         go-mode
         dockerfile-mode
-        terraform-mode))
+        terraform-mode
+        image+))
 
 (el-get 'sync my-packages)
 
