@@ -8,7 +8,19 @@ To install, run:
 Next time you open emacs, all the dependencies will install
 themselves! Magic!
 
-## Dependencies:
+## Brew install
+
+```sh
+# Deps
+brew install graphviz --with-pango
+brew install automake ag mactex gpg pinentry-mac subversion wget cvs
+
+# Emacs proper
+brew install emacs --with-modules --with-cocoa --with-gnutls \
+    --with-librsvg --with-mailutils --with-imagemagick@6
+```
+
+## Linux install
 
 ```sh
 # Packages

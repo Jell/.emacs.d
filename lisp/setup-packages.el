@@ -47,7 +47,7 @@
         elm-mode
         js2-mode
         skewer-mode
-        ess
+        ;; ess
         rubocop
         sass-mode
         impatient-mode

@@ -42,7 +42,7 @@
    (quote
     ("require" "private" "alias" "include" "extend" "protected" "public" "raise")))
  '(enh-ruby-hanging-indent-level 2)
- '(enh-ruby-program "/Users/Jell/.rbenv/versions/2.3.0/bin/ruby")
+ '(enh-ruby-program "/usr/bin/ruby")
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#got.clj" "#ruby" "#emacs"))))
  '(erc-autojoin-delay 30)
  '(erc-email-userid "jean-louis@jawaninja.com")
@@ -120,7 +120,7 @@
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
    (quote
-    (psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
+    (sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
  '(require-final-newline (quote ask))

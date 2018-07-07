@@ -1,5 +1,4 @@
 (:name dash
-       :description "A modern list library for Emacs"
+       :description "A modern list api for Emacs. No 'cl required."
        :type github
-       :pkgname "magnars/dash.el"
-       :features dash)
+       :pkgname "magnars/dash.el")

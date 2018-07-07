@@ -1,3 +1,7 @@
+;;; init --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; (package-initialize) ; Skip before elget
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -22,3 +26,7 @@
   ;; (require 'emacsify)
   ;; (require 'movelines)
   (require 'setup-mail))
+
+
+(provide 'init)
+;;; init.el ends here
