@@ -56,6 +56,8 @@
   (HEAD 2)
   (ANY 2))
 
+(require 'cider-eval)
+
 (defun cljs-tests-run-ns-tests ()
   (interactive)
   (cider-interactive-eval
