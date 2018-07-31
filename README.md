@@ -13,7 +13,7 @@ themselves! Magic!
 ```sh
 # Deps
 brew install graphviz --with-pango
-brew install automake ag mactex gpg pinentry-mac subversion wget cvs
+brew install automake ag mactex gpg pinentry-mac subversion wget cvs plantuml
 
 # Emacs proper
 brew install emacs --with-modules --with-cocoa --with-gnutls \

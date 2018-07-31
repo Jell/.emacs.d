@@ -1,1 +1,2 @@
-(:name flycheck :type elpa)
+(:name flycheck :type elpa
+       :depends (dash))

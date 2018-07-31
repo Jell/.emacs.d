@@ -57,7 +57,8 @@
         go-mode
         dockerfile-mode
         terraform-mode
-        image+))
+        ;; image+
+        plantuml-mode))
 
 (el-get 'sync my-packages)
 
