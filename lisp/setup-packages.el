@@ -55,11 +55,13 @@
         esup
         graphviz-dot-mode
         go-mode
+        go-eldoc
         dockerfile-mode
         terraform-mode
         image+
         plantuml-mode
-        go-eldoc))
+        tide ;; TypeScript
+        ))
 
 (el-get 'sync my-packages)
 

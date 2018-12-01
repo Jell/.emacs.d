@@ -1,5 +1,4 @@
 ;; install deps:
-;; go get -u github.com/dougm/goflymake
 ;; go get -u github.com/nsf/gocode
 
 (add-to-list 'load-path "~/go/src/github.com/nsf/gocode/emacs/")
