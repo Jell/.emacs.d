@@ -7,6 +7,7 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "./bundle/bin")
 (add-to-list 'exec-path "/Library/TeX/texbin/")
+(add-to-list 'exec-path "~/go/bin")
 
 ;; Path to binary files
 (setq-default ispell-program-name "/usr/local/bin/aspell")

@@ -54,7 +54,9 @@
   (PUT 2)
   (DELETE 2)
   (HEAD 2)
-  (ANY 2))
+  (ANY 2)
+  (register-handler 'defun)
+  (fn-traced 'defun))
 
 (require 'cider-eval)
 
