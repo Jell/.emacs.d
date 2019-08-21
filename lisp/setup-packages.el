@@ -3,6 +3,7 @@
         rainbow-delimiters
         paredit
         cider
+        ;; spiral
         find-file-in-project
         smex
         undo-tree
@@ -61,7 +62,10 @@
         image+
         plantuml-mode
         tide ;; TypeScript
-        ))
+        racket-mode
+        inf-ruby
+        crystal-mode))
+
 
 (el-get 'sync my-packages)
 

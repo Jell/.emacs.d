@@ -83,7 +83,7 @@
  '(hl-line-sticky-flag nil)
  '(ido-auto-merge-delay-time 10)
  '(idris-interpreter-flags nil)
- '(idris-interpreter-path "/Users/Jell/Library/Haskell/bin/idris")
+ '(idris-interpreter-path "/usr/local/bin/idris")
  '(idris-metavariable-list-show-expanded nil)
  '(idris-metavariable-show-on-load nil)
  '(imagex-auto-adjust-mode nil)
@@ -122,7 +122,7 @@
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
    (quote
-    (sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
+    (clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
  '(require-final-newline (quote ask))

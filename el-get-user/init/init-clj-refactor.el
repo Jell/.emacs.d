@@ -1,6 +1,6 @@
 (require 'rainbow-delimiters)
 (require 'paredit)
-(require 'clj-refactor)
+;; (require 'clj-refactor)
 (require 'cider)
 (add-hook 'cider-mode-hook #'paredit-mode)
 (add-hook 'cider-mode-hook #'rainbow-delimiters-mode)
@@ -78,17 +78,9 @@
                                   (symbol-name (symbol-at-point)) ")")))
 
 (define-key clojurescript-mode-map [remap cider-test-run-ns-tests] 'cljs-tests-run-ns-tests)
-(define-key clojurescript-mode-map (kbd "C-c , s") 'cljs-tests-run-single-test)
+(define-key clojurescript-mode-map [remap cider-test-run-ns-tests-with-filters] 'cljs-tests-run-single-test)
+
 (define-key clojurescript-mode-map (kbd "C-c , v") 'cljs-tests-run-ns-tests)
 (define-key clojurescript-mode-map (kbd "C-c , a") 'cljs-tests-run-all-tests)
 
 (setq cider-test-items-background-color (cider-scale-background-color))
-
-
-(defun clj-refactor-setup-hook ()
-  (require 'clj-refactor)
-  (clj-refactor-mode 1)
-  (yas-minor-mode 1) ; for adding require/use/import
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
-
-(add-hook 'clojure-mode-hook #'clj-refactor-setup-hook)
