@@ -6,7 +6,10 @@
   (evil-mode 1))
 
 (use-package jell-theme
-  :quelpa (jell-theme :fetcher github :repo "Jell/jell-emacs-theme"))
+  :quelpa (jell-theme :fetcher github :repo "Jell/jell-emacs-theme")
+  :init
+  (require 'jell-theme)
+  (enable-theme 'jell))
 
 (use-package rainbow-delimiters
   :init

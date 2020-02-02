@@ -2,10 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (package-initialize) ; Skip before elget
-
 (add-to-list 'load-path "~/.emacs.d/lisp")
-;; (server-start)
 
 (let ((file-name-handler-alist nil) ; speedup library loading
       (gc-cons-threshold most-positive-fixnum)) ; ditto
