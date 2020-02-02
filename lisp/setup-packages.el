@@ -70,7 +70,8 @@
         lsp-mode
         lsp-ui
         dap-mode
-        ))
+        kubernetes
+        kubernetes-evil))
 
 
 (el-get 'sync my-packages)

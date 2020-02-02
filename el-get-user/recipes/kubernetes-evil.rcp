@@ -1,0 +1,2 @@
+(:name kubernetes-evil :type elpa
+       :depends ())
