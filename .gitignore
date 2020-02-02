@@ -20,3 +20,6 @@ request
 /ido.last~
 /smex-items
 /lisp/env_variables_for_dev.el
+/.lsp-session-v1
+/.dap-breakpoints
+/.extension/

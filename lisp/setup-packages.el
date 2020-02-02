@@ -55,8 +55,6 @@
         idris-mode
         esup
         graphviz-dot-mode
-        go-mode
-        go-eldoc
         dockerfile-mode
         terraform-mode
         image+
@@ -64,7 +62,15 @@
         tide ;; TypeScript
         racket-mode
         inf-ruby
-        crystal-mode))
+        crystal-mode
+        php-mode
+        ;; go IDE related
+        go-mode
+        go-eldoc
+        lsp-mode
+        lsp-ui
+        dap-mode
+        ))
 
 
 (el-get 'sync my-packages)

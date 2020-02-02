@@ -9,7 +9,7 @@
  '(ac-ignore-case nil)
  '(ac-modes
    (quote
-    (enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode web-mode ts-mode sclang-mode verilog-mode qml-mode)))
+    (enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode web-mode ts-mode sclang-mode verilog-mode qml-mode cider-mode cider-repl-mode clojure-mode clojurescript-mode)))
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auth-source-save-behavior nil)
@@ -95,6 +95,7 @@
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(latex-run-command "xelatex")
+ '(lsp-ui-flycheck-enable t)
  '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
  '(magit-diff-options (quote ("--patience")))
  '(magit-diff-refine-hunk t)
@@ -125,6 +126,7 @@
     (clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
+ '(python-shell-interpreter "python3")
  '(require-final-newline (quote ask))
  '(rspec-command-options "")
  '(rspec-compilation-buffer-name "*RSPEC*")

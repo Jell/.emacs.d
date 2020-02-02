@@ -12,6 +12,10 @@
 (setq mac-command-modifier 'meta)
 (setq mac-function-modifier 'super)
 
+;; Fix ls interop on mac
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
+
 ;; Extra keybindings for when working in tty
 (global-set-key (kbd "M-[ c") (kbd "C-<right>"))
 (global-set-key (kbd "M-[ d") (kbd "C-<left>"))
@@ -39,5 +43,8 @@
 (define-key input-decode-map "\e[1;8B" [C-M-down])
 (define-key input-decode-map "\e[1;8C" [C-M-right])
 (define-key input-decode-map "\e[1;8D" [C-M-left])
+
+;; Legacy crap?
+(remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
 (provide 'compatibility)

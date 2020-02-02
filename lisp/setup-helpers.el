@@ -15,4 +15,11 @@
   (mouse-set-point event)
   (message (string (mc/num-cursors))))
 
+;; Insert uuid
+(defun insert-random-uuid ()
+  (interactive)
+  (insert
+   (replace-regexp-in-string "\n$" ""
+                             (shell-command-to-string "uuidgen"))))
+
 (provide 'setup-helpers)
