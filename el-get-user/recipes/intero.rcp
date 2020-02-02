@@ -1,2 +1,0 @@
-(:name intero :type elpa
-       :depends (haskell-mode flycheck))

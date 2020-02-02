@@ -40,3 +40,5 @@
                  (org-present-show-cursor)
                  (org-present-read-write)
                  (evil-normal-state nil)))))
+
+(provide 'init-org-present)

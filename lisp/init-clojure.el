@@ -83,3 +83,5 @@
 (define-key clojurescript-mode-map (kbd "C-c , a") 'cljs-tests-run-all-tests)
 
 (setq cider-test-items-background-color (cider-scale-background-color))
+
+(provide 'init-clojure)

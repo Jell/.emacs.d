@@ -1,4 +1,0 @@
-(:name enh-ruby-mode
-       :type github
-       :pkgname "zenspider/enhanced-ruby-mode"
-       :features enh-ruby-mode)

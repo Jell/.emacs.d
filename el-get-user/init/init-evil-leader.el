@@ -1,1 +1,0 @@
-(global-evil-leader-mode)

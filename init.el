@@ -15,7 +15,7 @@
   (require 'setup-paths)
   (require 'setup-scratch-message)
   (require 'setup-backup)
-  (require 'setup-elget)
+  (require 'setup-use-package)
   (require 'setup-packages)
   (require 'setup-helpers)
   (require 'setup-keys)

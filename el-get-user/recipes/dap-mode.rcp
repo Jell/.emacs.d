@@ -1,2 +1,0 @@
-(:name dap-mode :type elpa
-       :depends (bui lsp-treemacs ace-window pfuture))

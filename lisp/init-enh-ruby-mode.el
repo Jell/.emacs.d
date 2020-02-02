@@ -66,3 +66,5 @@
              (require 'rspec-mode)
              (require 'rcodetools)
              (rspec-mode +1)))
+
+(provide 'init-enh-ruby-mode)

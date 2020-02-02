@@ -12,6 +12,7 @@
 ;; (add-hook 'go-mode-hook 'flycheck-mode)
 ;; (add-hook 'go-mode-hook #'--go-mode-setup)
 ;; (add-hook 'go-mode-hook 'go-eldoc-setup)
+(require 'flycheck)
 
 (let ((govet (flycheck-checker-get 'go-vet 'command)))
   (when (equal (cadr govet) "tool")

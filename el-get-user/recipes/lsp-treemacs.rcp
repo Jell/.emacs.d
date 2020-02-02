@@ -1,2 +1,0 @@
-(:name lsp-treemacs :type elpa
-       :depends (treemacs))

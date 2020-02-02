@@ -21,3 +21,5 @@
   (window-configuration-to-register :magit-fullscreen)
   (magit-status)
   (delete-other-windows))
+
+(provide 'init-magit)

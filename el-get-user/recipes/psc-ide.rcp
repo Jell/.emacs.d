@@ -1,2 +1,0 @@
-(:name psc-ide :type elpa
-       :depends (company-mode s))

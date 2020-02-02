@@ -40,3 +40,5 @@
           (lambda ()
             (smartparens-mode +1)
             (show-smartparens-mode)))
+
+(provide 'init-smartparens)

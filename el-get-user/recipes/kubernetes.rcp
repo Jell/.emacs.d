@@ -1,2 +1,0 @@
-(:name kubernetes :type elpa
-       :depends (magit-popup))
