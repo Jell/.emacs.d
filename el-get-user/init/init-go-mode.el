@@ -26,7 +26,8 @@
 (add-hook 'go-mode-hook #'yas-minor-mode-on)
 
 (defun go-mode-require-dap-mode ()
-  (require 'dap-go))
+  (require 'dap-go)
+  (dap-ui-mode))
 (add-hook 'go-mode-hook #'go-mode-require-dap-mode)
 
 (provide 'init-go-mode)
