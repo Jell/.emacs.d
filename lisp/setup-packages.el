@@ -34,7 +34,7 @@
 
 (use-package evil-exchange)
 
-(use-package company-mode)
+;; (use-package company-mode)
 
 
 (use-package auto-complete
@@ -139,7 +139,7 @@
   (add-hook 'rust-mode-hook 'flymake-rust-load))
 
 (use-package org-present :init (require 'init-org-present))
-(use-package tuareg-mode)
+;; (use-package tuareg-mode)
 (use-package purescript-mode)
 (use-package psc-ide
   :init
@@ -192,11 +192,12 @@
   :init
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 (use-package dap-mode)
+;; ----------------------
+
 (use-package kubernetes
   :init
   (setq kubernetes-poll-frequency 3600)
   (setq kubernetes-redraw-frequency 3600))
 (use-package kubernetes-evil)
-;; ----------------------
 
 (provide 'setup-packages)
