@@ -19,9 +19,6 @@
   (require 'setup-hippie-expand)
   (require 'setup-mode-line)
   (require 'setup-auto-revert)
-  ;; (require 'sublimify)
-  ;; (require 'emacsify)
-  ;; (require 'movelines)
   (require 'setup-mail))
 
 
