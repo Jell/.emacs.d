@@ -10,6 +10,8 @@
 ;; Path to binary files
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
+(setq shell-file-name "/bin/bash")
+
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell
          (substring
@@ -20,6 +22,6 @@
 
 (set-exec-path-from-shell-PATH)
 
-(setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
+;; (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
 
 (provide 'setup-paths)

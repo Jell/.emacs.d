@@ -131,16 +131,35 @@
 (use-package inf-ruby)
 (use-package crystal-mode)
 (use-package php-mode)
-;; go IDE related ------
+;; go IDE related -------
 (use-package go-mode :init (require 'init-go-mode))
 (use-package go-eldoc)
 (use-package lsp-mode)
 (use-package lsp-ui :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 (use-package dap-mode)
 ;; ----------------------
+;; Kubernetes -----------
 (use-package kubernetes
   :init
   (setq kubernetes-poll-frequency 3600)
   (setq kubernetes-redraw-frequency 3600))
 (use-package kubernetes-evil)
+;; ----------------------
+;; Python ---------------
+(use-package elpy
+  :init
+  ;; Enable elpy
+  (elpy-enable)
+  (setq python-shell-interpreter "python3"
+        python-shell-interpreter-args "-i")
+  ;; Enable Flycheck
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
+(use-package blacken ;; auto-formatting
+  :init
+  (add-hook 'python-mode-hook 'blacken-mode))
+(use-package ein) ;; Emacs IPython Notebook
+;; ----------------------
+
 (provide 'setup-packages)
