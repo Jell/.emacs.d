@@ -2,6 +2,7 @@
 (require 'paredit)
 ;; (require 'clj-refactor)
 (require 'cider)
+(require 'flycheck-clj-kondo)
 (add-hook 'cider-mode-hook #'paredit-mode)
 (add-hook 'cider-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'cider-mode-hook #'cider-turn-on-eldoc-mode)
@@ -9,6 +10,9 @@
 ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+(add-hook 'cider-mode-hook 'flycheck-mode)
+(add-hook 'clojurescript-mode-hook 'flycheck-mode)
 
 ;; (add-hook 'clojure-mode-hook 'cider-mode)
 

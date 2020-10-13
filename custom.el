@@ -116,14 +116,15 @@
     ((emacs-lisp . t)
      (haskell . t)
      (clojure . t)
-     (python . t))))
+     (python . t)
+     (shell . t))))
  '(org-image-actual-width 100)
  '(org-src-fontify-natively t)
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
    (quote
-    (ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
+    (flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor)))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
  '(require-final-newline (quote ask))

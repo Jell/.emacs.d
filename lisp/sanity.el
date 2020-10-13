@@ -35,9 +35,11 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-(require 'cl)
+(require 'cl-lib)
 (require 'ffap)
 (require 'ansi-color)
 (require 'recentf)
+
+(setq default-directory "~/")
 
 (provide 'sanity)

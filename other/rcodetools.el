@@ -29,7 +29,7 @@
       (insert "=>")
     ad-do-it))
 ;; To remove this advice.
-;; (progn (ad-disable-advice 'comment-dwim 'around 'rct-hack) (ad-update 'comment-dwim)) 
+;; (progn (ad-disable-advice 'comment-dwim 'around 'rct-hack) (ad-update 'comment-dwim))
 
 (defun rct-current-line ()
   "Return the vertical position of point..."
@@ -54,7 +54,7 @@
      (if current-prefix-arg
          (setq rct-option-local
                (read-from-minibuffer "rcodetools option: " option nil nil 'rct-option-history))
-       option))))  
+       option))))
 
 (defun rct-shell-command (command &optional buffer)
   "Replacement for `(shell-command-on-region (point-min) (point-max) command buffer t' because of encoding problem."
@@ -185,7 +185,7 @@ See also `rct-interactive'."
             (format "-t %s --filename=%s" t-opt bfn))
         ""))))
 
-(require 'cl)
+(require 'cl-lib)
 
 (defun rct-find-test-script-buffer (&optional buffer-list)
   "Find the latest used Ruby test script buffer."

@@ -53,7 +53,10 @@
 ;; -------------------
 ;; Clojure related ----
 (use-package cider)
-(use-package clj-refactor :init (require 'init-clojure))
+(use-package flycheck-clj-kondo)
+(use-package clj-refactor
+  :init
+  (require 'init-clojure))
 ;; --------------------
 (use-package flycheck)
 ;; (use-package spiral)
@@ -107,7 +110,6 @@
 (use-package elm-mode)
 (use-package js2-mode)
 (use-package skewer-mode)
-;; (use-package ess)
 (use-package rubocop
   :init
   (defun rubocop-bundled-p ()
@@ -125,7 +127,10 @@
 (use-package dockerfile-mode)
 (use-package terraform-mode)
 (use-package image+)
-(use-package plantuml-mode)
+(use-package plantuml-mode
+  :init
+  (setq plantuml-executable-path "/usr/local/bin/plantuml")
+  (setq plantuml-default-exec-mode 'executable))
 (use-package tide :init (require 'init-tide)) ;; TypeScript
 (use-package racket-mode)
 (use-package inf-ruby)
@@ -137,6 +142,11 @@
 (use-package lsp-mode)
 (use-package lsp-ui :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 (use-package dap-mode)
+(use-package flymake-shellcheck
+  :commands flymake-shellcheck-load
+  :init
+  (add-hook 'sh-mode-hook 'flymake-mode)
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 ;; ----------------------
 ;; Kubernetes -----------
 (use-package kubernetes
@@ -161,5 +171,8 @@
   (add-hook 'python-mode-hook 'blacken-mode))
 (use-package ein) ;; Emacs IPython Notebook
 ;; ----------------------
+(use-package ess)
+(use-package lua-mode)
+
 
 (provide 'setup-packages)
