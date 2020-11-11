@@ -8,7 +8,7 @@
       (current (float-time (current-time))))
   (dolist (file (directory-files temporary-file-directory t))
     (when (and (backup-file-name-p file)
-               (> (- current (float-time (fifth (file-attributes file))))
+               (> (- current (float-time (nth 4 (file-attributes file))))
                   week))
       (message file)
       (delete-file file))))
