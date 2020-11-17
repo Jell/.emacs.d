@@ -30,6 +30,7 @@
   (add-to-list 'ac-dictionary-directories (expand-file-name "dict"))
   (require 'auto-complete-config)
   (ac-config-default))
+(use-package projectile)
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package ag
@@ -136,6 +137,7 @@
 (use-package inf-ruby)
 (use-package crystal-mode)
 (use-package php-mode)
+(use-package string-inflection)
 ;; go IDE related -------
 (use-package go-mode :init (require 'init-go-mode))
 (use-package go-eldoc)
@@ -178,6 +180,7 @@
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
+;; (auto-package-update-now)
 
 
 (provide 'setup-packages)
