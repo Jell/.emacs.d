@@ -17,7 +17,9 @@
   (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
   (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
   (add-hook 'clojure-mode-hook          (lambda () (paredit-mode +1))))
-(use-package undo-tree)
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode))
 (use-package smex)
 (use-package find-file-in-project)
 (use-package evil-surround)
@@ -29,13 +31,15 @@
   (require 'auto-complete)
   (add-to-list 'ac-dictionary-directories (expand-file-name "dict"))
   (require 'auto-complete-config)
-  (ac-config-default))
+  (ac-config-default)
+  (add-hook 'go-mode-hook (lambda () (auto-complete-mode -1))))
 (use-package projectile)
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package ag
   :init
   (require 'ag)
+  (define-key ag-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode)
   (setq ag-highlight-search t)
   (setq ag-reuse-buffers 't))
 (use-package nyan-mode)
@@ -85,8 +89,10 @@
 (use-package alchemist)
 ;; (use-package w3m)
 (use-package bbdb)
-(use-package intero :init (add-hook 'haskell-mode-hook 'intero-mode))
-(use-package wgrep)
+(use-package wgrep-ag
+  :init
+  (autoload 'wgrep-ag-setup "wgrep-ag")
+  (add-hook 'ag-mode-hook 'wgrep-ag-setup))
 (use-package restclient
   :init
   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
@@ -142,8 +148,14 @@
 (use-package go-mode :init (require 'init-go-mode))
 (use-package go-eldoc)
 (use-package lsp-mode)
-(use-package lsp-ui :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-(use-package dap-mode)
+(use-package lsp-ui
+  :init
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+(use-package lsp-haskell
+  :init
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp))
+;;(use-package dap-mode)
 (use-package flymake-shellcheck
   :commands flymake-shellcheck-load
   :init
@@ -177,6 +189,7 @@
 (use-package lua-mode)
 (use-package auto-package-update
   :config
+  (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
