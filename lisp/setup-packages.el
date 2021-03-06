@@ -147,7 +147,10 @@
 ;; go IDE related -------
 (use-package go-mode :init (require 'init-go-mode))
 (use-package go-eldoc)
-(use-package lsp-mode)
+(use-package yasnippet)
+(use-package lsp-mode
+  :init
+  (add-hook 'lsp-mode-hook 'yas-minor-mode-on))
 (use-package lsp-ui
   :init
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
