@@ -150,6 +150,8 @@
 (use-package yasnippet)
 (use-package lsp-mode
   :init
+  (setq lsp-prefer-capf 't)
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
   (add-hook 'lsp-mode-hook 'yas-minor-mode-on))
 (use-package lsp-ui
   :init
@@ -190,6 +192,7 @@
 ;; ----------------------
 (use-package ess)
 (use-package lua-mode)
+(use-package protobuf-mode)
 (use-package auto-package-update
   :config
   (setq auto-package-update-prompt-before-update t)
