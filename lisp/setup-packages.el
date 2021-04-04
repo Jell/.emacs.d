@@ -25,6 +25,9 @@
 (use-package evil-surround)
 (use-package evil-leader :init (global-evil-leader-mode))
 (use-package evil-exchange)
+(use-package xclip
+  :init
+  (xclip-mode 1))
 ;; (use-package company-mode)
 (use-package auto-complete
   :init
@@ -151,7 +154,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-prefer-capf 't)
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
+  ;;(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
   (add-hook 'lsp-mode-hook 'yas-minor-mode-on))
 (use-package lsp-ui
   :init
