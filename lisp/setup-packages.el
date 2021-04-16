@@ -139,7 +139,9 @@
 (use-package image+)
 (use-package plantuml-mode
   :init
-  (setq plantuml-executable-path "/usr/local/bin/plantuml")
+  (if (string= system-type "darwin")
+      (setq plantuml-executable-path "/usr/local/bin/plantuml")
+      (setq plantuml-executable-path "/usr/bin/plantuml"))
   (setq plantuml-default-exec-mode 'executable))
 (use-package tide :init (require 'init-tide)) ;; TypeScript
 (use-package racket-mode)
