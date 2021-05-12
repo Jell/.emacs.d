@@ -156,7 +156,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-prefer-capf 't)
-  ;;(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
   (add-hook 'lsp-mode-hook 'yas-minor-mode-on))
 (use-package lsp-ui
   :init
@@ -198,12 +198,12 @@
 (use-package ess)
 (use-package lua-mode)
 (use-package protobuf-mode)
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-prompt-before-update t)
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
+;;(use-package auto-package-update
+;;  :config
+;;  (setq auto-package-update-prompt-before-update t)
+;;  (setq auto-package-update-delete-old-versions t)
+;;  (setq auto-package-update-hide-results t)
+;;  (auto-package-update-maybe))
 ;; (auto-package-update-now)
 
 
