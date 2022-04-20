@@ -37,7 +37,7 @@
   (ac-config-default)
   (add-hook 'go-mode-hook (lambda () (auto-complete-mode -1))))
 (use-package projectile)
-(use-package yaml-mode)
+;; (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package ag
   :init
@@ -179,6 +179,8 @@
   (setq kubernetes-redraw-frequency 3600))
 (use-package kubernetes-evil)
 ;; ----------------------
+;; Crypty crap
+(use-package solidity-mode)
 ;; Python ---------------
 (use-package elpy
   :init
