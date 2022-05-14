@@ -58,6 +58,8 @@
 (use-package enh-ruby-mode :config (require 'init-enh-ruby-mode))
 (use-package rspec-mode)
 (use-package smartparens :init (require 'init-smartparens))
+(use-package rvm)
+(use-package coffee-mode)
 ;; -------------------
 ;; Clojure related ----
 (use-package cider)
