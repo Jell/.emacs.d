@@ -1,19 +1,3 @@
-(defun ruby-set-enh-ruby-program ()
-  (let ((rvm-path (shell-command-to-string "which rvm"))
-        (rbenv-path (shell-command-to-string "which rbenv")))
-    (when (> (length rvm-path) 0)
-      (let* ((rvm-path (replace-regexp-in-string "\n$" "" rvm-path))
-             (rubies (file-expand-wildcards
-                      (concat rvm-path "/../../rubies/ruby-2.3*")))
-             (ruby-root (expand-file-name (first (last rubies)))))
-        (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))
-    (when (> (length rbenv-path) 0)
-      (let* ((rubies (file-expand-wildcards "~/.rbenv/versions/2.3*"))
-             (ruby-root (expand-file-name (first (last rubies)))))
-        (setq enh-ruby-program (concat ruby-root "/bin/ruby"))))))
-;; Set proper path to ruby
-(ruby-set-enh-ruby-program)
-
 (add-to-list 'auto-mode-alist '("Capfile" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . enh-ruby-mode))
@@ -65,6 +49,8 @@
           '(lambda ()
              (require 'rspec-mode)
              (require 'rcodetools)
+             (flycheck-mode +1)
+             (flycheck-disable-checker 'ruby-reek)
              (rspec-mode +1)))
 
 (provide 'init-enh-ruby-mode)

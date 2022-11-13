@@ -60,6 +60,7 @@
 (use-package smartparens :init (require 'init-smartparens))
 (use-package rvm)
 (use-package coffee-mode)
+(use-package direnv :config (direnv-mode))
 ;; -------------------
 ;; Clojure related ----
 (use-package cider)
