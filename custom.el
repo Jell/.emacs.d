@@ -97,6 +97,7 @@
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(latex-run-command "xelatex")
+ '(lsp-pyright-typechecking-mode "basic")
  '(lsp-sqls-workspace-config-path "root")
  '(lsp-ui-flycheck-enable t)
  '(magit-default-tracking-name-function 'magit-default-tracking-name-branch-only)
@@ -123,7 +124,7 @@
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
-   '(rubocopfmt direnv rbenv coffee-mode coffee rvm solidity-mode lsp-yaml xclip protobuf-mode lsp-haskell wgrep-ag lsp-sqls xpm-mode xpm string-inflection projectile undo-tree auto-package-update flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor))
+   '(python-pytest lsp-pyright eglot rubocopfmt direnv rbenv coffee-mode coffee rvm solidity-mode lsp-yaml xclip protobuf-mode lsp-haskell wgrep-ag lsp-sqls xpm-mode xpm string-inflection projectile undo-tree auto-package-update flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
  '(require-final-newline 'ask)
@@ -183,6 +184,15 @@
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(visible-cursor t)
  '(web-mode-code-indent-offset 2)
+ '(web-mode-enable-auto-closing t)
+ '(web-mode-enable-auto-expanding t)
+ '(web-mode-enable-auto-indentation t)
+ '(web-mode-enable-auto-opening t)
+ '(web-mode-enable-auto-pairing t)
+ '(web-mode-enable-auto-quoting t)
+ '(web-mode-enable-block-face t)
+ '(web-mode-enable-css-colorization t)
+ '(web-mode-enable-curly-brace-indentation t)
  '(web-mode-markup-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -37,7 +37,7 @@
   (ac-config-default)
   (add-hook 'go-mode-hook (lambda () (auto-complete-mode -1))))
 (use-package projectile)
-;; (use-package yaml-mode)
+(use-package yaml-mode)
 (use-package markdown-mode)
 (use-package ag
   :init
@@ -185,20 +185,12 @@
 ;; Crypty crap
 (use-package solidity-mode)
 ;; Python ---------------
-(use-package elpy
-  :init
-  ;; Enable elpy
-  (elpy-enable)
-  (setq python-shell-interpreter "python3"
-        python-shell-interpreter-args "-i")
-  ;; Enable Flycheck
-  (when (require 'flycheck nil t)
-    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode)))
-(use-package blacken ;; auto-formatting
-  :init
-  (add-hook 'python-mode-hook 'blacken-mode))
-(use-package ein) ;; Emacs IPython Notebook
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))  ; or lsp-deferred
+(use-package python-pytest)
 ;; ----------------------
 (use-package ess)
 (use-package lua-mode)
