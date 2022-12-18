@@ -2,10 +2,12 @@
 (add-to-list 'load-path "~/.emacs.d/other")
 
 ;; Extra bin folders
+(add-to-list 'exec-path "/opt/homebrew/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "./bundle/bin")
 (add-to-list 'exec-path "/Library/TeX/texbin/")
 (add-to-list 'exec-path "~/go/bin")
+(add-to-list 'exec-path "/bin")
 
 ;; Path to binary files
 (setq-default ispell-program-name "/usr/local/bin/aspell")
