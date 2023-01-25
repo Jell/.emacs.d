@@ -36,6 +36,9 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
+
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 (require 'cl-lib)
 (require 'ffap)
 (require 'ansi-color)
