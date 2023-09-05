@@ -46,11 +46,11 @@
       (indent-according-to-mode))))
 
 (add-hook 'enh-ruby-mode-hook
-          '(lambda ()
-             (require 'rspec-mode)
-             (require 'rcodetools)
-             (flycheck-mode +1)
-             (flycheck-disable-checker 'ruby-reek)
-             (rspec-mode +1)))
+          #'(lambda ()
+              (require 'rspec-mode)
+              (require 'rcodetools)
+              (flycheck-mode +1)
+              (flycheck-disable-checker 'ruby-reek)
+              (rspec-mode +1)))
 
 (provide 'init-enh-ruby-mode)

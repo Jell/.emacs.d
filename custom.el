@@ -41,7 +41,7 @@
  '(enh-ruby-extra-keywords
    '("require" "private" "alias" "include" "extend" "protected" "public" "raise"))
  '(enh-ruby-hanging-indent-level 2)
- '(enh-ruby-program "/usr/bin/ruby")
+ '(enh-ruby-program "ruby")
  '(enh-ruby-use-encoding-map t)
  '(erc-autojoin-channels-alist '(("freenode.net" "#got.clj" "#ruby" "#emacs")))
  '(erc-autojoin-delay 30)
@@ -49,8 +49,7 @@
  '(erc-nick "jean-louis")
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
- '(evil-bigword "^ \\t\\r\\n_
-")
+ '(evil-bigword "^ \\t\\r\\n_\12")
  '(evil-default-state 'normal)
  '(evil-emacs-state-modes
    '(archive-mode bbdb-mode bookmark-bmenu-mode bookmark-edit-annotation-mode browse-kill-ring-mode bzr-annotate-mode calc-mode cfw:calendar-mode completion-list-mode Custom-mode debugger-mode delicious-search-mode desktop-menu-blist-mode desktop-menu-mode doc-view-mode dvc-bookmarks-mode dvc-diff-mode dvc-info-buffer-mode dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode dvc-status-mode dvc-tips-mode ediff-mode efs-mode Electric-buffer-menu-mode emms-browser-mode emms-mark-mode emms-metaplaylist-mode emms-playlist-mode etags-select-mode fj-mode gc-issues-mode gdb-breakpoints-mode gdb-disassembly-mode gdb-frames-mode gdb-locals-mode gdb-memory-mode gdb-registers-mode gdb-threads-mode gist-list-mode gnus-article-mode gnus-browse-mode gnus-group-mode gnus-server-mode gnus-summary-mode google-maps-static-mode ibuffer-mode jde-javadoc-checker-report-mode magit-commit-mode magit-diff-mode magit-key-mode magit-log-mode magit-mode magit-reflog-mode magit-show-branches-mode magit-stash-mode magit-status-mode magit-wazzup-mode mh-folder-mode monky-mode notmuch-hello-mode notmuch-search-mode notmuch-show-mode occur-mode org-agenda-mode package-menu-mode proced-mode rcirc-mode rebase-mode recentf-dialog-mode reftex-select-bib-mode reftex-toc-mode sldb-mode slime-inspector-mode slime-thread-control-mode slime-xref-mode sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode tar-mode tetris-mode tla-annotate-mode tla-archive-list-mode tla-bconfig-mode tla-bookmarks-mode tla-branch-list-mode tla-browse-mode tla-category-list-mode tla-changelog-mode tla-follow-symlinks-mode tla-inventory-file-mode tla-inventory-mode tla-lint-mode tla-logs-mode tla-revision-list-mode tla-revlog-mode tla-tree-lint-mode tla-version-list-mode twittering-mode urlview-mode vc-annotate-mode vc-dir-mode vc-git-log-view-mode vc-svn-log-view-mode vm-mode vm-summary-mode w3m-mode wab-compilation-mode xgit-annotate-mode xgit-changelog-mode xgit-diff-mode xgit-revlog-mode xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode xhg-status-extra-mode magit-branch-manager-mode pivotal-mode epa-key-list-mode git-rebase-mode idris-compiler-notes-mode cider-stacktrace-mode cider-test-report-mode cider-docview-mode magit-popup-mode magit-refs-mode magit-revision-mode magit-popup-sequence-mode magit-log-select-mode skewer-error-mode sql-interactive-mode))
@@ -124,7 +123,7 @@
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
-   '(python-pytest lsp-pyright eglot rubocopfmt direnv rbenv coffee-mode coffee rvm solidity-mode lsp-yaml xclip protobuf-mode lsp-haskell wgrep-ag lsp-sqls xpm-mode xpm string-inflection projectile undo-tree auto-package-update flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor))
+   '(omnisharp python-pytest lsp-pyright eglot rubocopfmt direnv rbenv coffee-mode coffee rvm solidity-mode lsp-yaml xclip protobuf-mode lsp-haskell wgrep-ag lsp-sqls xpm-mode xpm string-inflection projectile undo-tree auto-package-update flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor))
  '(pr-gv-command "open")
  '(psc-ide-rebuild-on-save nil)
  '(require-final-newline 'ask)
@@ -136,10 +135,12 @@
  '(rspec-use-rake-flag nil)
  '(rspec-use-rake-when-possible nil)
  '(rspec-use-relative-path nil)
- '(rspec-use-rvm t)
+ '(rspec-use-rvm nil)
  '(rubocop-autocorrect-command "rubocop -A --format emacs")
  '(rubocop-autocorrect-on-save nil)
+ '(rubocop-extensions nil)
  '(rubocop-format-on-save nil)
+ '(rubocop-prefer-system-executable nil)
  '(rubocop-run-in-chroot nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values

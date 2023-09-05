@@ -25,5 +25,7 @@
 (set-exec-path-from-shell-PATH)
 
 ;; (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
+(setenv "DOTNET_ROOT" "/opt/homebrew/opt/dotnet/libexec")
+
 
 (provide 'setup-paths)

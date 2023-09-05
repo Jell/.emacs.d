@@ -58,9 +58,14 @@
 (use-package enh-ruby-mode :config (require 'init-enh-ruby-mode))
 (use-package rspec-mode)
 (use-package smartparens :init (require 'init-smartparens))
-(use-package rvm)
 (use-package coffee-mode)
 (use-package direnv :config (direnv-mode))
+(use-package rubocop
+  :init
+  (defun rubocop-bundled-p ()
+    "REPLACED! Check if RuboCop has been bundled."
+    nil)
+  (add-hook 'ruby-mode-hook #'rubocop-mode))
 ;; -------------------
 ;; Clojure related ----
 (use-package cider)
@@ -105,10 +110,7 @@
 (use-package jinja2-mode)
 (use-package rust-mode)
 (use-package flymake-easy)
-(use-package flymake-rust
-  :init
-  (require 'flymake-rust)
-  (add-hook 'rust-mode-hook 'flymake-rust-load))
+;; (use-package flymake-rust :init (require 'flymake-rust) (add-hook 'rust-mode-hook 'flymake-rust-load))
 (use-package org-present :init (require 'init-org-present))
 ;; (use-package tuareg-mode)
 (use-package purescript-mode)
@@ -123,12 +125,6 @@
 (use-package elm-mode)
 (use-package js2-mode)
 (use-package skewer-mode)
-(use-package rubocop
-  :init
-  (defun rubocop-bundled-p ()
-    "REPLACED! Check if RuboCop has been bundled."
-    nil)
-  (add-hook 'ruby-mode-hook #'rubocop-mode))
 (use-package sass-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.scss" . sass-mode))
@@ -159,7 +155,8 @@
 (use-package lsp-mode
   :init
   (setq lsp-prefer-capf 't)
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
   (add-hook 'lsp-mode-hook 'yas-minor-mode-on))
 (use-package lsp-ui
   :init
@@ -182,7 +179,7 @@
   (setq kubernetes-redraw-frequency 3600))
 (use-package kubernetes-evil)
 ;; ----------------------
-;; Crypty crap
+;; Crypto crap
 (use-package solidity-mode)
 ;; Python ---------------
 (use-package lsp-pyright
@@ -191,7 +188,6 @@
                          (require 'lsp-pyright)
                          (lsp))))  ; or lsp-deferred
 (use-package python-pytest)
-;; ----------------------
 (use-package ess)
 (use-package lua-mode)
 (use-package protobuf-mode)
