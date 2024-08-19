@@ -47,7 +47,7 @@
   (setq ag-reuse-buffers 't))
 (use-package nyan-mode)
 (use-package smooth-scroll :init (require 'smooth-scroll) (smooth-scroll-mode t))
-(use-package magit :init (require 'init-magit))
+(use-package magit)
 (use-package ido-completing-read+
   :init
   (ido-mode 1)
@@ -139,7 +139,7 @@
 (use-package plantuml-mode
   :init
   (if (string= system-type "darwin")
-      (setq plantuml-executable-path "/usr/local/bin/plantuml")
+      (setq plantuml-executable-path "/opt/homebrew/bin/plantuml")
       (setq plantuml-executable-path "/usr/bin/plantuml"))
   (setq plantuml-default-exec-mode 'executable))
 (use-package tide :init (require 'init-tide)) ;; TypeScript
@@ -148,6 +148,8 @@
 (use-package crystal-mode)
 (use-package php-mode)
 (use-package string-inflection)
+(use-package swift-mode)
+(use-package kotlin-mode)
 ;; go IDE related -------
 (use-package go-mode :init (require 'init-go-mode))
 (use-package go-eldoc)
@@ -191,13 +193,12 @@
 (use-package ess)
 (use-package lua-mode)
 (use-package protobuf-mode)
-;;(use-package auto-package-update
-;;  :config
-;;  (setq auto-package-update-prompt-before-update t)
-;;  (setq auto-package-update-delete-old-versions t)
-;;  (setq auto-package-update-hide-results t)
-;;  (auto-package-update-maybe))
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-prompt-before-update t)
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 ;; (auto-package-update-now)
-
 
 (provide 'setup-packages)

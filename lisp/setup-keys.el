@@ -29,7 +29,7 @@
 (global-set-key (kbd "<C-M-mouse-1>") 'control-meta-click)
 
 ;; Magit
-(global-set-key (kbd "C-x g") 'magit-lazy-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Ag
 (global-set-key (kbd "C-x C-p") 'ag-project)
