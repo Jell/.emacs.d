@@ -148,7 +148,10 @@
  '(rubocop-run-in-chroot nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
-   '((cider-cljs-lein-repl . "(do (dev) (go) (cljs-repl))")
+   '((eval when
+           (fboundp 'rainbow-mode)
+           (rainbow-mode 1))
+     (cider-cljs-lein-repl . "(do (dev) (go) (cljs-repl))")
      (cider-refresh-after-fn . "reloaded.repl/resume")
      (cider-refresh-before-fn . "reloaded.repl/suspend")))
  '(scroll-bar-mode nil)
