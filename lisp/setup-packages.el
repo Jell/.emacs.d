@@ -62,9 +62,6 @@
 (use-package direnv :config (direnv-mode))
 (use-package rubocop
   :init
-  (defun rubocop-bundled-p ()
-    "REPLACED! Check if RuboCop has been bundled."
-    nil)
   (add-hook 'ruby-mode-hook #'rubocop-mode))
 ;; -------------------
 ;; Clojure related ----
@@ -143,7 +140,7 @@
       (setq plantuml-executable-path "/usr/bin/plantuml"))
   (setq plantuml-default-exec-mode 'executable))
 (use-package tide :init (require 'init-tide)) ;; TypeScript
-(use-package racket-mode)
+;; (use-package racket-mode)
 (use-package inf-ruby)
 (use-package crystal-mode)
 (use-package php-mode)
