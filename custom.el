@@ -183,7 +183,6 @@
  '(speedbar-supported-extension-expressions
    '(".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".clj"))
  '(tags-compression-info-list '("" ".Z" ".bz2" ".gz" ".xz" ".tgz" ".zip"))
- '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(tooltip-short-delay 0)
  '(tooltip-use-echo-area t)
