@@ -67,7 +67,6 @@
  '(frame-brackground-mode 'dark)
  '(fringe-mode '(nil . 0) nil (fringe))
  '(git-commit-finish-query-functions nil)
- '(global-auto-complete-mode t)
  '(global-auto-revert-ignore-modes '(buffer-menu-mode))
  '(global-auto-revert-mode t)
  '(global-auto-revert-non-file-buffers t)

@@ -28,14 +28,9 @@
 (use-package xclip
   :init
   (xclip-mode 1))
-;; (use-package company-mode)
-(use-package auto-complete
+(use-package company
   :init
-  (require 'auto-complete)
-  (add-to-list 'ac-dictionary-directories (expand-file-name "dict"))
-  (require 'auto-complete-config)
-  (ac-config-default)
-  (add-hook 'go-mode-hook (lambda () (auto-complete-mode -1))))
+  (global-company-mode))
 (use-package projectile)
 (use-package yaml-mode)
 (use-package markdown-mode)
