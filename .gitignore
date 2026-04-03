@@ -29,3 +29,5 @@ request
 /.last-package-update-day
 /.cache/
 /undo/
+/recentf
+projects

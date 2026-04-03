@@ -43,6 +43,8 @@
 (use-package nyan-mode)
 (use-package smooth-scroll :init (require 'smooth-scroll) (smooth-scroll-mode t))
 (use-package magit)
+(use-package majutsu
+  :vc (:url "https://github.com/0WD0/majutsu"))
 (use-package ido-completing-read+
   :init
   (ido-mode 1)
@@ -57,7 +59,7 @@
 (use-package direnv :config (direnv-mode))
 (use-package rubocop
   :init
-  (add-hook 'ruby-mode-hook #'rubocop-mode))
+  (add-hook 'enh-ruby-mode-hook #'rubocop-mode))
 ;; -------------------
 ;; Clojure related ----
 (use-package cider)
@@ -148,7 +150,6 @@
 (use-package yasnippet)
 (use-package lsp-mode
   :init
-  (setq lsp-prefer-capf 't)
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
   (add-hook 'lsp-mode-hook 'yas-minor-mode-on))

@@ -47,10 +47,11 @@
 
 (add-hook 'enh-ruby-mode-hook
           #'(lambda ()
-              (require 'rspec-mode)
-              (require 'rcodetools)
+              (lsp-mode +1)
               (flycheck-mode +1)
               (flycheck-disable-checker 'ruby-reek)
+              (require 'rspec-mode)
+              (require 'rcodetools)
               (rspec-mode +1)))
 
 (provide 'init-enh-ruby-mode)

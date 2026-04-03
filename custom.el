@@ -8,9 +8,21 @@
  '(TeX-show-compilation nil)
  '(ac-ignore-case nil)
  '(ac-modes
-   '(enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode web-mode ts-mode sclang-mode verilog-mode qml-mode cider-mode cider-repl-mode clojure-mode clojurescript-mode))
+   '(enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode
+                   slime-repl-mode c-mode cc-mode c++-mode go-mode
+                   java-mode malabar-mode scala-mode scheme-mode
+                   ocaml-mode tuareg-mode coq-mode haskell-mode
+                   agda-mode agda2-mode perl-mode cperl-mode
+                   python-mode ruby-mode lua-mode tcl-mode
+                   ecmascript-mode javascript-mode js-mode js2-mode
+                   php-mode css-mode less-css-mode makefile-mode
+                   sh-mode fortran-mode f90-mode ada-mode xml-mode
+                   sgml-mode web-mode ts-mode sclang-mode verilog-mode
+                   qml-mode cider-mode cider-repl-mode clojure-mode
+                   clojurescript-mode))
  '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f"
+    "#f6f3e8"])
  '(auth-source-save-behavior nil)
  '(auto-revert-interval 1)
  '(auto-revert-verbose nil)
@@ -18,11 +30,24 @@
  '(blink-cursor-mode t)
  '(cider-cljs-lein-repl "")
  '(cider-prefer-local-resources nil)
+ '(company-dabbrev-code-everywhere t)
+ '(company-dabbrev-code-modes
+   '(prog-mode batch-file-mode csharp-mode css-mode erlang-mode
+               haskell-mode jde-mode lua-mode python-mode
+               enh-ruby-mode))
  '(css-indent-level 2)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
  '(custom-safe-themes
-   '("f8e07cd6757c33b2b68a4e36be97b4b5e3a5f8798a4fef151bb2f75f7fd9831c" "d5c3970a91cc243499e73df5939e52d3762c351e937465978c1bf3ec402eada6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "b0950b032aa3c8faab4864ae288296dd66b92eca" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "baed08a10ff9393ce578c3ea3e8fd4f8c86e595463a882c55f3bd617df7e5a45" "374e79a81930979e673b8e0869e135fb2450b18c6474ca145f104e0c6f003267" "54d1bcf3fcf758af4812f98eb53b5d767f897442753e1aa468cfeb221f8734f9" default))
+   '("f8e07cd6757c33b2b68a4e36be97b4b5e3a5f8798a4fef151bb2f75f7fd9831c"
+     "d5c3970a91cc243499e73df5939e52d3762c351e937465978c1bf3ec402eada6"
+     "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365"
+     "b0950b032aa3c8faab4864ae288296dd66b92eca"
+     "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6"
+     "baed08a10ff9393ce578c3ea3e8fd4f8c86e595463a882c55f3bd617df7e5a45"
+     "374e79a81930979e673b8e0869e135fb2450b18c6474ca145f104e0c6f003267"
+     "54d1bcf3fcf758af4812f98eb53b5d767f897442753e1aa468cfeb221f8734f9"
+     default))
  '(delete-selection-mode t)
  '(dired-listing-switches "-al")
  '(dired-use-ls-dired 'unspecified)
@@ -39,7 +64,8 @@
  '(enh-ruby-end-check-statement-modifiers nil)
  '(enh-ruby-end-insert-newline nil)
  '(enh-ruby-extra-keywords
-   '("require" "private" "alias" "include" "extend" "protected" "public" "raise"))
+   '("require" "private" "alias" "include" "extend" "protected" "public"
+     "raise"))
  '(enh-ruby-hanging-indent-level 2)
  '(enh-ruby-program "ruby")
  '(enh-ruby-use-encoding-map t)
@@ -52,24 +78,79 @@
  '(evil-bigword "^ \\t\\r\\n_\12")
  '(evil-default-state 'normal)
  '(evil-emacs-state-modes
-   '(archive-mode bbdb-mode bookmark-bmenu-mode bookmark-edit-annotation-mode browse-kill-ring-mode bzr-annotate-mode calc-mode cfw:calendar-mode completion-list-mode Custom-mode debugger-mode delicious-search-mode desktop-menu-blist-mode desktop-menu-mode doc-view-mode dvc-bookmarks-mode dvc-diff-mode dvc-info-buffer-mode dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode dvc-status-mode dvc-tips-mode ediff-mode efs-mode Electric-buffer-menu-mode emms-browser-mode emms-mark-mode emms-metaplaylist-mode emms-playlist-mode etags-select-mode fj-mode gc-issues-mode gdb-breakpoints-mode gdb-disassembly-mode gdb-frames-mode gdb-locals-mode gdb-memory-mode gdb-registers-mode gdb-threads-mode gist-list-mode gnus-article-mode gnus-browse-mode gnus-group-mode gnus-server-mode gnus-summary-mode google-maps-static-mode ibuffer-mode jde-javadoc-checker-report-mode magit-commit-mode magit-diff-mode magit-key-mode magit-log-mode magit-mode magit-reflog-mode magit-show-branches-mode magit-stash-mode magit-status-mode magit-wazzup-mode mh-folder-mode monky-mode notmuch-hello-mode notmuch-search-mode notmuch-show-mode occur-mode org-agenda-mode package-menu-mode proced-mode rcirc-mode rebase-mode recentf-dialog-mode reftex-select-bib-mode reftex-toc-mode sldb-mode slime-inspector-mode slime-thread-control-mode slime-xref-mode sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode tar-mode tetris-mode tla-annotate-mode tla-archive-list-mode tla-bconfig-mode tla-bookmarks-mode tla-branch-list-mode tla-browse-mode tla-category-list-mode tla-changelog-mode tla-follow-symlinks-mode tla-inventory-file-mode tla-inventory-mode tla-lint-mode tla-logs-mode tla-revision-list-mode tla-revlog-mode tla-tree-lint-mode tla-version-list-mode twittering-mode urlview-mode vc-annotate-mode vc-dir-mode vc-git-log-view-mode vc-svn-log-view-mode vm-mode vm-summary-mode w3m-mode wab-compilation-mode xgit-annotate-mode xgit-changelog-mode xgit-diff-mode xgit-revlog-mode xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode xhg-status-extra-mode magit-branch-manager-mode pivotal-mode epa-key-list-mode git-rebase-mode idris-compiler-notes-mode cider-stacktrace-mode cider-test-report-mode cider-docview-mode magit-popup-mode magit-refs-mode magit-revision-mode magit-popup-sequence-mode magit-log-select-mode skewer-error-mode sql-interactive-mode))
+   '(archive-mode bbdb-mode bookmark-bmenu-mode
+                  bookmark-edit-annotation-mode browse-kill-ring-mode
+                  bzr-annotate-mode calc-mode cfw:calendar-mode
+                  completion-list-mode Custom-mode debugger-mode
+                  delicious-search-mode desktop-menu-blist-mode
+                  desktop-menu-mode doc-view-mode dvc-bookmarks-mode
+                  dvc-diff-mode dvc-info-buffer-mode
+                  dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode
+                  dvc-status-mode dvc-tips-mode ediff-mode efs-mode
+                  Electric-buffer-menu-mode emms-browser-mode
+                  emms-mark-mode emms-metaplaylist-mode
+                  emms-playlist-mode etags-select-mode fj-mode
+                  gc-issues-mode gdb-breakpoints-mode
+                  gdb-disassembly-mode gdb-frames-mode gdb-locals-mode
+                  gdb-memory-mode gdb-registers-mode gdb-threads-mode
+                  gist-list-mode gnus-article-mode gnus-browse-mode
+                  gnus-group-mode gnus-server-mode gnus-summary-mode
+                  google-maps-static-mode ibuffer-mode
+                  jde-javadoc-checker-report-mode magit-commit-mode
+                  magit-diff-mode magit-key-mode magit-log-mode
+                  magit-mode magit-reflog-mode
+                  magit-show-branches-mode magit-stash-mode
+                  magit-status-mode magit-wazzup-mode mh-folder-mode
+                  monky-mode notmuch-hello-mode notmuch-search-mode
+                  notmuch-show-mode occur-mode org-agenda-mode
+                  package-menu-mode proced-mode rcirc-mode rebase-mode
+                  recentf-dialog-mode reftex-select-bib-mode
+                  reftex-toc-mode sldb-mode slime-inspector-mode
+                  slime-thread-control-mode slime-xref-mode
+                  sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode
+                  tar-mode tetris-mode tla-annotate-mode
+                  tla-archive-list-mode tla-bconfig-mode
+                  tla-bookmarks-mode tla-branch-list-mode
+                  tla-browse-mode tla-category-list-mode
+                  tla-changelog-mode tla-follow-symlinks-mode
+                  tla-inventory-file-mode tla-inventory-mode
+                  tla-lint-mode tla-logs-mode tla-revision-list-mode
+                  tla-revlog-mode tla-tree-lint-mode
+                  tla-version-list-mode twittering-mode urlview-mode
+                  vc-annotate-mode vc-dir-mode vc-git-log-view-mode
+                  vc-svn-log-view-mode vm-mode vm-summary-mode
+                  w3m-mode wab-compilation-mode xgit-annotate-mode
+                  xgit-changelog-mode xgit-diff-mode xgit-revlog-mode
+                  xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode
+                  xhg-mq-sub-mode xhg-status-extra-mode
+                  magit-branch-manager-mode pivotal-mode
+                  epa-key-list-mode git-rebase-mode
+                  idris-compiler-notes-mode cider-stacktrace-mode
+                  cider-test-report-mode cider-docview-mode
+                  magit-popup-mode magit-refs-mode magit-revision-mode
+                  magit-popup-sequence-mode magit-log-select-mode
+                  skewer-error-mode sql-interactive-mode))
  '(evil-leader/leader ",")
  '(ffap-machine-p-known 'reject)
  '(fiplr-ignored-globs
    '((directories
       (".git" ".svn" ".hg" ".bzr" "assets_production" "assets_sandbox"))
      (files
-      (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" "*.jar"))))
+      (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz"
+       "*.zip" "*.jar"))))
  '(fiplr-root-markers '(".git" ".svn" ".hg" ".bzr" ".rspec"))
+ '(flycheck-global-modes '(Sass not))
  '(flycheck-reekrc ".reek.yml")
  '(flycheck-rubocop-lint-only nil)
  '(flycheck-rubocoprc ".rubocop.yml")
+ '(flycheck-ruby-rubocop-executable nil)
  '(frame-brackground-mode 'dark)
  '(fringe-mode '(nil . 0) nil (fringe))
  '(git-commit-finish-query-functions nil)
  '(global-auto-revert-ignore-modes '(buffer-menu-mode))
  '(global-auto-revert-mode t)
  '(global-auto-revert-non-file-buffers t)
+ '(global-flycheck-mode t)
  '(global-hl-line-mode t)
  '(graphviz-dot-auto-preview-on-save t)
  '(graphviz-dot-preview-extension "png")
@@ -114,17 +195,38 @@
  '(nyan-mode t)
  '(nyan-wavy-trail nil)
  '(org-babel-load-languages
-   '((emacs-lisp . t)
-     (haskell . t)
-     (clojure . t)
-     (python . t)
+   '((emacs-lisp . t) (haskell . t) (clojure . t) (python . t)
      (shell . t)))
  '(org-image-actual-width 100)
  '(org-src-fontify-natively t)
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
-   '(kotlin-mode swift-mode omnisharp python-pytest lsp-pyright eglot rubocopfmt direnv rbenv coffee-mode coffee rvm solidity-mode lsp-yaml xclip protobuf-mode lsp-haskell wgrep-ag lsp-sqls xpm-mode xpm string-inflection projectile undo-tree auto-package-update flymake-shellcheck lua-mode ess flycheck-clj-kondo ein blacken elpy evil-terminal-cursor-changer flymake-easy kubernetes-evil kubernetes dap-mode lsp-ui lsp-mode go-eldoc php-mode crystal-mode inf-ruby racket-mode tide plantuml-mode image+ terraform-mode dockerfile-mode graphviz-dot-mode esup idris-mode sass-mode rubocop skewer-mode js2-mode elm-mode purescript-mode tuareg-mode org-present jinja2-mode restclient wgrep intero bbdb go-mode flymake-rust rust-mode emacs-w3m alchemist guide-key web-mode ido-ubiquitous smartparens smooth-scroll magit nyan-mode ag jekyll-el rspec-mode markdown-mode yaml-mode enh-ruby-mode auto-complete cider company-mode evil-exchange evil-leader evil-surround find-file-in-project smex evil paredit rainbow-delimiters jell-theme quelpa-use-package quelpa "use-package" "use-package" "use-package" use-package "use-package" "use-package" "use-package" clojure-mode sesman flycheck psc-ide pci-ide haskell-mode ido-completing-read+ queue impatient-mode jade travis org-trello clj-refactor))
+   '(ag alchemist auto-complete auto-package-update bbdb blacken cider
+        clj-refactor clojure-mode coffee coffee-mode company-mode
+        crystal-mode dap-mode direnv dockerfile-mode eglot ein
+        elm-mode elpy emacs-w3m enh-ruby-mode ess esup evil
+        evil-exchange evil-leader evil-surround
+        evil-terminal-cursor-changer find-file-in-project flycheck
+        flycheck-clj-kondo flymake-easy flymake-rust
+        flymake-shellcheck go-eldoc go-mode graphviz-dot-mode
+        guide-key haskell-mode ido-completing-read+ ido-ubiquitous
+        idris-mode image+ impatient-mode inf-ruby intero jade
+        jekyll-el jell-theme jinja2-mode js2-mode kotlin-mode
+        kubernetes kubernetes-evil lsp-haskell lsp-mode lsp-pyright
+        lsp-rubocop lsp-sqls lsp-ui lsp-yaml lua-mode magit majutsu
+        markdown-mode nyan-mode omnisharp org-present org-trello
+        paredit pci-ide php-mode plantuml-mode projectile
+        protobuf-mode psc-ide purescript-mode python-pytest quelpa
+        quelpa-use-package queue racket-mode rainbow-delimiters rbenv
+        restclient rspec-mode rubocop rubocopfmt rust-mode rvm
+        sass-mode sesman skewer-mode smartparens smex smooth-scroll
+        solidity-mode string-inflection swift-mode terraform-mode tide
+        travis tuareg-mode undo-tree "use-package" "use-package"
+        "use-package" use-package "use-package" "use-package"
+        "use-package" web-mode wgrep wgrep-ag xclip xpm xpm-mode
+        yaml-mode))
+ '(package-vc-selected-packages '((majutsu :url "https://github.com/0WD0/majutsu")))
  '(plantuml-executable-args '("-headless"))
  '(plantuml-executable-path "/opt/homebrew/bin/plantuml")
  '(pr-gv-command "open")
@@ -147,9 +249,7 @@
  '(rubocop-run-in-chroot nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
-   '((eval when
-           (fboundp 'rainbow-mode)
-           (rainbow-mode 1))
+   '((eval when (fboundp 'rainbow-mode) (rainbow-mode 1))
      (cider-cljs-lein-repl . "(do (dev) (go) (cljs-repl))")
      (cider-refresh-after-fn . "reloaded.repl/resume")
      (cider-refresh-before-fn . "reloaded.repl/suspend")))
@@ -169,18 +269,20 @@
  '(sp-navigate-consider-symbols t)
  '(speedbar-default-position 'left)
  '(speedbar-frame-parameters
-   '((minibuffer)
-     (width . 30)
-     (border-width . 0)
-     (menu-bar-lines . 0)
-     (tool-bar-lines . 0)
-     (unsplittable . t)
-     (left-fringe . 0)))
+   '((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0)
+     (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0)))
  '(speedbar-frame-plist
-   '(minibuffer nil width 30 border-width 0 internal-border-width 0 unsplittable t default-toolbar-visible-p t has-modeline-p t menubar-visible-p t default-gutter-visible-p nil))
+   '(minibuffer nil width 30 border-width 0 internal-border-width 0
+                unsplittable t default-toolbar-visible-p t
+                has-modeline-p t menubar-visible-p t
+                default-gutter-visible-p nil))
  '(speedbar-show-unknown-files t)
  '(speedbar-supported-extension-expressions
-   '(".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".clj"))
+   '(".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?"
+     ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js"
+     ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm"
+     ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?"
+     ".clj"))
  '(tags-compression-info-list '("" ".Z" ".bz2" ".gz" ".xz" ".tgz" ".zip"))
  '(tooltip-mode nil)
  '(tooltip-short-delay 0)
