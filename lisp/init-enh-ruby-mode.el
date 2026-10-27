@@ -37,8 +37,18 @@
         (indent-according-to-mode))
       (indent-according-to-mode))))
 
+;; Run rubocop-ls through Bundler when the project's bundle has RuboCop,
+;; so it uses the project's version and plugins.
+(defvar lsp-rubocop-use-bundler)
+(defun ruby-bundle-has-rubocop-p ()
+  (when-let* ((root (locate-dominating-file default-directory "Gemfile.lock")))
+    (with-temp-buffer
+      (insert-file-contents (expand-file-name "Gemfile.lock" root))
+      (re-search-forward "^ +rubocop (" nil t))))
+
 (add-hook 'enh-ruby-mode-hook
           #'(lambda ()
+              (setq-local lsp-rubocop-use-bundler (and (ruby-bundle-has-rubocop-p) t))
               (lsp-mode +1)
               (flycheck-mode +1)
               (flycheck-disable-checker 'ruby-reek)
