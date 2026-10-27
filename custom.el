@@ -137,9 +137,6 @@
  '(graphviz-dot-auto-preview-on-save t)
  '(graphviz-dot-preview-extension "png")
  '(gud-tooltip-echo-area nil)
- '(guide-key/guide-key-sequence '("C-x" "C-c"))
- '(guide-key/popup-window-position 'bottom)
- '(guide-key/recursive-key-sequence-flag t)
  '(haskell-font-lock-symbols nil)
  '(haskell-process-type 'cabal-repl)
  '(haskell-program-name "cabal repl")
@@ -184,14 +181,14 @@
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
-   '(ag alchemist auto-package-update bbdb blacken cider clj-refactor
-        clojure-mode coffee coffee-mode company-mode crystal-mode
-        dap-mode direnv dockerfile-mode eglot ein elm-mode elpy
-        emacs-w3m enh-ruby-mode ess esup evil evil-exchange
-        evil-leader evil-surround evil-terminal-cursor-changer
+   '(ag auto-package-update bbdb blacken cider clj-refactor clojure-mode
+        coffee company-mode crystal-mode dap-mode direnv
+        dockerfile-mode eglot ein elm-mode elpy emacs-w3m
+        enh-ruby-mode ess esup evil evil-exchange evil-leader
+        evil-surround evil-terminal-cursor-changer
         find-file-in-project flycheck flycheck-clj-kondo flymake-easy
         flymake-rust flymake-shellcheck go-eldoc go-mode
-        graphviz-dot-mode guide-key haskell-mode ido-completing-read+
+        graphviz-dot-mode haskell-mode ido-completing-read+
         ido-ubiquitous idris-mode image+ impatient-mode inf-ruby
         intero jade jekyll-el jell-theme jinja2-mode js2-mode
         kotlin-mode kubernetes kubernetes-evil lsp-haskell lsp-mode
@@ -216,7 +213,7 @@
  '(rspec-command-options "")
  '(rspec-compilation-buffer-name "*RSPEC*")
  '(rspec-spec-command "rspec --color --fail-fast")
- '(rspec-use-bundler-when-possible nil)
+ '(rspec-use-bundler-when-possible t)
  '(rspec-use-opts-file-when-available t)
  '(rspec-use-rake-flag nil)
  '(rspec-use-rake-when-possible nil)

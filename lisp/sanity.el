@@ -39,6 +39,10 @@
 
 
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+;; Fewer GC pauses with lsp-mode. Set after init, since init.el
+;; let-binds gc-cons-threshold while loading.
+(add-hook 'after-init-hook
+          (lambda () (setq gc-cons-threshold (* 100 1024 1024)))) ;; 100mb
 
 (require 'cl-lib)
 (require 'ffap)

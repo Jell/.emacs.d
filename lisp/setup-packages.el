@@ -3,6 +3,7 @@
   :init
   (setq evil-want-fine-undo t)
   (setq evil-default-cursor t)
+  (setq evil-undo-system 'undo-tree)
   (require 'evil)
   (evil-mode 1))
 (use-package jell-theme
@@ -59,7 +60,6 @@
 (use-package enh-ruby-mode :config (require 'init-enh-ruby-mode))
 (use-package rspec-mode)
 (use-package smartparens :init (require 'init-smartparens))
-(use-package coffee-mode)
 (use-package direnv :config (direnv-mode))
 (use-package rubocop
   :init
@@ -94,8 +94,7 @@
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-attr-indent-offset 4))
-(use-package guide-key :init (require 'guide-key) (guide-key-mode 1))
-(use-package alchemist)
+(use-package which-key :ensure nil :init (which-key-mode 1))
 ;; (use-package w3m)
 (use-package bbdb)
 (use-package wgrep-ag
