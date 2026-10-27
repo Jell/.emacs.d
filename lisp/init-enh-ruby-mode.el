@@ -49,4 +49,11 @@
 ;; Drop into a REPL when a spec hits binding.irb / binding.pry
 (add-hook 'compilation-filter-hook #'inf-ruby-auto-enter-and-focus)
 
+;; inf-ruby only recognises pry and debugger prompts; also match irb's
+;; "irb(<receiver>):001> ", where the receiver may itself contain parens.
+(with-eval-after-load 'inf-ruby
+  (setq inf-ruby-breakpoint-pattern
+        (concat inf-ruby-breakpoint-pattern
+                "\\|\\(^irb(.*):[0-9]+\\(:[0-9]+\\)?> \\)")))
+
 (provide 'init-enh-ruby-mode)
