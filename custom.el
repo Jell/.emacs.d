@@ -1,4 +1,4 @@
-;; Custom variables
+;; Custom variables  -*- lexical-binding: t; -*-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -6,20 +6,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-show-compilation nil)
- '(ac-ignore-case nil)
- '(ac-modes
-   '(enh-ruby-mode emacs-lisp-mode lisp-mode lisp-interaction-mode
-                   slime-repl-mode c-mode cc-mode c++-mode go-mode
-                   java-mode malabar-mode scala-mode scheme-mode
-                   ocaml-mode tuareg-mode coq-mode haskell-mode
-                   agda-mode agda2-mode perl-mode cperl-mode
-                   python-mode ruby-mode lua-mode tcl-mode
-                   ecmascript-mode javascript-mode js-mode js2-mode
-                   php-mode css-mode less-css-mode makefile-mode
-                   sh-mode fortran-mode f90-mode ada-mode xml-mode
-                   sgml-mode web-mode ts-mode sclang-mode verilog-mode
-                   qml-mode cider-mode cider-repl-mode clojure-mode
-                   clojurescript-mode))
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f"
     "#f6f3e8"])
@@ -140,9 +126,9 @@
        "*.zip" "*.jar"))))
  '(fiplr-root-markers '(".git" ".svn" ".hg" ".bzr" ".rspec"))
  '(flycheck-global-modes '(Sass not))
- '(flycheck-reekrc ".reek.yml")
+ '(flycheck-reek-config ".reek.yml")
+ '(flycheck-rubocop-config ".rubocop.yml")
  '(flycheck-rubocop-lint-only nil)
- '(flycheck-rubocoprc ".rubocop.yml")
  '(flycheck-ruby-rubocop-executable nil)
  '(frame-brackground-mode 'dark)
  '(fringe-mode '(nil . 0) nil (fringe))
@@ -202,21 +188,20 @@
  '(org-startup-with-inline-images nil)
  '(org-startup-with-latex-preview nil)
  '(package-selected-packages
-   '(ag alchemist auto-complete auto-package-update bbdb blacken cider
-        clj-refactor clojure-mode coffee coffee-mode company-mode
-        crystal-mode dap-mode direnv dockerfile-mode eglot ein
-        elm-mode elpy emacs-w3m enh-ruby-mode ess esup evil
-        evil-exchange evil-leader evil-surround
-        evil-terminal-cursor-changer find-file-in-project flycheck
-        flycheck-clj-kondo flymake-easy flymake-rust
-        flymake-shellcheck go-eldoc go-mode graphviz-dot-mode
-        guide-key haskell-mode ido-completing-read+ ido-ubiquitous
-        idris-mode image+ impatient-mode inf-ruby intero jade
-        jekyll-el jell-theme jinja2-mode js2-mode kotlin-mode
-        kubernetes kubernetes-evil lsp-haskell lsp-mode lsp-pyright
-        lsp-rubocop lsp-sqls lsp-ui lsp-yaml lua-mode magit majutsu
-        markdown-mode nyan-mode omnisharp org-present org-trello
-        paredit pci-ide php-mode plantuml-mode projectile
+   '(ag alchemist auto-package-update bbdb blacken cider clj-refactor
+        clojure-mode coffee coffee-mode company-mode crystal-mode
+        dap-mode direnv dockerfile-mode eglot ein elm-mode elpy
+        emacs-w3m enh-ruby-mode ess esup evil evil-exchange
+        evil-leader evil-surround evil-terminal-cursor-changer
+        find-file-in-project flycheck flycheck-clj-kondo flymake-easy
+        flymake-rust flymake-shellcheck go-eldoc go-mode
+        graphviz-dot-mode guide-key haskell-mode ido-completing-read+
+        ido-ubiquitous idris-mode image+ impatient-mode inf-ruby
+        intero jade jekyll-el jell-theme jinja2-mode js2-mode
+        kotlin-mode kubernetes kubernetes-evil lsp-haskell lsp-mode
+        lsp-pyright lsp-rubocop lsp-sqls lsp-ui lsp-yaml lua-mode
+        magit majutsu markdown-mode nyan-mode omnisharp org-present
+        org-trello paredit pci-ide php-mode plantuml-mode projectile
         protobuf-mode psc-ide purescript-mode python-pytest quelpa
         quelpa-use-package queue racket-mode rainbow-delimiters rbenv
         restclient rspec-mode rubocop rubocopfmt rust-mode rvm

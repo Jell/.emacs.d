@@ -32,7 +32,10 @@
 (use-package company
   :init
   (global-company-mode))
-(use-package projectile)
+(use-package projectile
+  :init
+  (projectile-mode +1)
+  :bind-keymap ("C-c p" . projectile-command-map))
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package ag

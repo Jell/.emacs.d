@@ -11,8 +11,6 @@
 (add-to-list 'auto-mode-alist '("\\.builder\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
-(with-eval-after-load 'auto-complete
-  (add-to-list 'ac-modes 'enh-ruby-mode))
 
 ;; Fix word limits
 (modify-syntax-entry ?@ "w" enh-ruby-mode-syntax-table)
@@ -24,14 +22,6 @@
 ;; Some extra keys
 (evil-define-key 'normal enh-ruby-mode-map
   "J" (lambda () (interactive) (sp-ruby-delete-indentation -1)))
-
-(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:"
-                       (getenv "HOME") "/.rbenv/bin:"
-                       (getenv "PATH")))
-
-(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims")
-                      (cons (concat (getenv "HOME") "/.rbenv/bin")
-                            exec-path)))
 
 (add-hook 'post-self-insert-hook #'ruby-awesome-block)
 (defun ruby-awesome-block ()
@@ -53,7 +43,10 @@
               (flycheck-mode +1)
               (flycheck-disable-checker 'ruby-reek)
               (require 'rspec-mode)
-              (require 'rcodetools)
-              (rspec-mode +1)))
+              (rspec-mode +1)
+              (inf-ruby-minor-mode +1)))
+
+;; Drop into a REPL when a spec hits binding.irb / binding.pry
+(add-hook 'compilation-filter-hook #'inf-ruby-auto-enter-and-focus)
 
 (provide 'init-enh-ruby-mode)
