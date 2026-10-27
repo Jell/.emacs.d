@@ -4,7 +4,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
-(let ((file-name-handler-alist nil) ; speedup library loading
+(let ((file-name-handler-alist nil)     ; speedup library loading
       (gc-cons-threshold most-positive-fixnum)) ; ditto
 
   (require 'sanity)
