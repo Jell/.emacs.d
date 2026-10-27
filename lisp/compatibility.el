@@ -24,6 +24,11 @@
 (when (string= system-type "darwin")
   (setq dired-use-ls-dired nil))
 
+;; The daemon is started by launchd without a locale, which makes pbcopy
+;; (used by xclip-mode) read UTF-8 as Mac Roman: öäå -> √∂√§√•
+(unless (getenv "LANG")
+  (setenv "LANG" "en_US.UTF-8"))
+
 ;; Extra keybindings for when working in tty
 (global-set-key (kbd "M-[ c") (kbd "C-<right>"))
 (global-set-key (kbd "M-[ d") (kbd "C-<left>"))

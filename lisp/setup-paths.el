@@ -28,10 +28,5 @@
 ;; (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
 (setenv "DOTNET_ROOT" "/opt/homebrew/opt/dotnet/libexec")
 
-;; The daemon is started by launchd without a locale, which makes pbcopy
-;; (used by xclip-mode) read UTF-8 as Mac Roman: öäå -> √∂√§√•
-(unless (getenv "LANG")
-  (setenv "LANG" "en_US.UTF-8"))
-
 
 (provide 'setup-paths)
