@@ -51,7 +51,6 @@
               (setq-local lsp-rubocop-use-bundler (and (ruby-bundle-has-rubocop-p) t))
               (lsp-mode +1)
               (flycheck-mode +1)
-              (flycheck-disable-checker 'ruby-reek)
               (require 'rspec-mode)
               (rspec-mode +1)
               (inf-ruby-minor-mode +1)))
