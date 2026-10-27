@@ -55,4 +55,9 @@
 ;; Legacy crap?
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
+;; Emacs 31 warns about files missing a lexical-binding cookie, and many
+;; third-party packages still lack one.
+(require 'warnings)
+(add-to-list 'warning-suppress-log-types '(files missing-lexbind-cookie))
+
 (provide 'compatibility)
