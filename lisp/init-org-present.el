@@ -1,3 +1,4 @@
+;;; init-org-present.el --- -*- lexical-binding: t; -*-
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
   :init-value nil

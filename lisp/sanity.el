@@ -1,3 +1,4 @@
+;;; sanity.el --- -*- lexical-binding: t; -*-
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 (if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))

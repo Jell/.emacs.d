@@ -1,3 +1,4 @@
+;;; setup-auto-revert.el --- -*- lexical-binding: t; -*-
 (global-auto-revert-mode -1)
 (global-auto-revert-mode 1)
 (defun set-image-mode-after-revert-if-image-minor-mode ()

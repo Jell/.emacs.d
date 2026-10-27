@@ -1,3 +1,4 @@
+;;; setup-keys.el --- -*- lexical-binding: t; -*-
 ;; Leader keys
 (evil-leader/set-key
   "e" 'find-file

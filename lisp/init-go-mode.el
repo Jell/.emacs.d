@@ -1,3 +1,4 @@
+;;; init-go-mode.el --- -*- lexical-binding: t; -*-
 ;; install deps:
 ;; go get -u github.com/nsf/gocode
 

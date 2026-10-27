@@ -1,3 +1,4 @@
+;;; init-enh-ruby-mode.el --- -*- lexical-binding: t; -*-
 (add-to-list 'auto-mode-alist '("Capfile" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . enh-ruby-mode))
@@ -10,7 +11,8 @@
 (add-to-list 'auto-mode-alist '("\\.builder\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
-(add-to-list 'ac-modes 'enh-ruby-mode)
+(with-eval-after-load 'auto-complete
+  (add-to-list 'ac-modes 'enh-ruby-mode))
 
 ;; Fix word limits
 (modify-syntax-entry ?@ "w" enh-ruby-mode-syntax-table)

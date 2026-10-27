@@ -1,3 +1,4 @@
+;;; setup-use-package.el --- -*- lexical-binding: t; -*-
 (require 'package)
 (package-initialize)
 

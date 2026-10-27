@@ -1,3 +1,4 @@
+;;; setup-paths.el --- -*- lexical-binding: t; -*-
 (add-to-list 'load-path "~/.emacs.d/filetypes")
 (add-to-list 'load-path "~/.emacs.d/other")
 

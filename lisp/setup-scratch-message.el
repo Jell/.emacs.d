@@ -1,3 +1,4 @@
+;;; setup-scratch-message.el --- -*- lexical-binding: t; -*-
 (let ((file (expand-file-name (concat "~/.emacs.d/scratch-messages/" (user-login-name) ".el"))))
   (when (file-exists-p file)
     (setq initial-scratch-message

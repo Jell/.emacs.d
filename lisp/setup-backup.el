@@ -1,3 +1,4 @@
+;;; setup-backup.el --- -*- lexical-binding: t; -*-
 ;; Fix tmp files
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))

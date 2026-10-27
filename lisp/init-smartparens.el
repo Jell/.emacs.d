@@ -1,3 +1,4 @@
+;;; init-smartparens.el --- -*- lexical-binding: t; -*-
 (require 'smartparens)
 (sp-use-paredit-bindings)
 

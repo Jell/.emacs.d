@@ -1,4 +1,4 @@
-;;; init --- Summary
+;;; init --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

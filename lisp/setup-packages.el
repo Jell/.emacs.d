@@ -1,3 +1,4 @@
+;;; setup-packages.el --- -*- lexical-binding: t; -*-
 (use-package evil
   :init
   (setq evil-want-fine-undo t)
@@ -191,7 +192,14 @@
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
+  ;; A daemon has no terminal to answer the update prompt, so wait for
+  ;; the first client frame before checking.
+  (if (daemonp)
+      (letrec ((check (lambda ()
+                        (remove-hook 'server-after-make-frame-hook check)
+                        (auto-package-update-maybe))))
+        (add-hook 'server-after-make-frame-hook check))
+    (auto-package-update-maybe)))
 ;; (auto-package-update-now)
 
 (provide 'setup-packages)

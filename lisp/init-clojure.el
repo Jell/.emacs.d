@@ -1,3 +1,4 @@
+;;; init-clojure.el --- -*- lexical-binding: t; -*-
 (require 'rainbow-delimiters)
 (require 'paredit)
 ;; (require 'clj-refactor)

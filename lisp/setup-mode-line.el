@@ -1,3 +1,4 @@
+;;; setup-mode-line.el --- -*- lexical-binding: t; -*-
 (setq-default
  mode-line-format
  (list

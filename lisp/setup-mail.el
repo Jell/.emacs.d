@@ -1,3 +1,4 @@
+;;; setup-mail.el --- -*- lexical-binding: t; -*-
 ;;Configure Outbound Mail
 
 ;;Tell the program who you are

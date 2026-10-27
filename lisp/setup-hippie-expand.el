@@ -1,3 +1,4 @@
+;;; setup-hippie-expand.el --- -*- lexical-binding: t; -*-
 (setq hippie-expand-try-functions-list
       '(
         try-expand-dabbrev
